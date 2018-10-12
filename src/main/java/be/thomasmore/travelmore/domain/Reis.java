@@ -31,7 +31,7 @@ public class Reis {
     private int id;
     private Locatie vertrekLocatie;
     private Locatie aankomstLocatie;
-    //transportmiddel
+    private Transportmiddel transportmiddel;
 
 
     @Column(name = "vertrekTijd")
@@ -95,5 +95,14 @@ public class Reis {
 
     public void setAankomstLocatie(Locatie aankomstLocatie) {
         this.aankomstLocatie = aankomstLocatie;
+    }
+
+
+    public Transportmiddel getTransportmiddel() {
+        return transportmiddel;
+    }
+
+    public void setTransportmiddel(Transportmiddel transportmiddel) {
+        this.transportmiddel = transportmiddel;
     }
 }
