@@ -2,28 +2,26 @@ package be.thomasmore.travelmore.domain;
 
 import javax.persistence.*;
 
-
 @Entity
-@Table(name = "SoortTransport")
+@Table(name = "SoortGebruiker")
 @NamedQueries(
         {
                 @NamedQuery(
-                        name = SoortTransport.FIND_ALL,
-                        query = "SELECT l FROM SoortTransport l"
+                        name = SoortGebruiker.FIND_ALL,
+                        query = "SELECT l FROM SoortGebruiker l"
                 ),
                 @NamedQuery(
-                        name = SoortTransport.FIND_BY_ID,
-                        query = "SELECT l FROM SoortTransport l WHERE l.id = :id"
+                        name = SoortGebruiker.FIND_BY_ID,
+                        query = "SELECT l FROM SoortGebruiker l WHERE l.id = :id"
 
                 )
         }
 )
-
-public class SoortTransport {
+public class SoortGebruiker {
 
     //properties
-    public static final String FIND_ALL = "SoortTransport.findAll";
-    public static final String FIND_BY_ID = "SoortTransport.findById";
+    public static final String FIND_ALL = "SoortGebruiker.findAll";
+    public static final String FIND_BY_ID = "SoortGebruiker.findById";
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -31,8 +29,6 @@ public class SoortTransport {
     @Column(name = "soort")
     private String soort;
 
-
-    //getters en setters
     public int getId() {
         return id;
     }
