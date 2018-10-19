@@ -16,7 +16,7 @@ public class Gebruiker {
     private String email;
     private String wachtwoord;
     private int soortId;
-    private int soortGebruikerId;
+    private int soorGebruikerId;
 
 
     public int getId() {

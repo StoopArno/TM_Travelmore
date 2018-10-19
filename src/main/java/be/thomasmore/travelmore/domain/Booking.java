@@ -9,11 +9,11 @@ import javax.persistence.*;
         {
                 @NamedQuery(
                         name = Booking.FIND_ALL,
-                        query = "SELECT b FROM booking b"
+                        query = "SELECT b FROM Booking b"
                 ),
                 @NamedQuery(
                         name = Booking.FIND_BY_ID,
-                        query = "SELECT b FROM booking b WHERE b.id = :id"
+                        query = "SELECT b FROM Booking b WHERE b.id = :id"
 
                 )
         }

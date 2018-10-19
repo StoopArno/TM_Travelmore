@@ -9,11 +9,11 @@ import java.util.Date;
         {
                 @NamedQuery(
                         name = Periode.FIND_ALL,
-                        query = "SELECT p FROM periode p"
+                        query = "SELECT p FROM Periode p"
                 ),
                 @NamedQuery(
                         name = Periode.FIND_BY_ID,
-                        query = "SELECT p FROM periode p WHERE p.id = :id"
+                        query = "SELECT p FROM Periode p WHERE p.id = :id"
 
                 )
         }
