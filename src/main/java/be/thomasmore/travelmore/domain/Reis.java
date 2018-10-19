@@ -29,8 +29,11 @@ public class Reis {
 
     @Id
     private int id;
+    @ManyToOne
     private Locatie vertrekLocatie;
+    @ManyToOne
     private Locatie aankomstLocatie;
+    @ManyToOne
     private Transportmiddel transportmiddel;
 
 

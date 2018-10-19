@@ -13,7 +13,7 @@ import javax.persistence.*;
                 ),
                 @NamedQuery(
                         name = Transportmiddel.FIND_ALL,
-                        query = "SELECT l FROM Transportmiddel"
+                        query = "SELECT l FROM Transportmiddel l"
                 )
 
         }
@@ -30,7 +30,7 @@ public class Transportmiddel {
     private int id;
     @Column(name = "naam")
     private String naam;
-    @Column(name = "naam")
+    @Column(name = "aantalplaatsens")
     private int aantalPlaatsen;
 
     @ManyToOne
