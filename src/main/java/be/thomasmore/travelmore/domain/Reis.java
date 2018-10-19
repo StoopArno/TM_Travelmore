@@ -28,6 +28,7 @@ public class Reis {
 
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     @ManyToOne
     private Locatie vertrekLocatie;

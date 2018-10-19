@@ -1,11 +1,6 @@
 package be.thomasmore.travelmore.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "locatie")
@@ -29,6 +24,7 @@ public class Locatie {
     public static final String FIND_BY_ID = "Locatie.findById";
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     @Column(name = "naam")
     private String naam;
