@@ -44,7 +44,7 @@ public class Booking {
     @ManyToOne
     private Klasse klasse;
     @ManyToOne
-    private int terugReisId;
+    private Reis terugReis;
 
 
 
@@ -121,12 +121,12 @@ public class Booking {
         this.klasse = klasse;
     }
 
-    public int getTerugReisId() {
-        return terugReisId;
+    public Reis getTerugReis() {
+        return terugReis;
     }
 
-    public void setTerugReisId(int terugReisId) {
-        this.terugReisId = terugReisId;
+    public void setTerugReis(Reis terugReis) {
+        this.terugReis = terugReis;
     }
 
     public int getId() {
