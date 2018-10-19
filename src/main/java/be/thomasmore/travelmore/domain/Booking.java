@@ -8,11 +8,11 @@ import javax.persistence.*;
         {
                 @NamedQuery(
                         name = Booking.FIND_ALL,
-                        query = "SELECT b FROM booking b"
+                        query = "SELECT b FROM Booking b"
                 ),
                 @NamedQuery(
                         name = Booking.FIND_BY_ID,
-                        query = "SELECT b FROM booking b WHERE b.id = :id"
+                        query = "SELECT b FROM Booking b WHERE b.id = :id"
 
                 )
         }
@@ -26,6 +26,7 @@ public class Booking {
 
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     @ManyToOne
     private Gebruiker gebruiker;
@@ -42,7 +43,7 @@ public class Booking {
     @ManyToOne
     private Klasse klasse;
     @ManyToOne
-    private int terugReisId;
+    private Reis terugReis;
 
 
 
@@ -119,12 +120,12 @@ public class Booking {
         this.klasse = klasse;
     }
 
-    public int getTerugReisId() {
-        return terugReisId;
+    public Reis getTerugReis() {
+        return terugReis;
     }
 
-    public void setTerugReisId(int terugReisId) {
-        this.terugReisId = terugReisId;
+    public void setTerugReis(Reis terugReis) {
+        this.terugReis = terugReis;
     }
 
     public int getId() {
