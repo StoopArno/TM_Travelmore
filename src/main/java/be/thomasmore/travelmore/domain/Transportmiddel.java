@@ -27,6 +27,7 @@ public class Transportmiddel {
     public static final String FIND_ALL = "Transportmiddel.findAll";
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     @Column(name = "naam")
     private String naam;
