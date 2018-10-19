@@ -18,10 +18,10 @@ public class SoortTransportController {
     private SoortTransportService soortTransportService;
 
     public List<SoortTransport> getAllSoortTransport(){
-        return this.soortTransportService.findAllType();
+        return this.soortTransportService.findAllSoortTransport();
     }
 
     public SoortTransport getSoortTransportByID(){
-        return this.soortTransportService.findTypeById(geselecteerdeSoortTransport.getId());
+        return this.soortTransportService.findSoortTransportById(geselecteerdeSoortTransport.getId());
     }
 }

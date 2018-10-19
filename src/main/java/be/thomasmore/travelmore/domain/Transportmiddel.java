@@ -33,7 +33,7 @@ public class Transportmiddel {
     @Column(name = "naam")
     private int aantalPlaatsen;
 
-    private Type type;
+    private SoortTransport soortTransport;
 
 
     //getters and setters
@@ -63,11 +63,11 @@ public class Transportmiddel {
         this.aantalPlaatsen = aantalPlaatsen;
     }
 
-    public Type getType() {
-        return type;
+    public SoortTransport getSoortTransport() {
+        return soortTransport;
     }
 
-    public void setType(Type type) {
-        this.type = type;
+    public void setSoortTransport(SoortTransport soortTransport) {
+        this.soortTransport = soortTransport;
     }
 }
