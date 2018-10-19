@@ -15,7 +15,7 @@ public class Gebruiker {
     private String geboorteDatum;
     private String email;
     private String wachtwoord;
-    private int soorGebruikerId;
+    private SoortGebruiker soortGebruiker;
 
 
     public int getId() {
@@ -82,19 +82,11 @@ public class Gebruiker {
         this.wachtwoord = wachtwoord;
     }
 
-    public int getSoortId() {
-        return soortId;
+    public SoortGebruiker getSoortGebruiker() {
+        return soortGebruiker;
     }
 
-    public void setSoortId(int soortId) {
-        this.soortId = soortId;
-    }
-
-    public int getSoorGebruikerId() {
-        return soorGebruikerId;
-    }
-
-    public void setSoorGebruikerId(int soorGebruikerId) {
-        this.soorGebruikerId = soorGebruikerId;
+    public void setSoortGebruiker(SoortGebruiker soortGebruiker) {
+        this.soortGebruiker = soortGebruiker;
     }
 }
