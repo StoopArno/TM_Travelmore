@@ -1,6 +1,13 @@
 package be.thomasmore.travelmore.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="gebruiker")
 public class Gebruiker {
+    @Id
     private int id;
     private  String voornaam;
     private String achternaam;
@@ -10,6 +17,8 @@ public class Gebruiker {
     private String email;
     private String wachtwoord;
     private int soortId;
+    private int soorGebruikerId;
+
 
     public int getId() {
         return id;
@@ -81,5 +90,13 @@ public class Gebruiker {
 
     public void setSoortId(int soortId) {
         this.soortId = soortId;
+    }
+
+    public int getSoorGebruikerId() {
+        return soorGebruikerId;
+    }
+
+    public void setSoorGebruikerId(int soorGebruikerId) {
+        this.soorGebruikerId = soorGebruikerId;
     }
 }
