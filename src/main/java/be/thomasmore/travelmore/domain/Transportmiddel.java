@@ -30,7 +30,7 @@ public class Transportmiddel {
     private int id;
     @Column(name = "naam")
     private String naam;
-    @Column(name = "naam")
+    @Column(name = "aantalplaatsens")
     private int aantalPlaatsen;
 
     @ManyToOne
