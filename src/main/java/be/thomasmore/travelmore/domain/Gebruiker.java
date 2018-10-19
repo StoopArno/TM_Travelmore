@@ -15,6 +15,7 @@ public class Gebruiker {
     private String geboorteDatum;
     private String email;
     private String wachtwoord;
+    @ManyToOne
     private SoortGebruiker soortGebruiker;
 
 
