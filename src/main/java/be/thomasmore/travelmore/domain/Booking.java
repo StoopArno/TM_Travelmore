@@ -47,44 +47,39 @@ public class Booking {
     @ManyToOne
     private int terugReisId;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+
 
     public Gebruiker getGebruiker() {
-        return gebruikerId;
+        return gebruiker;
     }
 
-    public void setGebruikerId(int gebruikerId) {
-        this.gebruikerId = gebruikerId;
+    public void setGebruiker(Gebruiker gebruiker) {
+        this.gebruiker = gebruiker;
     }
 
-    public int getHeenReisId() {
-        return heenReisId;
+    public Reis getHeenReis() {
+        return heenReis;
     }
 
-    public void setHeenReisId(int heenReisId) {
-        this.heenReisId = heenReisId;
+    public void setHeenReis(Reis heenReis) {
+        this.heenReis = heenReis;
     }
 
-    public int getPeriodeId() {
-        return periodeId;
+    public Periode getPeriode() {
+        return periode;
     }
 
-    public void setPeriodeId(int periodeId) {
-        this.periodeId = periodeId;
+    public void setPeriode(Periode periode) {
+        this.periode = periode;
     }
 
-    public int getHotelId() {
-        return hotelId;
+    public Hotel getHotel() {
+        return hotel;
     }
 
-    public void setHotelId(int hotelId) {
-        this.hotelId = hotelId;
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
     }
 
     public int getAantalVolwassenen() {
@@ -119,12 +114,12 @@ public class Booking {
         this.ruimBagage = ruimBagage;
     }
 
-    public int getKlasse() {
-        return Klasse;
+    public Klasse getKlasse() {
+        return klasse;
     }
 
-    public void setKlasse(int klasse) {
-        Klasse = klasse;
+    public void setKlasse(Klasse klasse) {
+        this.klasse = klasse;
     }
 
     public int getTerugReisId() {
@@ -134,6 +129,16 @@ public class Booking {
     public void setTerugReisId(int terugReisId) {
         this.terugReisId = terugReisId;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
 
 
 
