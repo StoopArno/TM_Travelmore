@@ -26,7 +26,7 @@ public class Locatie {
 
     //properties
     public static final String FIND_ALL = "Locatie.findAll";
-    public static final String FIND_BY_ID = "Location.findById";
+    public static final String FIND_BY_ID = "Locatie.findById";
 
     @Id
     private int id;
