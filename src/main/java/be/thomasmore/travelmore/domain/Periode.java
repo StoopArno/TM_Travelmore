@@ -26,6 +26,7 @@ public class Periode {
 
 
     @Id //Many To One met booking
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     @Column(name = "naam")
     private String naam;

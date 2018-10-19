@@ -1,8 +1,6 @@
 package be.thomasmore.travelmore.domain;
 
 
-import com.sun.xml.internal.bind.v2.schemagen.episode.Klass;
-
 import javax.persistence.*;
 
 @Entity
@@ -29,6 +27,7 @@ public class Booking {
 
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     @ManyToOne
     private Gebruiker gebruiker;

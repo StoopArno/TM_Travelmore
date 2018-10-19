@@ -23,6 +23,7 @@ public class Klasse {
     public static final String FIND_BY_ID = "Klasse.findById";
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int Id;
     @Column(name="klasse")
     private String klasse;
