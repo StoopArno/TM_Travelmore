@@ -1,9 +1,7 @@
 package be.thomasmore.travelmore.service;
 
 import be.thomasmore.travelmore.domain.Reis;
-import be.thomasmore.travelmore.domain.Type;
 import be.thomasmore.travelmore.repository.ReisRepository;
-import be.thomasmore.travelmore.repository.TypeRepository;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;

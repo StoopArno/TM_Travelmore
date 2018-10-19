@@ -1,6 +1,5 @@
 package be.thomasmore.travelmore.repository;
 import be.thomasmore.travelmore.domain.Transportmiddel;
-import be.thomasmore.travelmore.domain.Type;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
