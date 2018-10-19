@@ -33,6 +33,7 @@ public class Transportmiddel {
     @Column(name = "naam")
     private int aantalPlaatsen;
 
+    @ManyToOne
     private SoortTransport soortTransport;
 
 
