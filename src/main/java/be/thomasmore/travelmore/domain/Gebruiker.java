@@ -1,6 +1,13 @@
 package be.thomasmore.travelmore.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="gebruiker")
 public class Gebruiker {
+    @Id
     private int id;
     private  String voornaam;
     private String achternaam;
