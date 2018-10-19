@@ -27,6 +27,7 @@ public class SoortTransport {
     public static final String FIND_BY_ID = "SoortTransport.findById";
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     @Column(name = "soort")
     private String soort;
