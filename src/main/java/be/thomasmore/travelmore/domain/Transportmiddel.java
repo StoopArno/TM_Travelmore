@@ -13,7 +13,7 @@ import javax.persistence.*;
                 ),
                 @NamedQuery(
                         name = Transportmiddel.FIND_ALL,
-                        query = "SELECT l FROM Transportmiddel"
+                        query = "SELECT l FROM Transportmiddel l"
                 )
 
         }
