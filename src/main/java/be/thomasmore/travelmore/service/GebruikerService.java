@@ -12,6 +12,10 @@ public class GebruikerService {
     @Inject
     private GebruikerRepository gebruikerRepository;
 
+    public Gebruiker findGebruikerById(int id) {
+        return gebruikerRepository.findById(id);
+    }
+
     public void insert(Gebruiker gebruiker){
         String passwordToHash = gebruiker.getWachtwoord();
         String hashPassword = null;
