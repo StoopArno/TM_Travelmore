@@ -3,7 +3,8 @@ package be.thomasmore.travelmore.controller;
 import be.thomasmore.travelmore.domain.Klasse;
 import be.thomasmore.travelmore.service.KlasseService;
 
-import javax.annotation.ManagedBean;
+
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import java.util.List;

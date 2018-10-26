@@ -4,7 +4,8 @@ import be.thomasmore.travelmore.domain.Hotel;
 import be.thomasmore.travelmore.domain.Locatie;
 import be.thomasmore.travelmore.service.HotelService;
 
-import javax.annotation.ManagedBean;
+
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import java.util.List;
