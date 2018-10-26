@@ -1,6 +1,7 @@
 package be.thomasmore.travelmore.repository;
 
 import be.thomasmore.travelmore.domain.Booking;
+import be.thomasmore.travelmore.domain.Gebruiker;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,6 +19,10 @@ public class BookingRepository {
 
     public List<Booking> findAll() {
         return entityManager.createNamedQuery(Booking.FIND_ALL, Booking.class).getResultList();
+    }
+
+    public void insert(Booking booking) {
+        entityManager.persist(booking);
     }
 
 }
