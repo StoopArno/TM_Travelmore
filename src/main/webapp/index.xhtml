@@ -51,35 +51,15 @@
 </h:head>
 <h:body>
     <h:graphicImage name="/images/headerlogo.png" alt="headerlogo"/>
-    <p:dataTable var="reis" value="#{reisController.reizen}" id="locationDataTable">
 
-    <h:graphicImage name="/images/headerlogo_transparent.png" alt="headerlogo"/>
-    <b:dataTable var="locatie" value="#{locatieController.locaties}" id="locationDataTable">
 
-        <p:column headerText="Id">
-            <h:outputText value="#{reis.id}" />
-        </p:column>
-
-        <p:column headerText="Vertrektijd">
-            <h:outputText value="#{reis.vertrekTijd}" />
-        </p:column>
-
-        <p:column headerText="Aankomsttijd">
-            <h:outputText value="#{reis.aankomstTijd}" />
-        </p:column>
-
-        <p:column headerText="Prijs">
-            <h:outputText value="#{reis.prijs}" />
-        </p:column>
-
-        <p:column headerText="Vertrekpunt">
-            <h:outputText value="#{reis.vertrekLocatie.naam}" />
-        </p:column>
-
-        <p:column headerText="Aankomstpunt">
-            <h:outputText value="#{reis.aankomstLocatie.naam}" />
-        </p:column>
-
+    <b:dataTable value="#{reisController.reizen}"
+                 var="reis" id="locationDataTable">
+        <b:dataTableColumn value="#{reis.vertrekTijd}" order="asc" />
+        <b:dataTableColumn value="#{reis.aankomstTijd}" />
+        <b:dataTableColumn value="#{reis.vertrekLocatie.naam}" />
+        <b:dataTableColumn value="#{reis.aankomstLocatie.naam}" />
+        <b:dataTableColumn value="#{reis.prijs}"  />
     </b:dataTable>
 
 </h:body>
