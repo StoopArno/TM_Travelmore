@@ -17,11 +17,11 @@ public class ReisController {
     @Inject
     private ReisService reisService;
 
-    public List<Reis> getTypes(){
+    public List<Reis> getReizen(){
         return this.reisService.findAllReis();
     }
 
-    public Reis getTypeByID(){
+    public Reis getReisByID(){
         return this.reisService.findReisById(geselecteerdeReis.getId());
     }
 }
