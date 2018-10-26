@@ -6,8 +6,9 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:b="http://bootsfaces.net/ui">
-<h:head><title>Travel More!</title></h:head>
-<h:body>
+<h:head>
+    <title>Travel More!</title>
+
     <b:navBar brand="Brand" brandHref="index.xhtml" fluid="true">
         <b:navbarLinks>
             <b:navLink value="Link" href="#"></b:navLink>
@@ -47,8 +48,10 @@
             </b:dropMenu>
         </b:navbarLinks>
     </b:navBar>
-    <h:graphicImage name="/images/headerlogo.png" alt="headerlogo"/>
-    <p:dataTable var="locatie" value="#{locatieController.locaties}" id="locationDataTable">
+</h:head>
+<h:body>
+    <h:graphicImage name="/images/headerlogo_transparent.png" alt="headerlogo"/>
+    <b:dataTable var="locatie" value="#{locatieController.locaties}" id="locationDataTable">
         <p:column headerText="Id">
             <h:outputText value="#{locatie.id}" />
         </p:column>
@@ -57,7 +60,7 @@
             <h:outputText value="#{locatie.naam}" />
         </p:column>
 
-    </p:dataTable>
+    </b:dataTable>
 
 </h:body>
 </html>
