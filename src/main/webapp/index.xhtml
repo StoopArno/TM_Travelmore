@@ -50,16 +50,16 @@
     </b:navBar>
 </h:head>
 <h:body>
-    <h:graphicImage name="/images/headerlogo_transparent.png" alt="headerlogo"/>
-    <b:dataTable var="locatie" value="#{locatieController.locaties}" id="locationDataTable">
-        <p:column headerText="Id">
-            <h:outputText value="#{locatie.id}" />
-        </p:column>
+    <h:graphicImage name="/images/headerlogo.png" alt="headerlogo"/>
 
-        <p:column headerText="Naam">
-            <h:outputText value="#{locatie.naam}" />
-        </p:column>
 
+    <b:dataTable value="#{reisController.reizen}"
+                 var="reis" id="locationDataTable">
+        <b:dataTableColumn value="#{reis.vertrekTijd}" order="asc" />
+        <b:dataTableColumn value="#{reis.aankomstTijd}" />
+        <b:dataTableColumn value="#{reis.vertrekLocatie.naam}" />
+        <b:dataTableColumn value="#{reis.aankomstLocatie.naam}" />
+        <b:dataTableColumn value="#{reis.prijs}"  />
     </b:dataTable>
 
 </h:body>
