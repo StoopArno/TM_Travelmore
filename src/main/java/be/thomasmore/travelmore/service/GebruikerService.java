@@ -17,10 +17,10 @@ public class GebruikerService {
         return gebruikerRepository.findById(id);
     }
 
-    public void insert(Gebruiker gebruiker){
+    public boolean insert(Gebruiker gebruiker){
 
-        System.out.print(gebruikerRepository.findGeruikerByEmail(gebruiker).size());
-        if(gebruikerRepository.findGeruikerByEmail(gebruiker).size() < 1){
+        System.out.print(gebruikerRepository.findGeruikerByEmail(gebruiker));
+        if(gebruikerRepository.findGeruikerByEmail(gebruiker) == null){
             String passwordToHash = gebruiker.getWachtwoord();
             String hashPassword = null;
             try {
@@ -46,6 +46,9 @@ public class GebruikerService {
             }
             gebruiker.setWachtwoord(hashPassword);
             gebruikerRepository.insert(gebruiker);
+            return true;
+        }else{
+            return false;
         }
 
     }
