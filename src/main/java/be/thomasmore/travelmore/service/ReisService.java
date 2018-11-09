@@ -20,4 +20,7 @@ public class ReisService {
     public List<Reis> findAllReis() {
         return reisRepository.findAll();
     }
+
+
+
 }

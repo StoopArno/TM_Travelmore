@@ -14,6 +14,14 @@ import javax.persistence.*;
                         name = Locatie.FIND_BY_ID,
                         query = "SELECT l FROM Locatie l WHERE l.id = :id"
 
+                ),
+                @NamedQuery(
+                        name = Locatie.FIND_VERTREKLOCATIES,
+                        query = "SELECT l FROM Locatie l WHERE l.id IN :ids"
+                ),
+                @NamedQuery(
+                        name = Locatie.FIND_AANKOMSTLOCATIES,
+                        query = "SELECT l FROM Locatie l WHERE l.id IN :ids"
                 )
         }
 )
@@ -22,6 +30,8 @@ public class Locatie {
     //properties
     public static final String FIND_ALL = "Locatie.findAll";
     public static final String FIND_BY_ID = "Locatie.findById";
+    public static final String FIND_VERTREKLOCATIES = "Locatie.findAllVertrekLocaties";
+    public static final String FIND_AANKOMSTLOCATIES = "Locatie.findAllAankomstLocaties";
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
