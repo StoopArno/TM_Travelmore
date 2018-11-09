@@ -13,46 +13,17 @@
 
 </h:head>
 <h:body>
-    <b:navBar brand="Brand" brandHref="index.xhtml" fluid="true">
-        <b:navbarLinks>
-            <b:navLink value="Link" href="nav.xhtml"></b:navLink>
-            <b:navLink value="Link" href="#"></b:navLink>
-            <b:dropMenu value="Dropdown" iconAwesome="birthday-cake">
-                <b:navLink value="Action" href="#"></b:navLink>
-                <b:navLink value="Another action" href="#"></b:navLink>
-                <b:navLink value="Something else here" href="#"></b:navLink>
-                <b:navLink></b:navLink>
-                <b:navLink header="Nav header"></b:navLink>
-                <b:navLink value="Separated link" href="#"></b:navLink>
-                <b:dropMenu value="Nested submenu" iconAwesome="birthday-cake" iconAlign="right">
-                    <b:navLink value="You can nest menus" href="#"></b:navLink>
-                    <b:dropMenu value="Nested sub-submenu">
-                        <b:navLink value="... as deep as ..." href="#"></b:navLink>
-                        <b:dropMenu value="Nested sub-sub-submenu">
-                            <b:navLink value="... you want!" href="#"></b:navLink>
-                        </b:dropMenu>
-                    </b:dropMenu>
-
-                </b:dropMenu>
-                <b:navLink value="One more separated link" href="#"></b:navLink>
-            </b:dropMenu>
-        </b:navbarLinks>
-        <!-- Following line is needed for TBS 3.0.1 (panel content overflow issue) -->
-        <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
-        <b:navbarLinks pull="right" styleClass="hidden-xs">
-            <b:navLink value="Link" href="#"></b:navLink>
-            <b:dropMenu value="Dropdown">
-                <b:navLink value="Action" href="#"></b:navLink>
-                <b:navLink value="Another action" href="#"></b:navLink>
-                <b:navLink value="Something else here" href="#"></b:navLink>
-                <b:navLink></b:navLink>
-                <b:navLink header="Nav header"></b:navLink>
-                <b:navLink value="Separated link" href="#"></b:navLink>
-                <b:navLink value="One more separated link" href="#"></b:navLink>
-            </b:dropMenu>
-        </b:navbarLinks>
-    </b:navBar>
-<h:body>
+<b:navBar brandImg="resources/images/headerlogo_transparent.png" brandImgStyle="width:125px;margin-top:-12px" brandHref="index.xhtml" fluid="true">
+    <b:navbarLinks>
+        <b:navLink value="Link" href="nav.xhtml"></b:navLink>
+        <b:navLink value="Link" href="#"></b:navLink>
+    </b:navbarLinks>
+    <!-- Following line is needed for TBS 3.0.1 (panel content overflow issue) -->
+    <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
+    <b:navbarLinks pull="right" styleClass="hidden-xs">
+        <b:navLink value="Login" href="login.xhtml"></b:navLink>
+    </b:navbarLinks>
+</b:navBar>
     <h:graphicImage name="/images/headerlogo.png" alt="headerlogo"/>
     <p:dataTable var="reis" value="#{reisController.reizen}" id="locationDataTable"/>
 
@@ -62,8 +33,7 @@
         <p:column headerText="Id">
             <h:outputText value="#{reis.id}" />
         </p:column>
-=======
->>>>>>> ebb261cc6cbf0a1740af3f0f1be1e72a88c5969c
+
 
     <h:graphicImage name="/images/headerlogo.png" alt="headerlogo"/>
 
