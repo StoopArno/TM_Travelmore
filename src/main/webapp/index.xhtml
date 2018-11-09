@@ -24,22 +24,8 @@
         <b:navLink value="Login" href="login.xhtml"></b:navLink>
     </b:navbarLinks>
 </b:navBar>
-    <h:graphicImage name="/images/headerlogo.png" alt="headerlogo"/>
-    <p:dataTable var="reis" value="#{reisController.reizen}" id="locationDataTable"/>
 
-    <h:graphicImage name="/images/headerlogo_transparent.png" alt="headerlogo"/>
-    <b:dataTable var="locatie" value="#{locatieController.locaties}" id="locationDataTable">
-
-        <p:column headerText="Id">
-            <h:outputText value="#{reis.id}" />
-        </p:column>
-
-
-    <h:graphicImage name="/images/headerlogo.png" alt="headerlogo"/>
-
-
-
-    <h4>AANKOMSt</h4>
+    <h4>AANKOMST</h4>
 
     <b:dataTable value="#{locatieController.aankomstLocaties}"
                  var="locatie" id="locationDataTable">
