@@ -20,5 +20,16 @@ public class ReisRepository {
         return entityManager.createNamedQuery(Reis.FIND_ALL, Reis.class).getResultList();
     }
 
+   // public List<Reis> findAllVertrekLocaties() {
+   //     return entityManager.createNamedQuery(Reis.FIND_ALLVERTREKLOCATIES, Reis.class).getResultList();
+   // }
+
+    public List<Integer> findVertrekLocatieIds(){
+        return entityManager.createNamedQuery(Reis.FIND_ALLVERTREKLOCATIEIDS, Integer.class).getResultList();
+    }
+
+    public List<Integer> findAankomstLocatieIds(){
+        return entityManager.createNamedQuery(Reis.FIND_ALLAANKOMSTLOCATIEIDS, Integer.class).getResultList();
+    }
 
 }

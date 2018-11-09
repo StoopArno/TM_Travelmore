@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+<h:body>
+    <title>Travel More!</title>
+    <b:form>
+    <div id="email" class="input-group">
+        <span class="input-group-addon">
+            <span>
+                <i class="glyphicon glyphicon-user"></i>
+            </span>
+        </span>
+        <b:inputText  type="text" name="logintxt"  size="30" value="#{gebruikerController.gebruiker.email}" placeholder="email" />
+    </div>
+    <div  class="input-group">
+        <span class="input-group-addon">
+            <span>
+                <i  class="fa fa-key"></i>
+            </span>
+        </span>
+        <b:inputText type="password" name="passwordtxt" size="30" value="#{gebruikerController.gebruiker.wachtwoord}" placeholder="wachtwoord"/>
+        <b:commandButton value="registreer" action="#{gebruikerController.registreerGebruiker}"/>
+    </div>
+    </b:form>
+
+</h:body>
+</html>

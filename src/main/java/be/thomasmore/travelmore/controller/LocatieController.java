@@ -22,6 +22,14 @@ public class LocatieController {
         return this.locatieService.findAllLocations();
     }
 
+    public List<Locatie> getVertrekLocaties(){
+        return this.locatieService.findAllVertrekLocaties();
+    }
+
+    public List<Locatie> getAankomstLocaties(){
+        return this.locatieService.findAllAankomstLocaties();
+    }
+
     public Locatie getLocatieByID(){
         return this.locatieService.findLocationById(geselecteerdeLocatie.getId());
     }

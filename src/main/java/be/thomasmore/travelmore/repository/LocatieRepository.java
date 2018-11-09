@@ -3,6 +3,7 @@ import be.thomasmore.travelmore.domain.Locatie;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 public class LocatieRepository {
@@ -30,9 +31,16 @@ public class LocatieRepository {
         entityManager.remove(locatie);
     }
 
+    public List<Locatie> findAllVertrekLocaties(List<Integer> ids){
+        return entityManager.createNamedQuery(Locatie.FIND_VERTREKLOCATIES, Locatie.class).setParameter("ids", ids).getResultList();
+    }
+
+    public List<Locatie> findAllAankomstLocaties(List<Integer> ids){
+        return entityManager.createNamedQuery(Locatie.FIND_AANKOMSTLOCATIES, Locatie.class).setParameter("ids", ids).getResultList();
+    }
+
+
     public void update (Locatie locatie1) {
-        //Locatie locatie = entityManager.find(Locatie.class, locatie1.getId());
-        //locatie.setNaam(locatie.getNaam());
         entityManager.merge(locatie1);
     }
 }
