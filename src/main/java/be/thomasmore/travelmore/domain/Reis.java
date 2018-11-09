@@ -18,6 +18,14 @@ import java.util.Date;
                 @NamedQuery(
                         name = Reis.FIND_ALL,
                         query = "SELECT l FROM Reis l"
+                ),
+                @NamedQuery(
+                        name = Reis.FIND_ALLVERTREKLOCATIEIDS,
+                        query = "SELECT r.vertrekLocatie.id FROM Reis r"
+                ),
+                @NamedQuery(
+                        name = Reis.FIND_ALLAANKOMSTLOCATIEIDS,
+                        query = "SELECT r.aankomstLocatie.id FROM Reis r"
                 )
         }
 )
@@ -25,6 +33,8 @@ public class Reis {
 
     //properties
     public static final String FIND_ALL = "Reis.findAll";
+    public static final String FIND_ALLVERTREKLOCATIEIDS = "Reis.findVertrekLocatieIds";
+    public static final String FIND_ALLAANKOMSTLOCATIEIDS = "Reis.findAankomstLocatieIds";
 
 
     @Id

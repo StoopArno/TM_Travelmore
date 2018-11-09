@@ -24,8 +24,7 @@
         <b:navLink value="Login" href="login.xhtml"></b:navLink>
     </b:navbarLinks>
 </b:navBar>
-    <h:graphicImage name="/images/headerlogo.png" alt="headerlogo"/>
-    <p:dataTable var="reis" value="#{reisController.reizen}" id="locationDataTable"/>
+
 
     <h:graphicImage name="/images/headerlogo_transparent.png" alt="headerlogo"/>
     <b:dataTable var="locatie" value="#{locatieController.locaties}" id="locationDataTable"/>
@@ -47,10 +46,23 @@
 
    <b:dataTable value="#{reisController.reizen}"
                  var="reis" id="locationDataTable">
+
+    <h4>AANKOMST</h4>
+
+    <b:dataTable value="#{locatieController.aankomstLocaties}"
+                 var="locatie" id="locationDataTable">
+        <b:dataTableColumn value="#{locatie.naam}" order="asc" />
+    </b:dataTable>
+
+    <br/>
+
+    <b:dataTable value="#{reisController.reizen}"
+                 var="reis" id="ReizenDataTable">
+
         <b:dataTableColumn value="#{reis.vertrekTijd}" order="asc" />
         <b:dataTableColumn value="#{reis.aankomstTijd}" />
-        <b:dataTableColumn value="#{reis.vertrekLocatie.naam}" />
-        <b:dataTableColumn value="#{reis.aankomstLocatie.naam}" />
+        <b:dataTableColumn label="Vertrek" value="#{reis.vertrekLocatie.naam}" />
+        <b:dataTableColumn label="Aankomst" value="#{reis.aankomstLocatie.naam}" />
         <b:dataTableColumn value="#{reis.prijs}"  />
     </b:dataTable>
 
