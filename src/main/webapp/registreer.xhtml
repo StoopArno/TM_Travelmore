@@ -8,11 +8,11 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:b="http://bootsfaces.net/ui">
 <h:head>
-    <title>Login</title>
+    <title>Registreer</title>
 </h:head>
 
 <h:body>
-    <b:navBar brand="Brand" brandHref="index.xhtml" fluid="true">
+    <b:navBar brand="Brand" brandHref="registreer.xhtml" fluid="true">
         <b:navbarLinks>
             <b:navLink value="Link" href="#"></b:navLink>
             <b:navLink value="Link" href="#"></b:navLink>
@@ -51,25 +51,59 @@
             </b:dropMenu>
         </b:navbarLinks>
     </b:navBar>
-    <h:graphicImage name="/images/headerlogo.png" alt="headerlogo"/>
-    <div id="email" class="input-group">
-        <span class="input-group-addon">
-            <span>
-                <i class="glyphicon glyphicon-user"></i>
-            </span>
-        </span>
-        <input type="text" name="logintxt"  size="30" placeholder="email" />
-    </div>
-    <div  class="input-group">
-        <span class="input-group-addon">
-            <span>
-                <i  class="fa fa-key"></i>
-            </span>
-        </span>
-        <input type="password" name="passwordtxt" size="30" placeholder="wachtwoord" />
-        <button>log in</button>
-    </div>
+    <div class="container">
 
+    <div>
+        <h:graphicImage name="/images/headerlogo.png" alt="headerlogo"/>
+    </div>
+    <h1>Registreren</h1>
+        <hr/>
+        <div>
+            <label id="voornaam">Voornaam</label><br/>
+        </div>
+        <div>
+            <input type="text" placeholder="Enter Voornaam" name="voornaamtxt" />
+        </div>
+        <div>
+            <label id="achternaam">Achternaam</label><br/>
+        </div>
+        <div>
+            <input type="text" placeholder="Enter Achternaam" name="achternaamtxt" />
+        </div>
+        <div>
+            <label id="gemeente">Gemeente</label><br/>
+        </div>
+        <div>
+            <input type="text" placeholder="Enter Gemeente" name="gemeentetxt" />
+        </div>
+        <div>
+            <label id="adres">Adres</label><br/>
+        </div>
+        <div>
+            <input type="text" placeholder="Enter Adres" name="adrestxt" />
+        </div>
+        <div>
+            <label id="email">Email</label><br/>
+        </div>
+        <div>
+            <input type="text" placeholder="Enter Email" name="emailtxt" />
+        </div>
+        <div>
+            <label id="psw">Wachtwoord</label>
+        </div>
+        <div>
+            <input type="password" placeholder="Enter Password" name="pswtxt" />
+        </div>
+        <div>
+            <label id="psw-repeat">Herhaal Wachtwoord</label>
+        </div>
+        <div>
+            <input type="password" placeholder="Repeat Password" name="psw-repeat" />
+        </div>
+        <div>
+            <button onclick="" >registreren</button>
+        </div>
+    </div>
 
 </h:body>
 </html>
