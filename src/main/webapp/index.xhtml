@@ -21,28 +21,9 @@
         <!-- Following line is needed for TBS 3.0.1 (panel content overflow issue) -->
         <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
         <b:navbarLinks pull="right" styleClass="hidden-xs">
-            <b:navLink value="Login" href="#"></b:navLink>
+            <b:navLink value="Login" href="login.xhtml"></b:navLink>
         </b:navbarLinks>
     </b:navBar>
-<<<<<<< HEAD
-</h:head>
-<h:body>
-    <h:graphicImage name="/images/headerlogo.png" alt="headerlogo"/>
-    <p:dataTable var="reis" value="#{reisController.reizen}" id="locationDataTable"/>
-
-    <h:graphicImage name="/images/headerlogo_transparent.png" alt="headerlogo"/>
-    <b:dataTable var="locatie" value="#{locatieController.locaties}" id="locationDataTable">
-
-        <p:column headerText="Id">
-            <h:outputText value="#{reis.id}" />
-        </p:column>
-=======
->>>>>>> ebb261cc6cbf0a1740af3f0f1be1e72a88c5969c
-
-    <h:graphicImage name="/images/headerlogo.png" alt="headerlogo"/>
-
-    <br/>
-
     <b:dataTable value="#{reisController.reizen}"
                  var="reis" id="locationDataTable">
         <b:dataTableColumn value="#{reis.vertrekTijd}" order="asc" />
