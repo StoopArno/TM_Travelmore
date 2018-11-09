@@ -18,6 +18,7 @@ public class GebruikerService {
     }
 
     public void insert(Gebruiker gebruiker){
+
         System.out.print(gebruikerRepository.findGeruikerByEmail(gebruiker).size());
         if(gebruikerRepository.findGeruikerByEmail(gebruiker).size() < 1){
             String passwordToHash = gebruiker.getWachtwoord();
