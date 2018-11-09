@@ -8,7 +8,25 @@
       xmlns:b="http://bootsfaces.net/ui">
 <h:body>
     <title>Travel More!</title>
-
+    <b:form>
+    <div id="email" class="input-group">
+        <span class="input-group-addon">
+            <span>
+                <i class="glyphicon glyphicon-user"></i>
+            </span>
+        </span>
+        <b:inputText  type="text" name="logintxt"  size="30" value="#{gebruikerController.gebruiker.email}" placeholder="email" />
+    </div>
+    <div  class="input-group">
+        <span class="input-group-addon">
+            <span>
+                <i  class="fa fa-key"></i>
+            </span>
+        </span>
+        <b:inputText type="password" name="passwordtxt" size="30" value="#{gebruikerController.gebruiker.wachtwoord}" placeholder="wachtwoord"/>
+        <b:commandButton value="registreer" action="#{gebruikerController.registreerGebruiker}"/>
+    </div>
+    </b:form>
 
 </h:body>
 </html>

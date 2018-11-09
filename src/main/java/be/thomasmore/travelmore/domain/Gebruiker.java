@@ -4,7 +4,17 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="gebruiker")
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = Gebruiker.FIND_ALL_BY_EMAIL,
+                        query = "SELECT l FROM Gebruiker l where l.email = :email"
+                )
+        }
+)
 public class Gebruiker {
+    public static final String FIND_ALL_BY_EMAIL = "Gebruiker.findAllByEmail";
+
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;

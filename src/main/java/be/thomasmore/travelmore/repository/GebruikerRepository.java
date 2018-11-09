@@ -4,6 +4,7 @@ import be.thomasmore.travelmore.domain.Gebruiker;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 public class GebruikerRepository {
     @PersistenceContext(unitName = "travelMorePU")
@@ -16,5 +17,7 @@ public class GebruikerRepository {
     public void insert(Gebruiker gebruiker) {
         entityManager.persist(gebruiker);
     }
-
+    public List<Gebruiker> findGeruikerByEmail(Gebruiker gebruiker){
+        return entityManager.createNamedQuery(Gebruiker.FIND_ALL_BY_EMAIL,Gebruiker.class).setParameter("email",gebruiker.getEmail()).getResultList();
+    }
 }
