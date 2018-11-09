@@ -28,7 +28,7 @@
     <p:dataTable var="reis" value="#{reisController.reizen}" id="locationDataTable"/>
 
     <h:graphicImage name="/images/headerlogo_transparent.png" alt="headerlogo"/>
-    <b:dataTable var="locatie" value="#{locatieController.locaties}" id="locationDataTable">
+    <b:dataTable var="locatie" value="#{locatieController.locaties}" id="locationDataTable"/>
 
         <p:column headerText="Id">
             <h:outputText value="#{reis.id}" />
@@ -37,15 +37,15 @@
 
     <h:graphicImage name="/images/headerlogo.png" alt="headerlogo"/>
 
-    <b:formGroup>
-        <b:selectOneMenu value="#{reisController.vertrekLoccaties}" colMd="4" label="Selecteer vertrekpunt" labelColMd="4">
-           <f:selectItems value="#{reisController.vertrekLoccaties}"  var="vertrek" itemValue="#{vertrek.naam}" />
+  <b:formGroup>
+        <b:selectOneMenu value="#{reisController.vertrekLocatie}" colMd="4" label="Selecteer vertrekpunt" labelColMd="4">
+           <f:selectItems value="#{reisController.vertrekLocatie}"  var="vertrek" itemValue="#{vertrek.naam}" />
         </b:selectOneMenu>
     </b:formGroup>
 
     <br/>
 
-    <b:dataTable value="#{reisController.reizen}"
+   <b:dataTable value="#{reisController.reizen}"
                  var="reis" id="locationDataTable">
         <b:dataTableColumn value="#{reis.vertrekTijd}" order="asc" />
         <b:dataTableColumn value="#{reis.aankomstTijd}" />
