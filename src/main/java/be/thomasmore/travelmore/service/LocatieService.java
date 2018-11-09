@@ -20,4 +20,10 @@ public class LocatieService {
     public List<Locatie> findAllLocations() {
         return locatieRepository.findAll();
     }
+
+    public void insert(Locatie locatie) { locatieRepository.insert(locatie); }
+
+    public void delete(int id) { locatieRepository.delete(id); }
+
+    public void update(Locatie locatie){ locatieRepository.update(locatie); }
 }

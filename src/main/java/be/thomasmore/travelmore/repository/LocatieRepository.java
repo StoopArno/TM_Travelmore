@@ -20,5 +20,19 @@ public class LocatieRepository {
         return entityManager.createNamedQuery(Locatie.FIND_ALL, Locatie.class).getResultList();
     }
 
+    public void insert(Locatie locatie) {
+        entityManager.persist(locatie);
+        entityManager.flush();
+    }
 
+    public void delete(int id) {
+        Locatie locatie = entityManager.find(Locatie.class, id);
+        entityManager.remove(locatie);
+    }
+
+    public void update (Locatie locatie1) {
+        //Locatie locatie = entityManager.find(Locatie.class, locatie1.getId());
+        //locatie.setNaam(locatie.getNaam());
+        entityManager.merge(locatie1);
+    }
 }
