@@ -44,6 +44,8 @@ public class Booking {
     private Klasse klasse;
     @ManyToOne
     private Reis terugReis;
+    private boolean bevestigd;
+    private String bookingHashCode;
 
 
 
@@ -136,11 +138,19 @@ public class Booking {
         this.id = id;
     }
 
+    public boolean isBevestigd() {
+        return bevestigd;
+    }
 
+    public void setBevestigd(boolean bevestigd) {
+        this.bevestigd = bevestigd;
+    }
 
+    public String getBookingHashCode() {
+        return bookingHashCode;
+    }
 
-
-
-
-
+    public void setBookingHashCode(String bookingHashCode) {
+        this.bookingHashCode = bookingHashCode;
+    }
 }
