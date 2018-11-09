@@ -5,13 +5,17 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:b="http://bootsfaces.net/ui">
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f = "http://java.sun.com/jsf/core">
 <h:head>
     <title>Travel More!</title>
 
+
+</h:head>
+<h:body>
     <b:navBar brand="Brand" brandHref="index.xhtml" fluid="true">
         <b:navbarLinks>
-            <b:navLink value="Link" href="#"></b:navLink>
+            <b:navLink value="Link" href="nav.xhtml"></b:navLink>
             <b:navLink value="Link" href="#"></b:navLink>
             <b:dropMenu value="Dropdown" iconAwesome="birthday-cake">
                 <b:navLink value="Action" href="#"></b:navLink>
@@ -48,6 +52,7 @@
             </b:dropMenu>
         </b:navbarLinks>
     </b:navBar>
+<<<<<<< HEAD
 </h:head>
 <h:body>
     <h:graphicImage name="/images/headerlogo.png" alt="headerlogo"/>
@@ -59,27 +64,26 @@
         <p:column headerText="Id">
             <h:outputText value="#{reis.id}" />
         </p:column>
+=======
+>>>>>>> ebb261cc6cbf0a1740af3f0f1be1e72a88c5969c
 
-        <p:column headerText="Vertrektijd">
-            <h:outputText value="#{reis.vertrekTijd}" />
-        </p:column>
+    <h:graphicImage name="/images/headerlogo.png" alt="headerlogo"/>
 
-        <p:column headerText="Aankomsttijd">
-            <h:outputText value="#{reis.aankomstTijd}" />
-        </p:column>
+    <b:formGroup>
+        <b:selectOneMenu value="#{reisController.vertrekLoccaties}" colMd="4" label="Selecteer vertrekpunt" labelColMd="4">
+           <f:selectItems value="#{reisController.vertrekLoccaties}"  var="vertrek" itemValue="#{vertrek.naam}" />
+        </b:selectOneMenu>
+    </b:formGroup>
 
-        <p:column headerText="Prijs">
-            <h:outputText value="#{reis.prijs}" />
-        </p:column>
+    <br/>
 
-        <p:column headerText="Vertrekpunt">
-            <h:outputText value="#{reis.vertrekLocatie.naam}" />
-        </p:column>
-
-        <p:column headerText="Aankomstpunt">
-            <h:outputText value="#{reis.aankomstLocatie.naam}" />
-        </p:column>
-
+    <b:dataTable value="#{reisController.reizen}"
+                 var="reis" id="locationDataTable">
+        <b:dataTableColumn value="#{reis.vertrekTijd}" order="asc" />
+        <b:dataTableColumn value="#{reis.aankomstTijd}" />
+        <b:dataTableColumn value="#{reis.vertrekLocatie.naam}" />
+        <b:dataTableColumn value="#{reis.aankomstLocatie.naam}" />
+        <b:dataTableColumn value="#{reis.prijs}"  />
     </b:dataTable>
 
 </h:body>
