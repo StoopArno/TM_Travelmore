@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+<h:head>
+    <title>Login</title>
+</h:head>
+
+<h:body>
+    <b:navBar brandImg="resources/images/headerlogo_transparent.png" brandImgStyle="width:125px;margin-top:-12px" brandHref="index.xhtml" fluid="true">
+        <b:navbarLinks>
+            <b:navLink value="Link" href="nav.xhtml"></b:navLink>
+            <b:navLink value="Link" href="#"></b:navLink>
+        </b:navbarLinks>
+        <!-- Following line is needed for TBS 3.0.1 (panel content overflow issue) -->
+        <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
+        <b:navbarLinks pull="right" styleClass="hidden-xs">
+            <b:navLink value="Login" href="login.xhtml"></b:navLink>
+        </b:navbarLinks>
+    </b:navBar>
+
+    <div id="email" class="input-group">
+        <span class="input-group-addon">
+            <span>
+                <i class="glyphicon glyphicon-user"></i>
+            </span>
+        </span>
+        <input type="text" name="logintxt"  size="30" placeholder="email" />
+    </div>
+    <div  class="input-group">
+        <span class="input-group-addon">
+            <span>
+                <i  class="fa fa-key"></i>
+            </span>
+        </span>
+        <input type="password" name="passwordtxt" size="30" placeholder="wachtwoord" />
+        <button>log in</button>
+    </div>
+
+
+</h:body>
+</html>

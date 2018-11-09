@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+<h:head>
+    <title>Registreer</title>
+</h:head>
+
+<h:body>
+    <b:navBar brandImg="resources/images/headerlogo_transparent.png" brandImgStyle="width:125px;margin-top:-12px" brandHref="index.xhtml" fluid="true">
+        <b:navbarLinks>
+            <b:navLink value="Link" href="nav.xhtml"></b:navLink>
+            <b:navLink value="Link" href="#"></b:navLink>
+        </b:navbarLinks>
+        <!-- Following line is needed for TBS 3.0.1 (panel content overflow issue) -->
+        <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
+        <b:navbarLinks pull="right" styleClass="hidden-xs">
+            <b:navLink value="Login" href="login.xhtml"></b:navLink>
+        </b:navbarLinks>
+    </b:navBar>
+    <div class="container">
+
+    <div>
+        <h:graphicImage name="/images/headerlogo.png" alt="headerlogo"/>
+    </div>
+    <h1>Registreren</h1>
+        <hr/>
+        <div>
+            <label id="voornaam">Voornaam</label><br/>
+        </div>
+        <div>
+            <input type="text" placeholder="Enter Voornaam" name="voornaamtxt" />
+        </div>
+        <div>
+            <label id="achternaam">Achternaam</label><br/>
+        </div>
+        <div>
+            <input type="text" placeholder="Enter Achternaam" name="achternaamtxt" />
+        </div>
+        <div>
+            <label id="gemeente">Gemeente</label><br/>
+        </div>
+        <div>
+            <input type="text" placeholder="Enter Gemeente" name="gemeentetxt" />
+        </div>
+        <div>
+            <label id="adres">Adres</label><br/>
+        </div>
+        <div>
+            <input type="text" placeholder="Enter Adres" name="adrestxt" />
+        </div>
+        <div>
+            <label id="email">Email</label><br/>
+        </div>
+        <div>
+            <input type="text" placeholder="Enter Email" name="emailtxt" />
+        </div>
+        <div>
+            <label id="psw">Wachtwoord</label>
+        </div>
+        <div>
+            <input type="password" placeholder="Enter Password" name="pswtxt" />
+        </div>
+        <div>
+            <label id="psw-repeat">Herhaal Wachtwoord</label>
+        </div>
+        <div>
+            <input type="password" placeholder="Repeat Password" name="psw-repeat" />
+        </div>
+        <div>
+            <button onclick="" >registreren</button>
+        </div>
+    </div>
+
+</h:body>
+</html>
