@@ -4,11 +4,12 @@ import be.thomasmore.travelmore.domain.Gebruiker;
 import be.thomasmore.travelmore.service.GebruikerService;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
-@ManagedBean
-@ViewScoped
+@ManagedBean(name="GebruikerController")
+@SessionScoped
 public class GebruikerController {
 
     private Gebruiker gebruiker = new Gebruiker();
@@ -34,8 +35,6 @@ public class GebruikerController {
     public void setGebruiker(Gebruiker gebruiker) {
         this.gebruiker = gebruiker;
     }
-
-
 }
 
 
