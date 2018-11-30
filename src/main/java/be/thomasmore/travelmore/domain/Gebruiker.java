@@ -1,6 +1,7 @@
 package be.thomasmore.travelmore.domain;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name="gebruiker")
@@ -23,24 +24,6 @@ public class Gebruiker {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
-    private  String voornaam;
-    private String achternaam;
-    private String adres;
-    private String gemeente;
-    private String geboorteDatum;
-    private String email;
-    private String wachtwoord;
-    @ManyToOne
-    private SoortGebruiker soortGebruiker;
-
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getVoornaam() {
         return voornaam;
@@ -48,6 +31,34 @@ public class Gebruiker {
 
     public void setVoornaam(String voornaam) {
         this.voornaam = voornaam;
+    }
+
+    @Column(name = "voornaam")
+    private  String voornaam;
+    @Column(name = "achternaam")
+    private String achternaam;
+    @Column(name = "adres")
+    private String adres;
+    @Column(name = "gemeente")
+    private String gemeente;
+    @Column(name = "email")
+    private String email;
+    @Column(name = "wachtwoord")
+    private String wachtwoord;
+
+
+
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "soortGebruikerID")
+    private SoortGebruiker soortGebruiker;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getAchternaam() {
@@ -72,14 +83,6 @@ public class Gebruiker {
 
     public void setGemeente(String gemeente) {
         this.gemeente = gemeente;
-    }
-
-    public String getGeboorteDatum() {
-        return geboorteDatum;
-    }
-
-    public void setGeboorteDatum(String geboorteDatum) {
-        this.geboorteDatum = geboorteDatum;
     }
 
     public String getEmail() {

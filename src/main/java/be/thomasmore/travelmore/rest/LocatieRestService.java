@@ -33,7 +33,7 @@ public class LocatieRestService {
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public Response addLocation(Locatie locatie) {
-        if(locatie.getNaam() != ""){
+        if(locatie.getLand() != ""){
             locatieService.insert(locatie);
             return Response.status(Response.Status.CREATED).entity(locatie).build();
         } else{

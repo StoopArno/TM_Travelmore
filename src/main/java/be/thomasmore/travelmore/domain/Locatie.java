@@ -48,20 +48,23 @@ public class Locatie {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
-    @Column(name = "stad")
-    private String stad;
+
     @Column(name = "land")
     private String land;
+    @Column(name = "stad")
+    private String stad;
+    @Column(name = "adres")
+    private String adres;
 
     public Locatie(){
 
     }
 
     //getters en setters
+
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -80,5 +83,25 @@ public class Locatie {
 
     public void setLand(String land) {
         this.land = land;
+
+    public String getLand() {
+        return land;
+    }
+    public void setLand(String land) {
+        this.land = land;
+    }
+
+    public String getStad() {
+        return stad;
+    }
+    public void setStad(String stad) {
+        this.stad = stad;
+    }
+
+    public String getAdres() {
+        return adres;
+    }
+    public void setAdres(String adres) {
+        this.adres = adres;
     }
 }

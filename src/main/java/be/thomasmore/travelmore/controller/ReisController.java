@@ -23,7 +23,7 @@ public class ReisController {
 
 
 
-    public Reis getReisByID(){
+/*    public Reis getReisByID(){
         return this.reisService.findReisById(geselecteerdeReis.getId());
-    }
+    }*/
 }

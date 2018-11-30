@@ -8,7 +8,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:b="http://bootsfaces.net/ui">
 <h:head>
-    <title>Login</title>
+    <title>Reizen</title>
 
 </h:head>
 
@@ -25,31 +25,29 @@
             <b:navLink value="Login" href="login.xhtml"></b:navLink>
         </b:navbarLinks>
     </b:navBar>
+<div class="container">
+    <h1>Onze reizen : </h1>
+<div class="table table-striped table">
+        <p:dataTable   var="car" value="#{dtBasicView.cars}">
+            <p:column headerText="Id">
+                <h:outputText value="#{car.id}" />
+            </p:column>
 
-    <h1>Login</h1>
-    <hr/>
-    <div id="email" class="input-group">
-        <span class="input-group-addon">
-            <span>
-                <i class="glyphicon glyphicon-user"></i>
-            </span>
-        </span>
-        <input type="text" name="logintxt"  size="30" placeholder="email" />
+            <p:column headerText="Year">
+                <h:outputText value="#{car.year}" />
+            </p:column>
+
+            <p:column headerText="Brand">
+                <h:outputText value="#{car.brand}" />
+            </p:column>
+
+            <p:column headerText="Color">
+                <h:outputText value="#{car.color}" />
+            </p:column>
+        </p:dataTable>
     </div>
-    <div  class="input-group">
-        <span class="input-group-addon">
-            <span>
-                <i  class="fa fa-key"></i>
-            </span>
-        </span>
-        <input type="password" name="passwordtxt" size="30" placeholder="wachtwoord" />
-        <button>log in</button>
-    </div>
-        <div>
-            <p><a href="registreer.xhtml">nog geen account? registreer hier!</a> </p>
-        </div>
 
-
+</div>
     </h:form>
 </h:body>
 </html>
