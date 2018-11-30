@@ -36,24 +36,41 @@ public class Locatie {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
-    @Column(name = "naam")
-    private String naam;
+    @Column(name = "land")
+    private String land;
+    @Column(name = "stad")
+    private String stad;
+    @Column(name = "adres")
+    private String adres;
 
 
     //getters en setters
+
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
 
-    public String getNaam() {
-        return naam;
+    public String getLand() {
+        return land;
+    }
+    public void setLand(String land) {
+        this.land = land;
     }
 
-    public void setNaam(String naam) {
-        this.naam = naam;
+    public String getStad() {
+        return stad;
+    }
+    public void setStad(String stad) {
+        this.stad = stad;
+    }
+
+    public String getAdres() {
+        return adres;
+    }
+    public void setAdres(String adres) {
+        this.adres = adres;
     }
 }

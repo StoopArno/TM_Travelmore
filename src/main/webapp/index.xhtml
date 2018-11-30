@@ -27,22 +27,7 @@
 
     <h4>AANKOMST</h4>
 
-    <b:dataTable value="#{locatieController.aankomstLocaties}"
-                 var="locatie" id="locationDataTable">
-        <b:dataTableColumn value="#{locatie.naam}" order="asc" />
-    </b:dataTable>
 
-    <br/>
-
-    <b:dataTable value="#{reisController.reizen}"
-                 var="reis" id="ReizenDataTable">
-
-        <b:dataTableColumn value="#{reis.vertrekTijd}" order="asc" />
-        <b:dataTableColumn value="#{reis.aankomstTijd}" />
-        <b:dataTableColumn label="Vertrek" value="#{reis.vertrekLocatie.naam}" />
-        <b:dataTableColumn label="Aankomst" value="#{reis.aankomstLocatie.naam}" />
-        <b:dataTableColumn value="#{reis.prijs}"  />
-    </b:dataTable>
 
 </h:body>
 </html>

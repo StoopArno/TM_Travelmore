@@ -1,6 +1,5 @@
 package be.thomasmore.travelmore.service;
 
-import be.thomasmore.travelmore.domain.Booking;
 import be.thomasmore.travelmore.repository.BookingRepository;
 import javax.inject.Inject;
 import java.util.List;

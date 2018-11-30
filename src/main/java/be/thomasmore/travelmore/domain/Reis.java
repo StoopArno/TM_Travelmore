@@ -40,12 +40,13 @@ public class Reis {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
-    @ManyToOne
-    private Locatie vertrekLocatie;
-    @ManyToOne
-    private Locatie aankomstLocatie;
-    @ManyToOne
-    private Transportmiddel transportmiddel;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "vertrekLocatieID")
+    private SoortGebruiker vertrekLocatie;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "aankomstLocatieID")
+    private SoortGebruiker aankomstLocatie;
 
 
     @Column(name = "vertrekTijd")
@@ -54,69 +55,12 @@ public class Reis {
     @Column(name = "aankomstTijd")
     private Date aankomstTijd;
 
-    @Column(name = "prijs")
-    private double prijs;
+    @Column(name = "prijsPerPersoon")
+    private double prijsPerPersoon;
 
+    @Column(name = "transportmiddel")
+    private String transportmiddel;
 
-
-    //getters en setters
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-
-    public Date getVertrekTijd() {
-        return vertrekTijd;
-    }
-
-    public void setVertrekTijd(Date vertrekTijd) {
-        this.vertrekTijd = vertrekTijd;
-    }
-
-    public Date getAankomstTijd() {
-        return aankomstTijd;
-    }
-
-    public void setAankomstTijd(Date aankomstTijd) {
-        this.aankomstTijd = aankomstTijd;
-    }
-
-    public double getPrijs() {
-        return prijs;
-    }
-
-    public void setPrijs(double prijs) {
-        this.prijs = prijs;
-    }
-
-
-    public Locatie getVertrekLocatie() {
-        return vertrekLocatie;
-    }
-
-    public void setVertrekLocatie(Locatie vertrekLocatie) {
-        this.vertrekLocatie = vertrekLocatie;
-    }
-
-    public Locatie getAankomstLocatie() {
-        return aankomstLocatie;
-    }
-
-    public void setAankomstLocatie(Locatie aankomstLocatie) {
-        this.aankomstLocatie = aankomstLocatie;
-    }
-
-
-    public Transportmiddel getTransportmiddel() {
-        return transportmiddel;
-    }
-
-    public void setTransportmiddel(Transportmiddel transportmiddel) {
-        this.transportmiddel = transportmiddel;
-    }
+    @Column(name = "plaatsen")
+    private int plaatsen;
 }

@@ -32,7 +32,6 @@ public class SoortGebruiker {
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -40,7 +39,6 @@ public class SoortGebruiker {
     public String getSoort() {
         return soort;
     }
-
     public void setSoort(String soort) {
         this.soort = soort;
     }
