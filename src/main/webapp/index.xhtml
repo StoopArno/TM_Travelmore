@@ -2,32 +2,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:f = "http://java.sun.com/jsf/core">
-<h:head>
-    <title>Travel More!</title>
-    <link href="resources/images/favicon.ico" rel="icon" type="image/x-icon" />
-
-</h:head>
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+>
 <h:body>
-<b:navBar brandImg="resources/images/headerlogo_transparent.png" brandImgStyle="width:125px;margin-top:-12px" brandHref="index.xhtml" fluid="true">
-    <b:navbarLinks>
-        <b:navLink value="Link" href="nav.xhtml"></b:navLink>
-        <b:navLink value="Link" href="#"></b:navLink>
-    </b:navbarLinks>
-    <!-- Following line is needed for TBS 3.0.1 (panel content overflow issue) -->
-    <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
-    <b:navbarLinks pull="right" styleClass="hidden-xs">
-        <b:navLink value="Login" href="login.xhtml"></b:navLink>
-    </b:navbarLinks>
-</b:navBar>
 
-    <h4>AANKOMST</h4>
-
-
+    <ui:composition template="/templates/layout.xhtml">
+        <ui:define name="content">
+            Mooie test
+        </ui:define>
+    </ui:composition>
 
 </h:body>
+
 </html>
