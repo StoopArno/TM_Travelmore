@@ -29,5 +29,9 @@ public class LocatieRepository {
         return entityManager.createNamedQuery(Locatie.FIND_AANKOMSTLOCATIES, Locatie.class).setParameter("ids", ids).getResultList();
     }
 
+    public void insert(Locatie locatie) {
+        entityManager.persist(locatie);
+    }
+
 
 }
