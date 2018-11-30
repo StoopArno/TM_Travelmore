@@ -8,77 +8,67 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:b="http://bootsfaces.net/ui">
 <h:head>
-    <title>Registreer</title>
+    <title>Login</title>
 </h:head>
 
 <h:body>
-    <h:form>
+    <ui:composition template="/templates/loginLayout.xhtml">
+        <ui:define name="content">
+            <div class="login-block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 login-sec">
+                            <h2 class="text-center">Meld aan</h2>
+                            <h:form class="login-form">
+                                <div class="form-group">
+                                    <label >Email</label>
+                                    <input type="text" class="form-control" />
 
-    <b:navBar brandImg="resources/images/headerlogo_transparent.png" brandImgStyle="width:125px;margin-top:-12px" brandHref="index.xhtml" fluid="true">
-        <b:navbarLinks>
-            <b:navLink value="Link" href="nav.xhtml"></b:navLink>
-            <b:navLink value="Link" href="#"></b:navLink>
-        </b:navbarLinks>
-        <!-- Following line is needed for TBS 3.0.1 (panel content overflow issue) -->
-        <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
-        <b:navbarLinks pull="right" styleClass="hidden-xs">
-            <b:navLink value="Login" href="login.xhtml"></b:navLink>
-        </b:navbarLinks>
-    </b:navBar>
-    <div class="container">
+                                </div>
+                                <div class="form-group">
+                                    <label >Wachtwoord</label>
+                                    <input type="password" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label >Voornaam</label>
+                                    <input type="text" class="form-control"/>
 
-    <div>
-        <h:graphicImage name="/images/headerlogo.png" alt="headerlogo"/>
-    </div>
-    <h1>Registreren</h1>
-        <hr/>
-        <div>
-            <label id="voornaam">Voornaam</label><br/>
-        </div>
-        <div>
-            <input type="text" placeholder="Enter Voornaam" name="voornaamtxt" />
-        </div>
-        <div>
-            <label id="achternaam">Achternaam</label><br/>
-        </div>
-        <div>
-            <input type="text" placeholder="Enter Achternaam" name="achternaamtxt" />
-        </div>
-        <div>
-            <label id="gemeente">Gemeente</label><br/>
-        </div>
-        <div>
-            <input type="text" placeholder="Enter Gemeente" name="gemeentetxt" />
-        </div>
-        <div>
-            <label id="adres">Adres</label><br/>
-        </div>
-        <div>
-            <input type="text" placeholder="Enter Adres" name="adrestxt" />
-        </div>
-        <div>
-            <label id="email">Email</label><br/>
-        </div>
-        <div>
-            <input type="text" placeholder="Enter Email" name="emailtxt" />
-        </div>
-        <div>
-            <label id="psw">Wachtwoord</label>
-        </div>
-        <div>
-            <input type="password" placeholder="Enter Password" name="pswtxt" />
-        </div>
-        <div>
-            <label id="psw-repeat">Herhaal Wachtwoord</label>
-        </div>
-        <div>
-            <input type="password" placeholder="Repeat Password" name="psw-repeat" />
-        </div>
-        <div>
-            <button onclick="" >registreren</button>
-        </div>
-    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label >Achternaam</label>
+                                    <input type="text" class="form-control" />
 
-    </h:form>
+                                </div>
+                                <div class="form-group">
+                                    <label >Adres</label>
+                                    <input type="text" class="form-control"/>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label >Gemeente</label>
+                                    <input type="text" class="form-control" />
+                                </div>
+
+                                <div class="form-check">
+                                    <a href="index.xhtml">Terug</a>
+
+                                    <button type="submit" class="btn btn-login float-right">Login</button>
+
+
+                                </div>
+                            </h:form>
+
+                        </div>
+                        <div class="col-md-7 banner-sec">
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
 </h:body>
 </html>
