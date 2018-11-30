@@ -63,4 +63,68 @@ public class Reis {
 
     @Column(name = "plaatsen")
     private int plaatsen;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public SoortGebruiker getVertrekLocatie() {
+        return vertrekLocatie;
+    }
+
+    public void setVertrekLocatie(SoortGebruiker vertrekLocatie) {
+        this.vertrekLocatie = vertrekLocatie;
+    }
+
+    public SoortGebruiker getAankomstLocatie() {
+        return aankomstLocatie;
+    }
+
+    public void setAankomstLocatie(SoortGebruiker aankomstLocatie) {
+        this.aankomstLocatie = aankomstLocatie;
+    }
+
+    public Date getVertrekTijd() {
+        return vertrekTijd;
+    }
+
+    public void setVertrekTijd(Date vertrekTijd) {
+        this.vertrekTijd = vertrekTijd;
+    }
+
+    public Date getAankomstTijd() {
+        return aankomstTijd;
+    }
+
+    public void setAankomstTijd(Date aankomstTijd) {
+        this.aankomstTijd = aankomstTijd;
+    }
+
+    public double getPrijsPerPersoon() {
+        return prijsPerPersoon;
+    }
+
+    public void setPrijsPerPersoon(double prijsPerPersoon) {
+        this.prijsPerPersoon = prijsPerPersoon;
+    }
+
+    public String getTransportmiddel() {
+        return transportmiddel;
+    }
+
+    public void setTransportmiddel(String transportmiddel) {
+        this.transportmiddel = transportmiddel;
+    }
+
+    public int getPlaatsen() {
+        return plaatsen;
+    }
+
+    public void setPlaatsen(int plaatsen) {
+        this.plaatsen = plaatsen;
+    }
 }
