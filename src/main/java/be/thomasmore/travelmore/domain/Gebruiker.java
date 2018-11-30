@@ -25,14 +25,6 @@ public class Gebruiker {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
 
-    public String getVoornaam() {
-        return voornaam;
-    }
-
-    public void setVoornaam(String voornaam) {
-        this.voornaam = voornaam;
-    }
-
     @Column(name = "voornaam")
     private  String voornaam;
     @Column(name = "achternaam")
@@ -47,8 +39,6 @@ public class Gebruiker {
     private String wachtwoord;
 
 
-
-
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "soortGebruikerID")
     private SoortGebruiker soortGebruiker;
@@ -59,6 +49,14 @@ public class Gebruiker {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getVoornaam() {
+        return voornaam;
+    }
+
+    public void setVoornaam(String voornaam) {
+        this.voornaam = voornaam;
     }
 
     public String getAchternaam() {
