@@ -9,7 +9,7 @@
       xmlns:f = "http://java.sun.com/jsf/core">
 <h:head>
     <title>Travel More!</title>
-
+    <link href="resources/images/favicon.ico" rel="icon" type="image/x-icon" />
 
 </h:head>
 <h:body>
@@ -36,6 +36,7 @@
 
     <b:dataTable value="#{reisController.reizen}"
                  var="reis" id="ReizenDataTable">
+
         <b:dataTableColumn value="#{reis.vertrekTijd}" order="asc" />
         <b:dataTableColumn value="#{reis.aankomstTijd}" />
         <b:dataTableColumn label="Vertrek" value="#{reis.vertrekLocatie.naam}" />

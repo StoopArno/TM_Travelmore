@@ -21,6 +21,16 @@ public class LocatieRepository {
         return entityManager.createNamedQuery(Locatie.FIND_ALL, Locatie.class).getResultList();
     }
 
+    public void insert(Locatie locatie) {
+        entityManager.persist(locatie);
+        entityManager.flush();
+    }
+
+    public void delete(int id) {
+        Locatie locatie = entityManager.find(Locatie.class, id);
+        entityManager.remove(locatie);
+    }
+
     public List<Locatie> findAllVertrekLocaties(List<Integer> ids){
         return entityManager.createNamedQuery(Locatie.FIND_VERTREKLOCATIES, Locatie.class).setParameter("ids", ids).getResultList();
     }
@@ -34,4 +44,7 @@ public class LocatieRepository {
     }
 
 
+    public void update (Locatie locatie1) {
+        entityManager.merge(locatie1);
+    }
 }

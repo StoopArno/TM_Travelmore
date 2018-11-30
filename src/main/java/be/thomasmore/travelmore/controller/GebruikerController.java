@@ -19,10 +19,12 @@ public class GebruikerController {
     public  Gebruiker getGebruikerByID(){
         return this.gebruikerService.findGebruikerById(getGebruiker().getId());
     }
-    public void registreerGebruiker(){
-        System.out.println("Gebruiker - e-mail: " + gebruiker.getEmail());
-        System.out.println("Gebruiker - password: " + gebruiker.getWachtwoord());
-        this.gebruikerService.insert(gebruiker);
+    public String registreerGebruiker(){
+        if(this.gebruikerService.insert(gebruiker)){
+            return "login";
+        }else{
+            return "fout";
+        }
     }
 
     public Gebruiker getGebruiker() {
@@ -32,6 +34,8 @@ public class GebruikerController {
     public void setGebruiker(Gebruiker gebruiker) {
         this.gebruiker = gebruiker;
     }
+
+
 }
 
 

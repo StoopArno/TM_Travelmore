@@ -25,6 +25,13 @@ public class LocatieService {
         return locatieRepository.findAll();
     }
 
+
+    public void insert(Locatie locatie) { locatieRepository.insert(locatie); }
+
+    public void delete(int id) { locatieRepository.delete(id); }
+
+    public void update(Locatie locatie){ locatieRepository.update(locatie); }
+
     public List<Locatie> findAllVertrekLocaties() {
 
         return  locatieRepository.findAllVertrekLocaties(reisRepository.findVertrekLocatieIds());
