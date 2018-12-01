@@ -42,11 +42,11 @@ public class Reis {
     private int id;
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "vertrekLocatieID")
-    private SoortGebruiker vertrekLocatie;
+    private Locatie vertrekLocatie;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "aankomstLocatieID")
-    private SoortGebruiker aankomstLocatie;
+    private Locatie aankomstLocatie;
 
 
     @Column(name = "vertrekTijd")
@@ -72,19 +72,19 @@ public class Reis {
         this.id = id;
     }
 
-    public SoortGebruiker getVertrekLocatie() {
+    public Locatie getVertrekLocatie() {
         return vertrekLocatie;
     }
 
-    public void setVertrekLocatie(SoortGebruiker vertrekLocatie) {
+    public void setVertrekLocatie(Locatie vertrekLocatie) {
         this.vertrekLocatie = vertrekLocatie;
     }
 
-    public SoortGebruiker getAankomstLocatie() {
+    public Locatie getAankomstLocatie() {
         return aankomstLocatie;
     }
 
-    public void setAankomstLocatie(SoortGebruiker aankomstLocatie) {
+    public void setAankomstLocatie(Locatie aankomstLocatie) {
         this.aankomstLocatie = aankomstLocatie;
     }
 
