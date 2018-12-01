@@ -5,7 +5,6 @@ import be.thomasmore.travelmore.service.GebruikerService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
 @ManagedBean(name="GebruikerController")
@@ -22,12 +21,23 @@ public class GebruikerController {
     }
     public String registreerGebruiker(){
         if(this.gebruikerService.insert(gebruiker)){
-            return "login";
+            gebruiker = new Gebruiker();
+            return "index";
+
         }else{
-            return "fout";
+            return "nav";
+        }
+
+    }
+    public String login(){
+        if(this.gebruikerService.AuthenticateUser(gebruiker)){
+            gebruiker = new Gebruiker();
+            return "index";
+
+        }else{
+            return "nav";
         }
     }
-
     public Gebruiker getGebruiker() {
         return gebruiker;
     }
