@@ -53,8 +53,7 @@ public class GebruikerService {
     public boolean AuthenticateUser(Gebruiker gebruiker){
         List<Gebruiker> gebruikers =  gebruikerRepository.findGeruikerByEmail(gebruiker);
         if(gebruikers.size() != 0){
-            String test = hashPassword(gebruiker.getWachtwoord());
-            if(test.equals(gebruikers.get(0).getWachtwoord())){
+            if(hashPassword(gebruiker.getWachtwoord()).equals(gebruikers.get(0).getWachtwoord())){
                 return true;
             }else{
                 return false;

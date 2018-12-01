@@ -23,7 +23,7 @@ public class GebruikerController {
     public String registreerGebruiker(){
         if(this.gebruikerService.insert(gebruiker)){
             gebruiker = new Gebruiker();
-            return "index";
+            return "../index";
 
         }else{
             return "nav";
@@ -33,7 +33,8 @@ public class GebruikerController {
     public String login(){
         if(this.gebruikerService.AuthenticateUser(gebruiker)){
             gebruiker = new Gebruiker();
-            return "index";
+            setAangemeld(true);
+            return "../index";
 
         }else{
             return "nav";
