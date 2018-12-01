@@ -17,7 +17,9 @@ public class GebruikerService {
     public Gebruiker findGebruikerById(int id) {
         return gebruikerRepository.findById(id);
     }
-
+    public List<Gebruiker> findGebruikerByEmail(Gebruiker gebruiker) {
+        return gebruikerRepository.findGeruikerByEmail(gebruiker);
+    }
     public boolean insert(Gebruiker gebruiker){
         List<Gebruiker> gebruikers = gebruikerRepository.findGeruikerByEmail(gebruiker);
         if(gebruikers.size() == 0){

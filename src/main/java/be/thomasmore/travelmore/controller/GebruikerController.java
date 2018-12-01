@@ -12,6 +12,7 @@ import javax.inject.Inject;
 public class GebruikerController {
 
     private Gebruiker gebruiker = new Gebruiker();
+    private Gebruiker aangemeldeGebruiker = new Gebruiker();
     private Boolean isAangemeld = false;
 
     @Inject
@@ -23,18 +24,23 @@ public class GebruikerController {
     public String registreerGebruiker(){
         if(this.gebruikerService.insert(gebruiker)){
             gebruiker = new Gebruiker();
-            return "../index";
+            return "/index";
 
         }else{
             return "nav";
         }
 
     }
+    public String logout(){
+        setAangemeldeGebruiker(null);
+        setAangemeld(false);
+        return "/index";
+    }
     public String login(){
         if(this.gebruikerService.AuthenticateUser(gebruiker)){
-            gebruiker = new Gebruiker();
+            setAangemeldeGebruiker(this.gebruikerService.findGebruikerByEmail(gebruiker).get(0));
             setAangemeld(true);
-            return "../index";
+            return "/index";
 
         }else{
             return "nav";
@@ -54,6 +60,14 @@ public class GebruikerController {
 
     public void setAangemeld(Boolean aangemeld) {
         isAangemeld = aangemeld;
+    }
+
+    public Gebruiker getAangemeldeGebruiker() {
+        return aangemeldeGebruiker;
+    }
+
+    public void setAangemeldeGebruiker(Gebruiker aangemeldeGebruiker) {
+        this.aangemeldeGebruiker = aangemeldeGebruiker;
     }
 }
 
