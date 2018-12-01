@@ -12,6 +12,7 @@ import javax.inject.Inject;
 public class GebruikerController {
 
     private Gebruiker gebruiker = new Gebruiker();
+    private Boolean isAangemeld = false;
 
     @Inject
     private GebruikerService gebruikerService;
@@ -44,6 +45,14 @@ public class GebruikerController {
 
     public void setGebruiker(Gebruiker gebruiker) {
         this.gebruiker = gebruiker;
+    }
+
+    public Boolean getAangemeld() {
+        return isAangemeld;
+    }
+
+    public void setAangemeld(Boolean aangemeld) {
+        isAangemeld = aangemeld;
     }
 }
 

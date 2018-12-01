@@ -3,8 +3,10 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <ui:composition>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="/">Travelmore</a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">
+                <h:graphicImage height="80px" library="images" name="headerlogo_transparent.png" />
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -21,8 +23,8 @@
                     </li>
                 </ul>
                 <span class="navbar-text">
-                    <h:outputLink value = "/travelmore/login.xhtml" rendered="#{GebruikerController.getGebruiker() == null}">Meld aan</h:outputLink>
-                    <h:outputLink value = "/travelmore/login.xhtml" rendered="#{GebruikerController.getGebruiker() != null}" >Account</h:outputLink>
+                    <h:outputLink value = "/travelmore/bezoeker/login.xhtml" rendered="#{GebruikerController.getAangemeld() == false}">Meld aan</h:outputLink>
+                    <h:outputLink value = "/travelmore/bezoeker/login.xhtml" rendered="#{GebruikerController.getAangemeld()}" >Account Gebruiker</h:outputLink>
                 </span>
             </div>
         </nav>
