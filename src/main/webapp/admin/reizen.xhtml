@@ -181,7 +181,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <h:commandButton action="#{ReisController.updateReis(ReisController.geselecteerdeReis.id, vertrekLocatieId, aankomstLocatieId, prijsPerPersoon, transportmiddel, plaatsen)}" styleClass="btn btn-primary" value="Sla reis op" />
+                                <h:commandButton type="submit" action="#{ReisController.updateReis(ReisController.geselecteerdeReis.id, vertrekLocatieId, aankomstLocatieId, prijsPerPersoon, transportmiddel, plaatsen)}" styleClass="btn btn-primary" value="Sla reis op" />
                             </div>
                         </div>
                     </div>
