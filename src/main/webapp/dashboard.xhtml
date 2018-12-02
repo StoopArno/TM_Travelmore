@@ -56,7 +56,7 @@
                     <f:facet name="prepend">
                         <b:icon name="map-marker" />
                     </f:facet>
-                    <f:selectItems value="#{locatieController.getLocaties}" var="l" itemLabel="#{l.stad}, #{l.land}" itemValue="#{l.id}"/>
+                    <!--<f:selectItems value="#{locatieController.getLocaties}" var="l" itemLabel="#{l.stad}, #{l.land}" itemValue="#{l.id}"/>-->
                 </b:selectOneMenu>
             <b:touchSpin id="aantalSterren" label="Aantal sterren" required="true" col-md="3" value="#{spinBean.intSpinValue}" min="1" max="5" step="1" colMd="10" labelColMd="2">
             <f:facet name="prepend">

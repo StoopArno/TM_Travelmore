@@ -41,10 +41,4 @@ public class LocatieService {
 
         return  locatieRepository.findAllAankomstLocaties(reisRepository.findAankomstLocatieIds());
     }
-
-//    public void insert(Locatie locatie){
-//
-//        locatieRepository.insert(locatie);
-//
-//    }
 }

@@ -28,33 +28,9 @@ public class Booking {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
-    @ManyToOne
-    private Gebruiker gebruiker;
-    @ManyToOne
-    private Reis heenReis;
-    @ManyToOne
-    private Periode periode;
-    @ManyToOne
-    private Hotel hotel;
-    private int aantalVolwassenen;
-    private int aantalKinderen;
-    private boolean reisVerzekering;
-    private int ruimBagage;
-    @ManyToOne
-    private Klasse klasse;
-    @ManyToOne
-    private Reis terugReis;
-    private boolean bevestigd;
-    private String bookingHashCode;
-
-
-
-
-    public Gebruiker getGebruiker() {
-        return gebruiker;
-    }
     @Column(name = "isBetaald")
     private boolean isBetaald;
+
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "gebruikerID")
@@ -91,20 +67,5 @@ public class Booking {
     }
     public void setReis(Reis reis) {
         this.reis = reis;
-    }
-    public boolean isBevestigd() {
-        return bevestigd;
-    }
-
-    public void setBevestigd(boolean bevestigd) {
-        this.bevestigd = bevestigd;
-    }
-
-    public String getBookingHashCode() {
-        return bookingHashCode;
-    }
-
-    public void setBookingHashCode(String bookingHashCode) {
-        this.bookingHashCode = bookingHashCode;
     }
 }

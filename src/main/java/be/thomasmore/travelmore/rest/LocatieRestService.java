@@ -18,7 +18,7 @@ public class LocatieRestService {
     @Path("findall")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllLocations() {
-        return Response.status(Response.Status.CREATED).entity(locatieService.findAllLocations()).build();
+        return Response.status(Response.Status.CREATED).entity(locatieService.findAllLocaties()).build();
     }
 
     @GET
