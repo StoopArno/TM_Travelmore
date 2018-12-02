@@ -18,42 +18,41 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-5 login-sec">
-                            <h2 class="text-center">Meld aan</h2>
+                            <h2 class="text-center">Registreer</h2>
                             <h:form class="login-form">
                                 <div class="form-group">
                                     <label >Email</label>
-                                    <input type="text" class="form-control" />
+                                    <p:inputText value="#{GebruikerController.gebruiker.email}" type="text" class="form-control" />
 
                                 </div>
                                 <div class="form-group">
                                     <label >Wachtwoord</label>
-                                    <input type="password" class="form-control" />
+                                    <p:inputText value="#{GebruikerController.gebruiker.wachtwoord}" type="password" class="form-control" />
                                 </div>
                                 <div class="form-group">
                                     <label >Voornaam</label>
-                                    <input type="text" class="form-control"/>
+                                    <p:inputText value="#{GebruikerController.gebruiker.voornaam}" type="text" class="form-control"/>
 
                                 </div>
                                 <div class="form-group">
                                     <label >Achternaam</label>
-                                    <input type="text" class="form-control" />
+                                    <p:inputText value="#{GebruikerController.gebruiker.achternaam}" type="text" class="form-control" />
 
                                 </div>
                                 <div class="form-group">
                                     <label >Adres</label>
-                                    <input type="text" class="form-control"/>
-
+                                    <p:inputText value="#{GebruikerController.gebruiker.adres}" type="text" class="form-control"/>
                                 </div>
 
                                 <div class="form-group">
                                     <label >Gemeente</label>
-                                    <input type="text" class="form-control" />
+                                    <p:inputText value="#{GebruikerController.gebruiker.gemeente}" type="text" class="form-control" />
                                 </div>
 
                                 <div class="form-check">
                                     <a href="index.xhtml">Terug</a>
 
-                                    <button type="submit" class="btn btn-login float-right">Login</button>
+                                    <h:commandButton value="submit" action="#{GebruikerController.registreerGebruiker}" />
 
 
                                 </div>

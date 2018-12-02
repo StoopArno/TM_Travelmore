@@ -32,4 +32,18 @@ public class ReisRepository {
         return entityManager.createNamedQuery(Reis.FIND_ALLAANKOMSTLOCATIEIDS, Integer.class).getResultList();
     }
 
+    public void update (Reis reis) {
+        entityManager.merge(reis);
+    }
+
+    public void insert(Reis reis) {
+        entityManager.persist(reis);
+        entityManager.flush();
+    }
+
+    public void delete(int id) {
+        Reis locatie = entityManager.find(Reis.class, id);
+        entityManager.remove(locatie);
+    }
+
 }

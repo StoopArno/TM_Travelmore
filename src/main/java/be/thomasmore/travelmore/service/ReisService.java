@@ -21,6 +21,10 @@ public class ReisService {
         return reisRepository.findAll();
     }
 
+    public void insert(Reis reis) { reisRepository.insert(reis); }
 
+    public void delete(int id) { reisRepository.delete(id); }
+
+    public void update(Reis reis){ reisRepository.update(reis); }
 
 }
