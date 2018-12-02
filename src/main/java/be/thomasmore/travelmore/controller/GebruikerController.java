@@ -5,7 +5,6 @@ import be.thomasmore.travelmore.service.GebruikerService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
 @ManagedBean(name="GebruikerController")
@@ -13,6 +12,7 @@ import javax.inject.Inject;
 public class GebruikerController {
 
     private Gebruiker gebruiker = new Gebruiker();
+    private Gebruiker aangemeldeGebruiker = new Gebruiker();
     private Boolean isAangemeld = false;
 
     @Inject
@@ -23,12 +23,29 @@ public class GebruikerController {
     }
     public String registreerGebruiker(){
         if(this.gebruikerService.insert(gebruiker)){
-            return "login";
+            gebruiker = new Gebruiker();
+            return "/index";
+
         }else{
-            return "fout";
+            return "nav";
+        }
+
+    }
+    public String logout(){
+        setAangemeldeGebruiker(null);
+        setAangemeld(false);
+        return "/index";
+    }
+    public String login(){
+        if(this.gebruikerService.AuthenticateUser(gebruiker)){
+            setAangemeldeGebruiker(this.gebruikerService.findGebruikerByEmail(gebruiker).get(0));
+            setAangemeld(true);
+            return "/index";
+
+        }else{
+            return "nav";
         }
     }
-
     public Gebruiker getGebruiker() {
         return gebruiker;
     }
@@ -43,6 +60,14 @@ public class GebruikerController {
 
     public void setAangemeld(Boolean aangemeld) {
         isAangemeld = aangemeld;
+    }
+
+    public Gebruiker getAangemeldeGebruiker() {
+        return aangemeldeGebruiker;
+    }
+
+    public void setAangemeldeGebruiker(Gebruiker aangemeldeGebruiker) {
+        this.aangemeldeGebruiker = aangemeldeGebruiker;
     }
 }
 

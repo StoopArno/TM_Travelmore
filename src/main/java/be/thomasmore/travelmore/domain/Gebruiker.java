@@ -99,6 +99,10 @@ public class Gebruiker {
         this.wachtwoord = wachtwoord;
     }
 
+    public String getNaam(){
+        return voornaam + " "+ achternaam;
+    }
+
     public SoortGebruiker getSoortGebruiker() {
         return soortGebruiker;
     }
