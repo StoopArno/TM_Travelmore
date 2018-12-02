@@ -9,6 +9,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.inject.Inject;
+import javax.ws.rs.ApplicationPath;
 import java.util.List;
 
 @ManagedBean(name="LocatieController", eager = true)
@@ -38,6 +39,7 @@ public class LocatieController {
     }
 
     public void updateLocatie(int locatieId, String naam, String stad, String code, String land){
+        System.out.println("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
         Locatie locatie = (locatieId == 0) ? new Locatie() : locatieService.findLocationById(locatieId);
         locatie.setNaam(naam);
         locatie.setStad(stad);
@@ -53,8 +55,11 @@ public class LocatieController {
         geselecteerdeLocatie.setId(0);
     }
 
+    public void deleteLocatie(int locatieId){
+        locatieService.delete(locatieId);
+    }
+
     public Locatie getGeselecteerdeLocatie() {
-        System.out.println("getgeselecteerdeLocatie naam: " + geselecteerdeLocatie.getNaam());
         return geselecteerdeLocatie;
     }
     public void setGeselecteerdeLocatie(Locatie geselecteerdeLocatie) {
@@ -62,12 +67,14 @@ public class LocatieController {
     }
 
     public int getGeselecteerdeId() {
-        System.out.println("get selected id: " + geselecteerdeId);
         return geselecteerdeId;
     }
     public void setGeselecteerdeId(int geselecteerdeId) {
-        System.out.println("set selected id: " + geselecteerdeId);
         this.setGeselecteerdeLocatie(locatieService.findLocationById(geselecteerdeId));
         this.geselecteerdeId = geselecteerdeId;
+    }
+
+    public void test(){
+        System.out.println("ttttttttttttttttttttttttttttttttttttttttttttttttttt ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt");
     }
 }

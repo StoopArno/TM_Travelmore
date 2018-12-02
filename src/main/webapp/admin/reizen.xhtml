@@ -4,8 +4,223 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:outputLabel value="Hello, world"/>
-</f:view>
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<ui:composition template="/templates/layout.xhtml">
+    <ui:define name="header">
+        <ui:include src="/templates/adminHeader.xhtml" />
+    </ui:define>
+    <ui:define name="title">Reizen bewerken</ui:define>
+    <ui:define name="content">
+        <br/>
+        <div class="accordion" id="accordionReizen">
+            <h:form>
+                <ui:repeat value="#{ReisController.reizen}" var="reis">
+
+                    <div class="card">
+                        <div class="card-header" id="heading#{reis.id}">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse#{reis.id}" aria-controls="collapse#{reis.id}">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h:outputText value="#{reis}" />
+                                    </div>
+                                </div>
+                            </button>
+                            <div class="float-right">
+                                <div class="row">
+                                    <div class="col-5">
+                                        <h:commandButton value="Pas aan" styleClass="btn btn-primary">
+                                            <f:setPropertyActionListener target="#{ReisController.geselecteerdeId}" value="#{reis.id}" />
+                                            <f:ajax event="action" render="@all" onevent="showReisModal"/>
+                                        </h:commandButton>
+                                    </div>
+                                    <div class="offset-1 col-5">
+                                        <h:commandButton value="Verwijder" styleClass="btn btn-danger">
+                                            <f:setPropertyActionListener target="#{ReisController.geselecteerdeId}" value="#{reis.id}" />
+                                            <f:ajax event="action" render="@all" onevent="showConfirmModal"/>
+                                        </h:commandButton>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="collapse#{reis.id}" class="collapse" aria-labelledby="heading#{reis.id}" data-parent="#accordionReizen">
+                            <div class="card-body">
+
+                                <div class="form-group row">
+                                    <label for="vertrekLocatie#{reis.id}" class="col-sm-2 col-form-label">Vertreklocatie</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText value="#{reis.vertrekLocatie}" styleClass="form-control" id="displayVertrekLocatie#{reis.id}" readonly="true"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="vertrekTijd#{reis.id}" class="col-sm-2 col-form-label">Vertrektijd</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText value="#{reis.vertrekTijd}" styleClass="form-control" id="displayVertrekTijd#{reis.id}" readonly="true"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="aankomstLocatie#{reis.id}" class="col-sm-2 col-form-label">Aankomstlocatie</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText value="#{reis.aankomstLocatie}" styleClass="form-control" id="displayAankomstLocatie#{reis.id}" readonly="true"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="aankomstTijd#{reis.id}" class="col-sm-2 col-form-label">AankomstTijd</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText value="#{reis.aankomstTijd}" styleClass="form-control" id="displayAankomstTijd#{reis.id}" readonly="true"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="plaatsen#{reis.id}" class="col-sm-2 col-form-label">Plaatsen</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText value="#{reis.plaatsen}" styleClass="form-control" id="displayPlaatsen#{reis.id}" readonly="true"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="prijsPerPersoon#{reis.id}" class="col-sm-2 col-form-label">Prijs per persoon</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText value="#{reis.prijsPerPersoon}" styleClass="form-control" id="displayprijsPerzoon#{reis.id}" readonly="true"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="transportmiddel#{reis.id}" class="col-sm-2 col-form-label">Transportmiddel</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText value="#{reis.transportmiddel}" styleClass="form-control" id="displayTransportmiddel#{reis.id}" readonly="true"/>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </ui:repeat>
+                <br/>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 text-right">
+                            <h:commandButton action="#{ReisController.newReis()}" value="Maak nieuwe reis aan" styleClass="btn btn-primary">
+                                <f:ajax event="action" render="@all" onevent="showReisModal"/>
+                            </h:commandButton>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="reisModal" tabindex="-1" role="dialog" aria-labelledby="reisModallabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="reisModallabel">
+                                    Reis #{ReisController.geselecteerdeReis}
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                <div class="form-group row">
+                                    <label for="updateVertrekLocatie" class="col-sm-3 col-form-label">Vertreklocatie</label>
+                                    <div class="col-sm-9">
+                                        <h:selectOneMenu class="form-control" binding="#{vertrekLocatieId}" id="updateVertrekLocatie" value="#{ReisController.geselecteerdeReis.vertrekLocatie.id}">
+                                            <f:selectItems  value="#{LocatieController.locaties}" var="l" itemLabel="#{l}" itemValue="#{l.id}" />
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="updateVertrekTijd" class="col-sm-3 col-form-label">Vertrektijd</label>
+                                    <div class="col-sm-9">
+                                        <h:inputText value="#{ReisController.geselecteerdeReis.vertrekTijd}" binding="#{vertrekTijd}" styleClass="form-control" id="updateVertrekTijd" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="updateAankomstLocatie" class="col-sm-3 col-form-label">Aankomstlocatie</label>
+                                    <div class="col-sm-9">
+                                        <h:selectOneMenu class="form-control" binding="#{aankomstLocatieId}" id="updateAankomstLocatie" value="#{ReisController.geselecteerdeReis.aankomstLocatie.id}">
+                                            <f:selectItems  value="#{LocatieController.locaties}" var="l" itemLabel="#{l}" itemValue="#{l.id}" />
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="updateAankomstTijd" class="col-sm-3 col-form-label">Aankomsttijd</label>
+                                    <div class="col-sm-9">
+                                        <h:inputText value="#{ReisController.geselecteerdeReis.aankomstTijd}" binding="#{aankomstTijd}" styleClass="form-control" id="updateAankomstTijd" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="updatePlaatsen" class="col-sm-3 col-form-label">Plaatsen</label>
+                                    <div class="col-sm-9">
+                                        <h:inputText value="#{ReisController.geselecteerdeReis.plaatsen}" binding="#{plaatsen}" styleClass="form-control" id="updatePlaatsen" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="updateprijsPerzoon" class="col-sm-3 col-form-label">Prijs per persoon</label>
+                                    <div class="col-sm-9">
+                                        <h:inputText value="#{ReisController.geselecteerdeReis.prijsPerPersoon}" binding="#{prijsPerPersoon}" styleClass="form-control" id="updateprijsPerzoon" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="updateTransportmiddel" class="col-sm-3 col-form-label">Vervoermiddel</label>
+                                    <div class="col-sm-9">
+                                        <h:inputText value="#{ReisController.geselecteerdeReis.transportmiddel}" binding="#{transportmiddel}" styleClass="form-control" id="updateTransportmiddel" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <h:commandButton action="#{ReisController.updateReis(ReisController.geselecteerdeReis.id, vertrekLocatieId, aankomstLocatieId, prijsPerPersoon, transportmiddel, plaatsen)}" styleClass="btn btn-primary" value="Sla reis op" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="confirmModalLabel">Bevestiging</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Weet u zeker dat u de reis #{ReisController.geselecteerdeReis} wilt verwijderen?
+                                Deze actie kan niet ongedaan gemaakt worden!
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuleer</button>
+                                <h:commandButton action="#{ReisController.deleteReis(ReisController.geselecteerdeId)}" value="Bevestig" styleClass="btn btn-danger" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+        <script>
+            function showReisModal(data) {
+                if (data.status == "success") {
+                    $('#reisModal').modal();
+                }
+            }
+            function showConfirmModal(data) {
+                if (data.status == "success") {
+                    $('#confirmModal').modal();
+                }
+            }
+        </script>
+    </ui:define>
+</ui:composition>
 </html>
