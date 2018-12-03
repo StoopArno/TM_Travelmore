@@ -46,8 +46,11 @@ public class Locatie {
     private String code;
 
 
-    //getters en setters
+    public String toString(){
+        return stad + " | " + naam;
+    }
 
+    //getters en setters
     public int getId() {
         return id;
     }

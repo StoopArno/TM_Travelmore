@@ -6,7 +6,9 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:b="http://bootsfaces.net/ui">
+      xmlns:b="http://bootsfaces.net/ui"
+xmlns:c="http://java.sun.com/jsp/jstl/core">
+
 <h:head>
     <title>Reizen</title>
 
@@ -20,16 +22,34 @@
                 <div class="row">
                     <div class="col-4">
                         <div class="list-group">
-                            <a href="#" class="list-group-item active">Van -> Naar </a>
+                            <c:forEach var="reis" items="#{reisController.reizen}">
+                                <a href="#" class="list-group-item " >
+                                    <h4 class="list-group-item-heading"> <i class="material-icons">
+                                        flight_takeoff</i> #{reis.vertrekLocatie.naam} <i class="material-icons">
+                                        flight_land</i> #{reis.aankomstLocatie.naam} </h4>
+                                </a>
+                            </c:forEach>
+                           <!-- <a href="#" class="list-group-item active" >
+                                <h4 class="list-group-item-heading">Van {reis.} <i class="material-icons">
+                                    flight_takeoff
+                                </i></h4>
+                                <p class="list-group-item-text">List Group Item Text</p>
+                            </a>
                             <a href="#" class="list-group-item">Second item</a>
-                            <a href="#" class="list-group-item">Third item</a>
+                            <a href="#" class="list-group-item">Third item</a> -->
                         </div>
+<script type="javascript">
+    function showDetails() {
 
+
+    }
+
+</script>
                     </div>
                     <div class="col-8">
-                        <p>Van : reisvertrek - reistijdvertrek</p>
-                        <p>Naar : reisaankomst - reistijdaankomst</p>
-                        <p>prijs</p>
+                        <p id="reisVan">Van : reisvertrek - reistijdvertrek</p>
+                        <p id="reisNaar">Naar : reisaankomst - reistijdaankomst</p>
+                        <p id="reisprijs">prijs</p>
                         <button type="submit">Boeken</button>
                     </div>
                 </div>
