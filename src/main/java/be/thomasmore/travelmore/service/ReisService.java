@@ -21,6 +21,8 @@ public class ReisService {
         return reisRepository.findAll();
     }
 
+    public List<Reis> filterReisVertrekLocatie() {return  reisRepository.FilterVertreklocatie();}
+
     public void insert(Reis reis) { reisRepository.insert(reis); }
 
     public void delete(int id) { reisRepository.delete(id); }

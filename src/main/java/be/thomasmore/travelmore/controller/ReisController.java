@@ -8,6 +8,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import java.io.Console;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -26,18 +28,20 @@ public class ReisController {
         return this.reisService.findAllReis();
     }
 
+    public  List<Reis> getReizenFilterByVertrekLocatie () {return this.reisService.filterReisVertrekLocatie();}
+
     public void updateReis(int reisId, int vertrekLocatieId, int aankomstLocatieId, double prijsPerPersoon, String transportmiddel, int plaatsen){
         System.out.println("uhrguihsud hgfshdigujsdf hgj khfxiughdufihg uidxh figudrhu hgdxfhgsudfh guidxfhlu ghdsfuxighfuig huidgu dhig");
-        //Reis reis = (reisId == 0) ? new Reis() : reisService.findReisById(reisId);
-        //reis.setVertrekLocatie(locatieService.findLocationById(vertrekLocatieId));
-        //reis.setAankomstLocatie(locatieService.findLocationById(aankomstLocatieId));
+        Reis reis = (reisId == 0) ? new Reis() : reisService.findReisById(reisId);
+        reis.setVertrekLocatie(locatieService.findLocationById(vertrekLocatieId));
+        reis.setAankomstLocatie(locatieService.findLocationById(aankomstLocatieId));
         //reis.setVertrekTijd(vertrekTijd);
         //reis.setAankomstTijd(aankomstTijd);
-        //reis.setPrijsPerPersoon(prijsPerPersoon);
-        //reis.setTransportmiddel(transportmiddel);
-        //reis.setPlaatsen(plaatsen);
-        //if(reisId == 0){reisService.insert(reis);}
-        //else{reisService.update(reis);}
+        reis.setPrijsPerPersoon(prijsPerPersoon);
+        reis.setTransportmiddel(transportmiddel);
+        reis.setPlaatsen(plaatsen);
+        if(reisId == 0){reisService.insert(reis);}
+        else{reisService.update(reis);}
     }
 
     public void test(){
@@ -67,6 +71,8 @@ public class ReisController {
         this.setGeselecteerdeReis(reisService.findReisById(geselecteerdeId));
         this.geselecteerdeId = geselecteerdeId;
     }
+
+
 
     /*    public Reis getReisByID(){
         return this.reisService.findReisById(geselecteerdeReis.getId());
