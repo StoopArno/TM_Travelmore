@@ -3,8 +3,22 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <ui:composition>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="/">Travelmore</a>
+        <style>
+            .test {
+                right: 0;
+                left: auto;
+            }
+            @media (max-width: 992px) {
+                .test {
+                    left: 0;
+                    right:auto;
+                }
+            }
+        </style>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">
+                <h:graphicImage height="80px" library="images" name="headerlogo_transparent.png" />
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -19,11 +33,21 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Bookingen</a>
                     </li>
+                    <li class="nav-item dropdown">
+
+                    </li>
                 </ul>
                 <span class="navbar-text">
-                    <h:outputLink value = "/travelmore/login.xhtml" rendered="#{GebruikerController.getGebruiker() == null}">Meld aan</h:outputLink>
-                    <h:outputLink value = "/travelmore/login.xhtml" rendered="#{GebruikerController.getGebruiker() != null}" >Account</h:outputLink>
+                    <h:outputLink value = "/travelmore/bezoeker/login.xhtml" rendered="#{GebruikerController.getAangemeld() == false}">Meld aan</h:outputLink>
                 </span>
+                <h:panelGroup class="nav-item dropdown" rendered="#{GebruikerController.getAangemeld()}">
+                    <a class="nav-link dropdown-toggle navbar-text active" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        #{GebruikerController.aangemeldeGebruiker.naam}
+                    </a>
+                    <div class="dropdown-menu test" aria-labelledby="navbarDropdownMenuLink">
+                        <h:button value="Uitloggen" class="dropdown-item" outcome="#{GebruikerController.logout()}" />
+                    </div>
+                </h:panelGroup>
             </div>
         </nav>
     </ui:composition>

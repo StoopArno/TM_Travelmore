@@ -40,12 +40,17 @@ public class Locatie {
     private String land;
     @Column(name = "stad")
     private String stad;
-    @Column(name = "adres")
-    private String adres;
+    @Column(name = "naam")
+    private String naam;
+    @Column(name = "code")
+    private String code;
 
+
+    public String toString(){
+        return stad + " | " + naam;
+    }
 
     //getters en setters
-
     public int getId() {
         return id;
     }
@@ -67,10 +72,17 @@ public class Locatie {
         this.stad = stad;
     }
 
-    public String getAdres() {
-        return adres;
+    public String getNaam() {
+        return naam;
     }
-    public void setAdres(String adres) {
-        this.adres = adres;
+    public void setNaam(String naam) {
+        this.naam = naam;
+    }
+
+    public String getCode() {
+        return code;
+    }
+    public void setCode(String code) {
+        this.code = code;
     }
 }
