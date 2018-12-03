@@ -3,6 +3,7 @@ import be.thomasmore.travelmore.domain.Reis;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 
 public class ReisRepository {
@@ -23,6 +24,15 @@ public class ReisRepository {
    // public List<Reis> findAllVertrekLocaties() {
    //     return entityManager.createNamedQuery(Reis.FIND_ALLVERTREKLOCATIES, Reis.class).getResultList();
    // }
+
+    public  List<Reis> FilterVertreklocatie() {
+        Query  filterLocatie = entityManager.createNamedQuery(Reis.FILTERVERTREKLOCATIE);
+        String locatie = "brussel";
+        //checken
+        filterLocatie.setParameter("naam", "%" + locatie + "%");
+        return entityManager.createNamedQuery(Reis.FILTERVERTREKLOCATIE, Reis.class).getResultList();}
+
+
 
     public List<Integer> findVertrekLocatieIds(){
         return entityManager.createNamedQuery(Reis.FIND_ALLVERTREKLOCATIEIDS, Integer.class).getResultList();
