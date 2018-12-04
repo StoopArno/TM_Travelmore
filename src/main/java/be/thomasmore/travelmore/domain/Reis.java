@@ -31,6 +31,11 @@ import java.util.Date;
 )
 public class Reis {
 
+    public Reis(){
+        setVertrekLocatie(new Locatie());
+        setAankomstLocatie(new Locatie());
+    }
+
     //properties
     public static final String FIND_ALL = "Reis.findAll";
     public static final String FIND_ALLVERTREKLOCATIEIDS = "Reis.findVertrekLocatieIds";
@@ -40,11 +45,11 @@ public class Reis {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "vertrekLocatieID")
     private Locatie vertrekLocatie;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "aankomstLocatieID")
     private Locatie aankomstLocatie;
 
@@ -65,7 +70,7 @@ public class Reis {
     private int plaatsen;
 
     public String toString(){
-        return vertrekLocatie + " --> " + aankomstLocatie;
+        return id + " - " + vertrekLocatie + " --> " + aankomstLocatie;
     }
 
     public int getId() {

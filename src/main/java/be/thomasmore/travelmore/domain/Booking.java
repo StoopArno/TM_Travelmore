@@ -30,7 +30,10 @@ public class Booking {
     private int id;
     @Column(name = "isBetaald")
     private boolean isBetaald;
-
+    @Column(name = "aantalPersonen")
+    private int aantalPersonen;
+    @Column(name = "prijsPPTeBetalen")
+    private double prijsPPTeBetalen;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "gebruikerID")
@@ -53,6 +56,20 @@ public class Booking {
     }
     public void setBetaald(boolean betaald) {
         isBetaald = betaald;
+    }
+
+    public int getAantalPersonen() {
+        return aantalPersonen;
+    }
+    public void setAantalPersonen(int aantalPersonen) {
+        this.aantalPersonen = aantalPersonen;
+    }
+
+    public double getPrijsPPTeBetalen() {
+        return prijsPPTeBetalen;
+    }
+    public void setPrijsPPTeBetalen(double prijsPPTeBetalen) {
+        this.prijsPPTeBetalen = prijsPPTeBetalen;
     }
 
     public Gebruiker getGebruiker() {

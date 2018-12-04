@@ -6,13 +6,17 @@ import be.thomasmore.travelmore.service.GebruikerService;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
+import java.io.Serializable;
+import java.util.List;
 
 @ManagedBean(name="GebruikerController")
 @SessionScoped
-public class GebruikerController {
+public class GebruikerController{
 
     private Gebruiker gebruiker = new Gebruiker();
     private Gebruiker aangemeldeGebruiker = new Gebruiker();
+    private Gebruiker geselecteerdeGebruiker = new Gebruiker();
+    private int geselecteerdeId;
     private Boolean isAangemeld = false;
 
     @Inject
@@ -68,6 +72,51 @@ public class GebruikerController {
 
     public void setAangemeldeGebruiker(Gebruiker aangemeldeGebruiker) {
         this.aangemeldeGebruiker = aangemeldeGebruiker;
+    }
+
+    public Gebruiker getGeselecteerdeGebruiker() {
+        return geselecteerdeGebruiker;
+    }
+    public void setGeselecteerdeGebruiker(Gebruiker geselecteerdeGebruiker) {
+        this.geselecteerdeGebruiker = geselecteerdeGebruiker;
+    }
+
+    public int getGeselecteerdeId() {
+        return geselecteerdeId;
+    }
+    public void setGeselecteerdeId(int geselecteerdeId) {
+        this.setGeselecteerdeGebruiker(gebruikerService.findGebruikerById(geselecteerdeId));
+        this.geselecteerdeId = geselecteerdeId;
+    }
+
+    public List<Gebruiker> getGebruikers(){
+        return gebruikerService.findAllLocations();
+    }
+
+    public void newGebruiker(){
+        geselecteerdeGebruiker = new Gebruiker();
+        geselecteerdeGebruiker.setId(0);
+    }
+
+    public void updateGebruiker(int gebruikerId, String voornaam, String achternaam, String adres, String gemeente, String email){
+        geselecteerdeGebruiker = (gebruikerId == 0) ? new Gebruiker() : gebruikerService.findGebruikerById(gebruikerId);
+        geselecteerdeGebruiker.setVoornaam(voornaam);
+        geselecteerdeGebruiker.setAchternaam(achternaam);
+        geselecteerdeGebruiker.setAdres(adres);
+        geselecteerdeGebruiker.setGemeente(gemeente);
+        geselecteerdeGebruiker.setEmail(email);
+        if(gebruikerId == 0){
+            geselecteerdeGebruiker.setWachtwoord("wachtwoord");
+            gebruikerService.insert(geselecteerdeGebruiker);
+        }
+        else{
+            gebruikerService.update(geselecteerdeGebruiker);
+        }
+        newGebruiker();
+    }
+
+    public void deleteGebruiker(int id){
+        gebruikerService.delete(id);
     }
 }
 

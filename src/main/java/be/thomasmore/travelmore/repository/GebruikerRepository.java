@@ -20,4 +20,17 @@ public class GebruikerRepository {
     public List<Gebruiker> findGeruikerByEmail(Gebruiker gebruiker){
         return entityManager.createNamedQuery(Gebruiker.FIND_BY_EMAIL,Gebruiker.class).setParameter("email",gebruiker.getEmail()).getResultList();
     }
+
+    public List<Gebruiker> findAll() {
+        return entityManager.createNamedQuery(Gebruiker.FIND_ALL, Gebruiker.class).getResultList();
+    }
+
+    public void update (Gebruiker gebruiker) {
+        entityManager.merge(gebruiker);
+    }
+
+    public void delete(int id) {
+        Gebruiker gebruiker = entityManager.find(Gebruiker.class, id);
+        entityManager.remove(gebruiker);
+    }
 }

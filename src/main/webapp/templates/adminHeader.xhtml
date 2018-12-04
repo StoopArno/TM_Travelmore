@@ -12,18 +12,51 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/travelmore/admin">Boekingen <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/travelmore/admin/reizen.xhtml">Reizen</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/travelmore/admin/locaties.xhtml">Locaties</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Gebruikers</a>
-                    </li>
+
+                    <ui:fragment rendered="#{ViewController.activeTab=='bookingen'}">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/travelmore/admin/bookingen.xhtml">Bookingen</a>
+                        </li>
+                    </ui:fragment>
+                    <ui:fragment rendered="#{ViewController.activeTab!='bookingen'}">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/travelmore/admin/bookingen.xhtml">Bookingen</a>
+                        </li>
+                    </ui:fragment>
+
+                    <ui:fragment rendered="#{ViewController.activeTab=='reizen'}">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/travelmore/admin/reizen.xhtml">Reizen</a>
+                        </li>
+                    </ui:fragment>
+                    <ui:fragment rendered="#{ViewController.activeTab!='reizen'}">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/travelmore/admin/reizen.xhtml">Reizen</a>
+                        </li>
+                    </ui:fragment>
+
+                    <ui:fragment rendered="#{ViewController.activeTab=='locaties'}">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/travelmore/admin/locaties.xhtml">Locaties</a>
+                        </li>
+                    </ui:fragment>
+                    <ui:fragment rendered="#{ViewController.activeTab!='locaties'}">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/travelmore/admin/locaties.xhtml">Locaties</a>
+                        </li>
+                    </ui:fragment>
+
+                    <ui:fragment rendered="#{ViewController.activeTab=='gebruikers'}">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/travelmore/admin/gebruikers.xhtml">Gebruikers</a>
+                        </li>
+                    </ui:fragment>
+                    <ui:fragment rendered="#{ViewController.activeTab!='gebruikers'}">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/travelmore/admin/gebruikers.xhtml">Gebruikers</a>
+                        </li>
+                    </ui:fragment>
+
                 </ul>
                 <span class="navbar-text">
                         <h:outputLink value = "/travelmore/login.xhtml" rendered="#{false}">Meld aan</h:outputLink>

@@ -39,7 +39,6 @@ public class LocatieController {
     }
 
     public void updateLocatie(int locatieId, String naam, String stad, String code, String land){
-        System.out.println("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
         Locatie locatie = (locatieId == 0) ? new Locatie() : locatieService.findLocationById(locatieId);
         locatie.setNaam(naam);
         locatie.setStad(stad);
@@ -72,9 +71,5 @@ public class LocatieController {
     public void setGeselecteerdeId(int geselecteerdeId) {
         this.setGeselecteerdeLocatie(locatieService.findLocationById(geselecteerdeId));
         this.geselecteerdeId = geselecteerdeId;
-    }
-
-    public void test(){
-        System.out.println("ttttttttttttttttttttttttttttttttttttttttttttttttttt ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt");
     }
 }

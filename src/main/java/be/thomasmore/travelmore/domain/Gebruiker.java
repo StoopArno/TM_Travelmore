@@ -8,6 +8,10 @@ import java.util.Date;
 @NamedQueries(
         {
                 @NamedQuery(
+                        name = Gebruiker.FIND_ALL,
+                        query = "SELECT g FROM Gebruiker g"
+                ),
+                @NamedQuery(
                         name = Gebruiker.FIND_ALL_BY_EMAIL,
                         query = "SELECT l FROM Gebruiker l where l.email = :email"
                 ),
@@ -18,6 +22,7 @@ import java.util.Date;
         }
 )
 public class Gebruiker {
+    public static final String FIND_ALL = "Gebruiker.findAll";
     public static final String FIND_ALL_BY_EMAIL = "Gebruiker.findAllByEmail";
     public static final String FIND_BY_EMAIL = "Gebruiker.findAllByName";
 
@@ -42,6 +47,10 @@ public class Gebruiker {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "soortGebruikerID")
     private SoortGebruiker soortGebruiker;
+
+    public String toString(){
+        return voornaam + " " + achternaam;
+    }
 
     public int getId() {
         return id;
