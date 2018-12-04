@@ -30,7 +30,7 @@ import java.util.Date;
                 ),
                 @NamedQuery(
                        name = Reis.FILTERVERTREKLOCATIE,
-                        query = "SELECT r FROM Reis r Where lower(r.aankomstLocatie.naam) = :naam"
+                        query = "SELECT r FROM Reis r Where lower(r.vertrekLocatie.naam) = :naam"
                 )
         }
 )

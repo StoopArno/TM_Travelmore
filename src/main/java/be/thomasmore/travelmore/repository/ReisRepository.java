@@ -27,10 +27,8 @@ public class ReisRepository {
 
     public  List<Reis> FilterVertreklocatie() {
         Query  filterLocatie = entityManager.createNamedQuery(Reis.FILTERVERTREKLOCATIE);
-        String locatie = "brussel";
-        //checken
-        filterLocatie.setParameter("naam", "%" + locatie + "%");
-        return entityManager.createNamedQuery(Reis.FILTERVERTREKLOCATIE, Reis.class).getResultList();}
+        String locatie = "Sarajevo";
+        return filterLocatie.setParameter("naam",   locatie.toLowerCase() ).getResultList();}
 
 
 
