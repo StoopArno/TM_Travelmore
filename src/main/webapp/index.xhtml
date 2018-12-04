@@ -1,16 +1,43 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-        xmlns:ui="http://java.sun.com/jsf/facelets"
-        xmlns:f="http://xmlns.jcp.org/jsf/core"
-        xmlns:h="http://xmlns.jcp.org/jsf/html"
->
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+
+</h:head>
 <h:body>
     <ui:composition template="/templates/layout.xhtml">
         <ui:define name="content">
-            Mooie test
+
+
+            <h2 class="nieuws">Nieuws</h2>
+
+            <div class="card-deck">
+                <div class="card">
+                    <img class="card-img-top" src="./resources/images/staking.jpg" alt="Staking" />
+                    <div class="card-body">
+                        <h5 class="card-title">Staking Ryanair</h5>
+                        <p class="card-text">De belgische vluchten vanuit ryanair kunnen vertragingen oplopen door de staking die er al enkele dagen gaande is.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./resources/images/vulkaan.jpg" alt="Vulkaan" />
+                    <div class="card-body">
+                        <h5 class="card-title">Vulkaan</h5>
+                        <p class="card-text">Vulkaan katrina zorgt voor ernstige vertragingen in Hawai.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="./resources/images/bagage.jpg" alt="Bagage" />
+                    <div class="card-body">
+                        <h5 class="card-title">Bagage</h5>
+                        <p class="card-text">Onze maatschappijen waar wij mee samenwerken zijn onlangs verkozen tot beste bagage afhandelaars van de wereld. Dit is bepaald door het agentschap van luchtverkeer.</p>
+                    </div>
+                </div>
+            </div>
+
         </ui:define>
+
     </ui:composition>
 
 </h:body>
