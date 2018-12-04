@@ -1,5 +1,6 @@
 package be.thomasmore.travelmore.controller;
 
+import be.thomasmore.travelmore.domain.Locatie;
 import be.thomasmore.travelmore.domain.Reis;
 import be.thomasmore.travelmore.service.LocatieService;
 import be.thomasmore.travelmore.service.ReisService;
@@ -8,6 +9,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import java.io.Console;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -20,28 +23,27 @@ public class ReisController {
 
     @Inject
     private ReisService reisService;
+    @Inject
     private LocatieService locatieService;
 
     public List<Reis> getReizen(){
         return this.reisService.findAllReis();
     }
 
+    public  List<Reis> getReizenFilterByVertrekLocatie () {return this.reisService.filterReisVertrekLocatie();}
+
     public void updateReis(int reisId, int vertrekLocatieId, int aankomstLocatieId, double prijsPerPersoon, String transportmiddel, int plaatsen){
-        System.out.println("uhrguihsud hgfshdigujsdf hgj khfxiughdufihg uidxh figudrhu hgdxfhgsudfh guidxfhlu ghdsfuxighfuig huidgu dhig");
-        //Reis reis = (reisId == 0) ? new Reis() : reisService.findReisById(reisId);
-        //reis.setVertrekLocatie(locatieService.findLocationById(vertrekLocatieId));
-        //reis.setAankomstLocatie(locatieService.findLocationById(aankomstLocatieId));
+        Reis reis = (reisId == 0) ? new Reis() : reisService.findReisById(reisId);
+        reis.setVertrekLocatie(locatieService.findLocationById(vertrekLocatieId));
+        reis.setAankomstLocatie(locatieService.findLocationById(aankomstLocatieId));
         //reis.setVertrekTijd(vertrekTijd);
         //reis.setAankomstTijd(aankomstTijd);
-        //reis.setPrijsPerPersoon(prijsPerPersoon);
-        //reis.setTransportmiddel(transportmiddel);
-        //reis.setPlaatsen(plaatsen);
-        //if(reisId == 0){reisService.insert(reis);}
-        //else{reisService.update(reis);}
-    }
-
-    public void test(){
-        System.out.println("ttttttttttttttttttttttttttttttttttttttttttttttttttt ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt");
+        reis.setPrijsPerPersoon(prijsPerPersoon);
+        reis.setTransportmiddel(transportmiddel);
+        reis.setPlaatsen(plaatsen);
+        if(reisId == 0){reisService.insert(reis);}
+        else{reisService.update(reis);}
+        newReis();
     }
 
     public void newReis(){
@@ -61,12 +63,17 @@ public class ReisController {
     }
 
     public int getGeselecteerdeId() {
+        if(geselecteerdeReis == null){
+            geselecteerdeReis = new Reis();
+        }
         return geselecteerdeId;
     }
     public void setGeselecteerdeId(int geselecteerdeId) {
         this.setGeselecteerdeReis(reisService.findReisById(geselecteerdeId));
         this.geselecteerdeId = geselecteerdeId;
     }
+
+
 
     /*    public Reis getReisByID(){
         return this.reisService.findReisById(geselecteerdeReis.getId());

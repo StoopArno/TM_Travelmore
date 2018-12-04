@@ -64,4 +64,12 @@ public class GebruikerService {
             return false;
         }
     }
+
+    public List<Gebruiker> findAllLocations() {
+        return gebruikerRepository.findAll();
+    }
+
+    public void update(Gebruiker gebruiker) { gebruikerRepository.update(gebruiker); }
+
+    public void delete(int id){ gebruikerRepository.delete(id); }
 }
