@@ -95,6 +95,10 @@ ul.nav.navbar-nav.navbar-right{
     background: #e8f9ff;
 }
 
+.navbar-toggler-icon{
+    background-color: #009cab;
+}
+
 /* FOOTER */
 .footer{
     text-align: center;
