@@ -29,8 +29,8 @@ import java.util.Date;
                         query = "SELECT r.aankomstLocatie.id FROM Reis r"
                 ),
                 @NamedQuery(
-                       name = Reis.FILTERVERTREKLOCATIE,
-                        query = "SELECT r FROM Reis r Where lower(r.aankomstLocatie.naam) = :naam"
+                      name = Reis.FILTERVERTREKLOCATIE,
+                       query = "SELECT r FROM Reis r Where lower(r.aankomstLocatie.naam) LIKE :naam"
                 )
         }
 )

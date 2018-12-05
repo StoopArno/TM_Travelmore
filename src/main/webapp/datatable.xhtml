@@ -22,15 +22,18 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
             <ui:define name="content">
                 <h1>Onze reizen : </h1>
                 <div class="row">
-                    <b:dataTable value="#{ReisController.reizenFilterByVertrekLocatie}"
+
+                    <b:dataTable value="#{ReisController.reizen}"
                                  var="reis">
-                        <b:dataTableColumn label="Vertrek Locatie" value="#{reis.vertrekLocatie.naam}"/>
+                       <b:dataTableColumn label="Vertrek Locatie" value="#{reis.vertrekLocatie.naam}"/>
+                         <b:dataTableColumn label="Vertrek Tijd" value="#{reis.vertrekTijd}" />
                         <b:dataTableColumn label="Vertrek Tijd" value="#{reis.vertrekTijd}" />
                         <b:dataTableColumn label="Aankomst Locatie" value="#{reis.aankomstLocatie.naam}" />
                         <b:dataTableColumn label="Aankomst Tijd" value="#{reis.aankomstTijd}" />
                         <b:dataTableColumn label="Aantal plaatsen" value="#{reis.plaatsen}" />
                         <b:dataTableColumn label="Prijs per persoon" value="#{reis.prijsPerPersoon}"  />
                     </b:dataTable>
+
                 </div>
             </ui:define>
         </ui:composition>
