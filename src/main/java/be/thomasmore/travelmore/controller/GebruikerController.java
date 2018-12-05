@@ -5,18 +5,19 @@ import be.thomasmore.travelmore.service.GebruikerService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import java.io.Serializable;
 import java.util.List;
 
 @ManagedBean(name="GebruikerController")
 @SessionScoped
-public class GebruikerController{
+public class GebruikerController  {
 
     private Gebruiker gebruiker = new Gebruiker();
     private Gebruiker aangemeldeGebruiker = new Gebruiker();
     private Gebruiker geselecteerdeGebruiker = new Gebruiker();
     private int geselecteerdeId;
+
     private Boolean isAangemeld = false;
 
     @Inject
@@ -44,10 +45,15 @@ public class GebruikerController{
         if(this.gebruikerService.AuthenticateUser(gebruiker)){
             setAangemeldeGebruiker(this.gebruikerService.findGebruikerByEmail(gebruiker).get(0));
             setAangemeld(true);
-            return "/index";
+            if(aangemeldeGebruiker.getSoortGebruiker().getId() == 1){
+                return "/index";
+            }
+            else{
+                return "/admin/bookingen";
+            }
 
         }else{
-            return "nav";
+            return "/login";
         }
     }
     public Gebruiker getGebruiker() {
@@ -90,7 +96,7 @@ public class GebruikerController{
     }
 
     public List<Gebruiker> getGebruikers(){
-        return gebruikerService.findAllLocations();
+        return gebruikerService.findAllGebruikers();
     }
 
     public void newGebruiker(){

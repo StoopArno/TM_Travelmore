@@ -11,6 +11,9 @@
                         <!--<span class="sr-only">Toggle navigation</span>-->
                         <!--<span><i class="material-icons">menu</i></span>-->
                     <!--</button>-->
+                    <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">-->
+                        <!--<span class="navbar-toggler-icon"></span>-->
+                    <!--</button>-->
                     <a class="navbar-brand" href="/travelmore/" title="HOME">
                         <h:graphicImage height="60px" library="images" name="navheader.png" />
                         Travel<span>More</span>
@@ -18,22 +21,62 @@
                 </div>
                 <div class="collapse navbar-collapse w-75 order-1" id="navbarText">
                     <ul class="nav navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/travelmore/">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/travelmore/reizen">Reizen</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="travelmore/bookingen">Bookingen</a>
-                        </li>
+                        <ui:fragment rendered="#{ViewController.activeTab=='home'}">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/travelmore">Home</a>
+                            </li>
+                        </ui:fragment>
+                        <ui:fragment rendered="#{ViewController.activeTab!='home'}">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/travelmore">Home</a>
+                            </li>
+                        </ui:fragment>
+
+                        <ui:fragment rendered="#{ViewController.activeTab=='reizen'}">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="">Reizen</a>
+                            </li>
+                        </ui:fragment>
+                        <ui:fragment rendered="#{ViewController.activeTab!='reizen'}">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Reizen</a>
+                            </li>
+                        </ui:fragment>
+
+                        <ui:fragment rendered="#{ViewController.activeTab=='bookingen'}">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Bookingen</a>
+                            </li>
+                        </ui:fragment>
+                        <ui:fragment rendered="#{ViewController.activeTab!='bookingen'}">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Bookingen</a>
+                            </li>
+                        </ui:fragment>
                     </ul>
                 </div>
                 <div class="collapse navbar-collapse text-right w-auto order-2" id="navbarText2">
                     <ul class="nav navbar-nav mr-auto">
-                        <li class="nav-item navbar-right">
-                            <a class="nav-link" href="travelmore/meldaan">Aanmelden</a>
-                        </li>
+                        <ui:fragment rendered="#{ViewController.activeTab=='bookingen'}">
+                            <li class="nav-item active">
+                                <h:outputLink value = "/travelmore/bezoeker/login.xhtml" styleClass="nav-link" rendered="#{GebruikerController.getAangemeld() == false}">Aanmelden</h:outputLink>
+                            </li>
+                        </ui:fragment>
+                        <ui:fragment rendered="#{ViewController.activeTab!='bookingen'}">
+                            <li class="nav-item">
+                                <h:outputLink value = "/travelmore/bezoeker/login.xhtml" styleClass="nav-link" rendered="#{GebruikerController.getAangemeld() == false}">Aanmelden</h:outputLink>
+                            </li>
+                        </ui:fragment>
+                        <h:panelGroup class="nav-item dropdown" rendered="#{GebruikerController.getAangemeld()}">
+                            <a class="nav-link dropdown-toggle navbar-text active" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                #{GebruikerController.aangemeldeGebruiker.naam}
+                            </a>
+                            <div class="dropdown-menu test" aria-labelledby="navbarDropdownMenuLink">
+                                <h:form>
+                                    <h:commandLink value="Uitloggen" class="dropdown-item" action="#{GebruikerController.logout}" />
+                                </h:form>
+                            </div>
+                        </h:panelGroup>
                     </ul>
                 </div>
             </div>

@@ -1,29 +1,35 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:body>
     <ui:composition template="/templates/layout.xhtml">
+
+        <f:metadata >
+            <f:viewAction action="#{ViewController.setActiveTab('home')}" />
+        </f:metadata>
+
         <ui:define name="content">
 
             <h2 class="nieuws">Nieuws</h2>
 
             <div class="card-deck">
                 <div class="card">
-                    <img class="card-img-top" src="./resources/images/staking.jpg" alt="Staking" />
+                    <img class="card-img-top" src="/travelmore/resources/images/staking.jpg" alt="Staking" />
                     <div class="card-body">
                         <h5 class="card-title">Staking Ryanair</h5>
                         <p class="card-text">De belgische vluchten vanuit ryanair kunnen vertragingen oplopen door de staking die er al enkele dagen gaande is.</p>
                     </div>
                 </div>
                 <div class="card">
-                    <img class="card-img-top" src="./resources/images/vulkaan.jpg" alt="Vulkaan" />
+                    <img class="card-img-top" src="/travelmore/resources/images/vulkaan.jpg" alt="Vulkaan" />
                     <div class="card-body">
                         <h5 class="card-title">Vulkaan</h5>
                         <p class="card-text">Vulkaan katrina zorgt voor ernstige vertragingen in Hawai.</p>
                     </div>
                 </div>
                 <div class="card">
-                    <img class="card-img-top" src="./resources/images/bagage.jpg" alt="Bagage" />
+                    <img class="card-img-top" src="/travelmore/resources/images/bagage.jpg" alt="Bagage" />
                     <div class="card-body">
                         <h5 class="card-title">Bagage</h5>
                         <p class="card-text">Onze maatschappijen waar wij mee samenwerken zijn onlangs verkozen tot beste bagage afhandelaars van de wereld. Dit is bepaald door het agentschap van luchtverkeer.</p>
