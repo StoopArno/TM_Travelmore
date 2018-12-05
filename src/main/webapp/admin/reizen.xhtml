@@ -7,16 +7,13 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
-<ui:composition template="/templates/layout.xhtml">
+<h:body>
+<ui:composition template="/templates/layout_admin.xhtml">
 
     <f:metadata >
         <f:viewAction action="#{ViewController.setActiveTab('reizen')}" />
     </f:metadata>
 
-    <ui:define name="carousel"></ui:define>
-    <ui:define name="header">
-        <ui:include src="/templates/adminHeader.xhtml" />
-    </ui:define>
     <ui:define name="title">Reizen bewerken</ui:define>
     <ui:define name="content">
         <br/>
@@ -256,4 +253,5 @@
         </script>
     </ui:define>
 </ui:composition>
+</h:body>
 </html>
