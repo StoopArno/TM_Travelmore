@@ -5,6 +5,7 @@
     <ui:composition>
         <nav class="navbar navbar-default navbar-fixed-top navbar-expand-md order-md-0">
             <div class="container">
+
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarText" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="sr-only">Toggle navigation</span>
@@ -18,38 +19,39 @@
                         Travel<span>More</span>
                     </a>
                 </div>
+
                 <div class="collapse navbar-collapse w-75 order-1" id="navbarText">
                     <ul class="nav navbar-nav mr-auto">
                         <ui:fragment rendered="#{ViewController.activeTab=='home'}">
                             <li class="nav-item active">
-                                <a class="nav-link" href="/travelmore">Home</a>
+                                <h:outputLink value = "/travelmore/" styleClass="nav-link">Home</h:outputLink>
                             </li>
                         </ui:fragment>
                         <ui:fragment rendered="#{ViewController.activeTab!='home'}">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/travelmore">Home</a>
+                            <li class="nav-item">
+                                <h:outputLink value = "/travelmore/" styleClass="nav-link">Home</h:outputLink>
                             </li>
                         </ui:fragment>
 
                         <ui:fragment rendered="#{ViewController.activeTab=='reizen'}">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Reizen</a>
+                                <h:outputLink value = "/travelmore/datatable.xhtml" styleClass="nav-link">Reizen</h:outputLink>
                             </li>
                         </ui:fragment>
                         <ui:fragment rendered="#{ViewController.activeTab!='reizen'}">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Reizen</a>
+                                <h:outputLink value = "/travelmore/datatable.xhtml" styleClass="nav-link">Reizen</h:outputLink>
                             </li>
                         </ui:fragment>
 
                         <ui:fragment rendered="#{ViewController.activeTab=='bookingen'}">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Bookingen</a>
+                                <h:outputLink value = "/travelmore/bookingen.xhtml" styleClass="nav-link">Bookingen</h:outputLink>
                             </li>
                         </ui:fragment>
                         <ui:fragment rendered="#{ViewController.activeTab!='bookingen'}">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Bookingen</a>
+                                <h:outputLink value = "/travelmore/bookingen.xhtml" styleClass="nav-link">Bookingen</h:outputLink>
                             </li>
                         </ui:fragment>
                     </ul>

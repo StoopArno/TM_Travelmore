@@ -1,13 +1,6 @@
-/*=================================================
-||				1. Imports
-==================================================*/
+/* IMPORTS */
 @import url(http://fonts.googleapis.com/css?family=Roboto:100,400,700);
 @import url(http://fonts.googleapis.com/css?family=Roboto+Slab);
-
-.nieuws{
-    text-align: center;
-    margin-top: 30px;
-}
 
 .card{
     margin-top: 20px !important;
@@ -24,9 +17,7 @@
     }
 }
 
-/*.navbar{*/
-    /*background-color: #00716C !important;*/
-/*}*/
+/* NAVBAR */
 .navbar-toggle {
     background-color: rgb(96, 201, 235);
     border: 1px solid rgb(96, 201, 235);
@@ -51,10 +42,6 @@
     -webkit-box-shadow: none;
     box-shadow: none;
 }
-/*=================================================
-||				3. Header
-==================================================*/
-/*navbar*/
 .navbar-default .navbar-brand{
     border: 1px solid transparent;
     color: #009cab;
@@ -108,7 +95,11 @@ ul.nav.navbar-nav.navbar-right{
     background: #e8f9ff;
 }
 
+.navbar-toggler-icon{
+    background-color: #009cab;
+}
 
+/* FOOTER */
 .footer{
     text-align: center;
     padding: 20px;
@@ -131,4 +122,79 @@ ul.nav.navbar-nav.navbar-right{
     float: right;
     background-color: #f04c25;
     border-radius: 4px;
+}
+
+/* INDEX */
+/* INDEX carousel */
+.carousel .carousel-item {
+    height: 55vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+}
+
+#carousel-image1 {
+    background-image: url(#{request.contextPath}/resources/images/vliegtuig.jpg);
+    background-position: center center;
+}
+
+#carousel-image2 {
+    background-image: url(#{request.contextPath}/resources/images/bus.jpg);
+    background-position: center center;
+}
+
+/* INDEX zoek reis */
+.zoek-reis{
+    padding-top: 35px;
+    padding-bottom: 60px;
+}
+
+.custom-addon{
+    background: #fff;
+}
+
+.zoek-btn{
+    margin-top: 30px;
+    color: #FFF;
+    width: 100%;
+    background-color: #009cab;
+    border-color: #FFF;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 400;
+    transition: all .4s ease-in-out;
+}
+.zoek-btn:hover{
+    background: #fff;
+    color: #f04c25;
+    border: 1px solid #009cab;
+}
+
+/* INDEX nieuws */
+.nieuws{
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background-color: lightgray;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 576px) {
+    .carousel-item {
+        height: 40vh;
+    }
+}
+@media (min-width: 768px) {
+    .carousel-item {
+        height: 50vh;
+    }
+}
+@media (min-width: 992px) {
+    .carousel-item {
+        height: 50vh;
+    }
+}
+@media (min-width: 1200px) {
+    .carousel-item {
+        height: 60vh;
+    }
 }
