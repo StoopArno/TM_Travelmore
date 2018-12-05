@@ -35,6 +35,8 @@ public class BookingController {
         return this.bookingService.findBookingById(geselecteerdeBooking.getId());
     }
 
+    public  int aantalPlaatenOver(int id) { return  this.bookingService.aantalPlaatsenOver(id);}
+
     public List<Booking> getReizenByUserId(int gebruikersID){
         return this.bookingService.findAllBookingsByUserId(gebruikersID);
     }
@@ -55,9 +57,6 @@ public class BookingController {
         return "/index";
     }
 
-
-
-    //GETTERS en SETTERS
     public Booking getGeselecteerdeBooking() {
         return geselecteerdeBooking;
     }
