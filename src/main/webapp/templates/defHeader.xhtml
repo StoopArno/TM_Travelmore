@@ -30,18 +30,40 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Reizen</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Bookingen</a>
-                    </li>
-                    <li class="nav-item dropdown">
 
-                    </li>
+                    <ui:fragment rendered="#{ViewController.activeTab=='home'}">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/travelmore">Home</a>
+                        </li>
+                    </ui:fragment>
+                    <ui:fragment rendered="#{ViewController.activeTab!='home'}">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/travelmore">Home</a>
+                        </li>
+                    </ui:fragment>
+
+                    <ui:fragment rendered="#{ViewController.activeTab=='reizen'}">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="">Reizen</a>
+                        </li>
+                    </ui:fragment>
+                    <ui:fragment rendered="#{ViewController.activeTab!='reizen'}">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Reizen</a>
+                        </li>
+                    </ui:fragment>
+
+                    <ui:fragment rendered="#{ViewController.activeTab=='bookingen'}">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Bookingen</a>
+                        </li>
+                    </ui:fragment>
+                    <ui:fragment rendered="#{ViewController.activeTab!='bookingen'}">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Bookingen</a>
+                        </li>
+                    </ui:fragment>
+
                 </ul>
                 <span class="navbar-text">
                     <h:outputLink value = "/travelmore/bezoeker/login.xhtml" rendered="#{GebruikerController.getAangemeld() == false}">Meld aan</h:outputLink>

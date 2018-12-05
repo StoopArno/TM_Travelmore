@@ -6,7 +6,6 @@ import be.thomasmore.travelmore.service.GebruikerService;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
-import java.io.Serializable;
 import java.util.List;
 
 @ManagedBean(name="GebruikerController")
@@ -90,7 +89,7 @@ public class GebruikerController{
     }
 
     public List<Gebruiker> getGebruikers(){
-        return gebruikerService.findAllLocations();
+        return gebruikerService.findAllGebruikers();
     }
 
     public void newGebruiker(){
