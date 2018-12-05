@@ -22,30 +22,51 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
             <ui:define name="content">
                 <h1>Onze reizen : </h1>
                 <div class="row">
-<<<<<<< HEAD
                     <b:dataTable value="#{ReisController.reizen}"
                                  var="reis">
                         <b:dataTableColumn label="Vertrek Locatie" value="#{reis.vertrekLocatie.naam}"/>
                         <b:dataTableColumn label="Vertrek Tijd" value="#{reis.vertrekTijd.time}" />
-=======
-<<<<<<< HEAD
-
-                    <b:dataTable value="#{ReisController.reizen}"
-=======
-                    <b:dataTable value="#{ReisController.getReizenFilterByTransportmiddel('auto')}"
->>>>>>> 590f37565f7515e77b119d9c3b07089b9640fa0d
-                                 var="reis">
-                       <b:dataTableColumn label="Vertrek Locatie" value="#{reis.vertrekLocatie.naam}"/>
-                         <b:dataTableColumn label="Vertrek Tijd" value="#{reis.vertrekTijd}" />
-                        <b:dataTableColumn label="Vertrek Tijd" value="#{reis.vertrekTijd}" />
->>>>>>> 8871762288daa921de4a5a9d1109c918da6dbe6f
                         <b:dataTableColumn label="Aankomst Locatie" value="#{reis.aankomstLocatie.naam}" />
                         <b:dataTableColumn label="Aankomst Tijd" value="#{reis.aankomstTijd.time}" />
                         <b:dataTableColumn label="Aantal plaatsen" value="#{reis.plaatsen}" />
                         <b:dataTableColumn label="Prijs per persoon" value="#{reis.prijsPerPersoon}"  />
                         <b:dataTableColumn label="Transportmiddel" value="#{reis.transportmiddel}"/>
                     </b:dataTable>
+                </div>
+                <div class="row">
+                    <p:dataTable var="reis" value="#{ReisController.reizen}">
+                        <p:column headerText="Vertrek Locatie">
+                            <h:outputText value="#{reis.vertrekLocatie.naam}" />
+                        </p:column>
 
+                        <p:column headerText="Vertrek Tijd">
+                            <h:outputText value="#{reis.vertrekTijd.time}" />
+                        </p:column>
+
+                        <p:column headerText="Aankomst Locatie">
+                            <h:outputText value="#{reis.aankomstLocatie.naam}" />
+                        </p:column>
+
+                        <p:column headerText="Aankomst Tijd">
+                            <h:outputText value="#{reis.aankomstTijd.time}" />
+                        </p:column>
+
+                        <p:column headerText="Plaatsen">
+                            <h:outputText value="#{reis.plaatsen}" />
+                        </p:column>
+
+                        <p:column headerText="Plaatsen">
+                            <h:outputText value="#{reis.prijsPerPersoon}" />
+                        </p:column>
+
+                        <p:column headerText="transportmiddel">
+                            <h:outputText value="#{reis.transportmiddel}" />
+                        </p:column>
+
+                        <p:column>
+                            <h:button value="boeken"></h:button>
+                        </p:column>
+                    </p:dataTable>
                 </div>
             </ui:define>
         </ui:composition>
