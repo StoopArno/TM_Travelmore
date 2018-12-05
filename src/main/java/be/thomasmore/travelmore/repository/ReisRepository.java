@@ -5,6 +5,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
+import java.text.DecimalFormat;
 
 public class ReisRepository {
 
@@ -25,10 +26,25 @@ public class ReisRepository {
    //     return entityManager.createNamedQuery(Reis.FIND_ALLVERTREKLOCATIES, Reis.class).getResultList();
    // }
 
-    public  List<Reis> FilterVertreklocatie() {
+    public  List<Reis> FilterVertreklocatie(String value) {
         Query  filterLocatie = entityManager.createNamedQuery(Reis.FILTERVERTREKLOCATIE);
-        String locatie = "Sarajevo";
-        return filterLocatie.setParameter("naam",   locatie.toLowerCase() ).getResultList();}
+        return filterLocatie.setParameter("naam",   value.toLowerCase() ).getResultList();}
+
+    public  List<Reis> FilterAankomstlocatie(String value) {
+        Query  filterLocatie = entityManager.createNamedQuery(Reis.FILTERAANKOMSTLOCATIE);
+        return filterLocatie.setParameter("naam",   value.toLowerCase() ).getResultList();}
+
+    public  List<Reis> FilterAantalPlaatsen(String value) {
+        Query  filterLocatie = entityManager.createNamedQuery(Reis.FILTERAANTALPLAATSEN);
+        return filterLocatie.setParameter("plaatsen",   Integer.parseInt(value)  ).getResultList();}
+
+    public  List<Reis> FilterPrijsPerPersoon(String value) {
+        Query  filterLocatie = entityManager.createNamedQuery(Reis.FILTERPRIJSPERPERSOON);
+        return filterLocatie.setParameter("prijs",    Double.parseDouble(value)  ).getResultList();}
+
+    public  List<Reis> FilterTransportmiddel(String value) {
+        Query  filterLocatie = entityManager.createNamedQuery(Reis.FILTERTRANSPORTMIDDEL);
+        return filterLocatie.setParameter("naam",   value.toLowerCase() ).getResultList();}
 
 
 
