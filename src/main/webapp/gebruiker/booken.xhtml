@@ -8,7 +8,39 @@
 <h:body>
 <ui:composition template="/templates/layout.xhtml">
     <ui:define name="content">
-    <p>dit is een test</p>
+        <div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                            <label>
+                                #{BookingController.geslecteerdeReis.vertrekLocatie.land}, #{BookingController.geslecteerdeReis.vertrekLocatie.naam}
+                                ---> #{BookingController.geslecteerdeReis.aankomstLocatie.land}, #{BookingController.geslecteerdeReis.aankomstLocatie.naam}
+                            </label>
+                            <label> #{BookingController.geslecteerdeReis.vertrekTijd.time} --->  #{BookingController.geslecteerdeReis.aankomstTijd.time} </label>
+                            <label>#{BookingController.geslecteerdeReis.transportmiddel}</label><br></br>
+                            <label>#{BookingController.geslecteerdeReis.prijsPerPersoon}</label>
+                    </div>
+                    <div class="col-md-7">
+                        <h:form class="login-form">
+                            <div class="form-group">
+                                <label >Aantal personen</label>
+                                <h:inputText value="#{BookingController.nieuweBooking.aantalPersonen}" type="text" class="form-control" />
+                            </div>
+
+                            <div class="form-check">
+                                <a href="../index.xhtml">Terug</a>
+
+                                <h:commandButton value="PrijsBerekenen" class="btn btn-primary float-right" action="#{BookingController.navigateToOverzichtBooking}" />
+
+
+                            </div>
+                        </h:form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </ui:define>
 </ui:composition>
 </h:body>

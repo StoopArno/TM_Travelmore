@@ -16,12 +16,12 @@
                     <ul class="nav navbar-nav mr-auto">
                         <ui:fragment rendered="#{ViewController.activeTab=='home'}">
                             <li class="nav-item active">
-                                <h:outputLink value = "/travelmore/" styleClass="nav-link">Home</h:outputLink>
+                                <h:outputLink value = "index.xhtml" styleClass="nav-link">Home</h:outputLink>
                             </li>
                         </ui:fragment>
                         <ui:fragment rendered="#{ViewController.activeTab!='home'}">
                             <li class="nav-item">
-                                <h:outputLink value = "/travelmore/" styleClass="nav-link">Home</h:outputLink>
+                                <h:outputLink value = "index.xhtml" styleClass="nav-link">Home</h:outputLink>
                             </li>
                         </ui:fragment>
                         <ui:fragment rendered="#{ViewController.activeTab=='reizen'}">
@@ -35,12 +35,17 @@
                             </li>
                         </ui:fragment>
 
-                        <ui:fragment rendered="#{ViewController.activeTab=='bookingen'}">
+                        <ui:fragment rendered="#{ViewController.activeTab=='bookingen' and GebruikerController.aangemeld==true}">
                             <li class="nav-item active">
                                 <h:outputLink value = "/travelmore/gebruiker/bookingen.xhtml" styleClass="nav-link">Bookingen</h:outputLink>
                             </li>
                         </ui:fragment>
+<<<<<<< HEAD
+                        <ui:fragment rendered="#{ViewController.activeTab!='bookingen'  and GebruikerController.aangemeld==true}">
+=======
+
                         <ui:fragment rendered="#{ViewController.activeTab!='bookingen'}">
+>>>>>>> 521aa9ce18593d43fa9753122d63d4c3d09c350d
                             <li class="nav-item">
                                 <h:outputLink value = "/travelmore/gebruiker/bookingen.xhtml" styleClass="nav-link">Bookingen</h:outputLink>
                             </li>

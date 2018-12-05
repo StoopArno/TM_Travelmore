@@ -29,7 +29,6 @@ import java.util.GregorianCalendar;
                         query = "SELECT r.aankomstLocatie.id FROM Reis r"
                 ),
                 @NamedQuery(
-
                         name = Reis.FILTERVERTREKLOCATIE,
                         query = "SELECT r FROM Reis r Where lower(r.vertrekLocatie.naam) = :naam"
                 ),
