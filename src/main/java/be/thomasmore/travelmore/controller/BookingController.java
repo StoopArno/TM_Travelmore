@@ -27,6 +27,8 @@ public class BookingController {
         return this.bookingService.findBookingById(geselecteerdeBooking.getId());
     }
 
+    public  int aantalPlaatenOver(int id) { return  this.bookingService.aantalPlaatsenOver(id);}
+
     public Booking getGeselecteerdeBooking() {
         return geselecteerdeBooking;
     }
