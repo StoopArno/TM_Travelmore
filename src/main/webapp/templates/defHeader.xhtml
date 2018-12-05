@@ -22,34 +22,34 @@
                     <ul class="nav navbar-nav mr-auto">
                         <ui:fragment rendered="#{ViewController.activeTab=='home'}">
                             <li class="nav-item active">
-                                <a class="nav-link" href="/travelmore">Home</a>
+                                <a class="nav-link" href="/travelmore/">Home</a>
                             </li>
                         </ui:fragment>
                         <ui:fragment rendered="#{ViewController.activeTab!='home'}">
                             <li class="nav-item active">
-                                <a class="nav-link" href="/travelmore">Home</a>
+                                <a class="nav-link" href="/travelmore/">Home</a>
                             </li>
                         </ui:fragment>
 
                         <ui:fragment rendered="#{ViewController.activeTab=='reizen'}">
                             <li class="nav-item active">
-                                <a class="nav-link" href="">Reizen</a>
+                                <a class="nav-link" href="/travelmore/reizen">Reizen</a>
                             </li>
                         </ui:fragment>
                         <ui:fragment rendered="#{ViewController.activeTab!='reizen'}">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Reizen</a>
+                                <a class="nav-link" href="/travelmore/reizen">Reizen</a>
                             </li>
                         </ui:fragment>
 
                         <ui:fragment rendered="#{ViewController.activeTab=='bookingen'}">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Bookingen</a>
+                                <a class="nav-link" href="/travelmore/bookingen">Bookingen</a>
                             </li>
                         </ui:fragment>
                         <ui:fragment rendered="#{ViewController.activeTab!='bookingen'}">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Bookingen</a>
+                                <a class="nav-link" href="/travelmore/bookingen">Bookingen</a>
                             </li>
                         </ui:fragment>
                     </ul>
