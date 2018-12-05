@@ -48,6 +48,11 @@ import java.util.GregorianCalendar;
                         name = Reis.FILTERTRANSPORTMIDDEL,
                         query = "SELECT r FROM Reis r Where lower(r.transportmiddel) = :naam"
                 ),
+                @NamedQuery(
+                        name = Reis.FILTERVERTREKTIJD,
+                        query = "SELECT r FROM Reis r Where r.vertrekTijd like  :vertrektijd"
+                )
+
         }
 )
 public class Reis {
@@ -66,6 +71,7 @@ public class Reis {
     public static final String FILTERAANTALPLAATSEN = "Reis.filteraantalplaatsen";
     public static final String FILTERPRIJSPERPERSOON = "Reis.filterprijsperpersoon";
     public static final String FILTERTRANSPORTMIDDEL = "Reis.filterTransportmiddel";
+    public static final String FILTERVERTREKTIJD = "Reis.filterVertrekTijd";
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)

@@ -26,9 +26,8 @@ public class ReisController {
     @Inject
     private LocatieService locatieService;
 
-    public List<Reis> getReizen(){
-        return this.reisService.findAllReis();
-    }
+
+    public  List<Reis> getReizen() {return this.reisService.findAllReis();}
 
     public  List<Reis> getReizenFilterByVertrekLocatie(String value) {return this.reisService.filterReisVertrekLocatie(value);}
 
@@ -39,6 +38,8 @@ public class ReisController {
     public  List<Reis> getReizenFilterByPrijsPerPersoon(String value) {return this.reisService.filterReisPrijsPerPersoon(value);}
 
     public  List<Reis> getReizenFilterByTransportmiddel(String value) {return this.reisService.filterReisTransportmiddel(value);}
+
+    public  List<Reis> getReizenFilterByVertrekTijd(String value) {return this.reisService.filterReisVertrekTijd(value);}
 
     public void updateReis(int reisId, int vertrekLocatieId, int aankomstLocatieId, double prijsPerPersoon, String transportmiddel, int plaatsen){
         Reis reis = (reisId == 0) ? new Reis() : reisService.findReisById(reisId);

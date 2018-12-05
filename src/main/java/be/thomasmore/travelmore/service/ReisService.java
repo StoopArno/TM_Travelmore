@@ -31,6 +31,8 @@ public class ReisService {
 
     public List<Reis> filterReisTransportmiddel(String value) {return  reisRepository.FilterTransportmiddel(value);}
 
+    public List<Reis> filterReisVertrekTijd(String value) {return  reisRepository.FilterVertrektijd(value);}
+
     public void insert(Reis reis) { reisRepository.insert(reis); }
 
     public void delete(int id) { reisRepository.delete(id); }
