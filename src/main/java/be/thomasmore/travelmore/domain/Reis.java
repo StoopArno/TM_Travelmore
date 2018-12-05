@@ -165,7 +165,4 @@ public class Reis {
     public void setPlaatsen(int plaatsen) {
         this.plaatsen = plaatsen;
     }
-
-
-
 }

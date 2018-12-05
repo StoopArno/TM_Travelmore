@@ -23,7 +23,8 @@
                 <form class="row">
                     <div class="col-md-3 col-sm-6">
                             <div class="form-group form-dropdown">
-                                <select class="form-control border-radius" id="sel1">
+                                <label for="locatie">Naar?</label>
+                                <select class="form-control border-radius" id="locatie">
                                     <option>Amerika</option>
                                     <option>Bangladesh</option>
                                     <option>Canada</option>
@@ -33,23 +34,26 @@
                     </div>
 
                     <div class="col-md-3 col-sm-6">
-                        <div class="input-group">
-                            <input type="date" class="form-control border-radius border-right" placeholder="Aankomst"/>
-                            <span class="input-group-addon border-radius custom-addon"></span>
+                        <div class="form-group">
+                            <label for="vertrek">Vertrekken?</label>
+                            <div class="input-group">
+                                <input type="date" class="form-control border-radius border-right" id="vertrek"/>
+                            </div>
                         </div>
                     </div>
 
                     <div class="col-md-3 col-sm-6">
-                        <div class="input-group">
-                            <input type="date" class="form-control border-radius border-right" placeholder="Vertrek"/>
-                            <span class="input-group-addon border-radius custom-addon"><i class="ion-ios-calendar"></i>
-					        </span>
+                        <div class="form-group">
+                            <label for="terugkeren">Terugkeren?</label>
+                            <div class="input-group">
+                                <input type="date" class="form-control border-radius border-right" id="terugkeren"/>
+                            </div>
                         </div>
                     </div>
 
                     <div class="col-md-3 col-sm-6">
-                        <div class="btn btn-default border-radius custom-button">
-                            Zoeken
+                        <div class="form-group">
+                            <button class="btn btn-default zoek-btn" id="zoek">Zoeken</button>
                         </div>
                     </div>
                 </form>
