@@ -7,8 +7,8 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
-<ui:composition template="/templates/layout.xhtml">
-
+<h:body>
+<ui:composition template="/templates/layout_admin.xhtml">
     <f:metadata >
         <f:viewAction action="#{ViewController.setActiveTab('bookingen')}" />
     </f:metadata>
@@ -77,4 +77,5 @@
 
     </ui:define>
 </ui:composition>
+</h:body>
 </html>
