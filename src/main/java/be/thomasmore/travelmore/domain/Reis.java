@@ -29,12 +29,8 @@ import java.util.GregorianCalendar;
                         query = "SELECT r.aankomstLocatie.id FROM Reis r"
                 ),
                 @NamedQuery(
-<<<<<<< HEAD
-                      name = Reis.FILTERVERTREKLOCATIE,
-                       query = "SELECT r FROM Reis r Where lower(r.aankomstLocatie.naam) LIKE :naam"
-                )
-=======
-                       name = Reis.FILTERVERTREKLOCATIE,
+
+                        name = Reis.FILTERVERTREKLOCATIE,
                         query = "SELECT r FROM Reis r Where lower(r.vertrekLocatie.naam) = :naam"
                 ),
                 @NamedQuery(
@@ -53,15 +49,10 @@ import java.util.GregorianCalendar;
                         name = Reis.FILTERTRANSPORTMIDDEL,
                         query = "SELECT r FROM Reis r Where lower(r.transportmiddel) = :naam"
                 ),
-<<<<<<< HEAD
                 @NamedQuery(
                         name = Reis.FILTERVERTREKTIJD,
                         query = "SELECT r FROM Reis r Where r.vertrekTijd like  :vertrektijd"
                 )
-
-=======
->>>>>>> 590f37565f7515e77b119d9c3b07089b9640fa0d
->>>>>>> 8871762288daa921de4a5a9d1109c918da6dbe6f
         }
 )
 public class Reis {
