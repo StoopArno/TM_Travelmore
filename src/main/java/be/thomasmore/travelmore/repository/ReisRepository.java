@@ -50,7 +50,7 @@ public class ReisRepository {
 
     public  List<Reis> FilterVertrektijd(String value) {
         Query  filterLocatie = entityManager.createNamedQuery(Reis.FILTERVERTREKTIJD);
-        return filterLocatie.setParameter("vertrektijd",   value ).getResultList();}
+        return filterLocatie.setParameter("vertrektijd",  value ).getResultList();}
 
 
     public List<Integer> findVertrekLocatieIds(){
