@@ -230,24 +230,28 @@ ul.nav.navbar-nav.navbar-right{
     left: 50%;
     top: 50%;
     z-index: 1;
-    margin: -75px 0 0 -75px;
-    width: 194px;
-    height: 194px;
+    margin: -75px 0 0 -60px;
+    width: 120px;
+    height: 120px;
     background-image: url(#{request.contextPath}/resources/images/loading.png) ;
     background-attachment: scroll;
     background-size: contain;
     background-repeat: no-repeat;
 }
 #loader .circle{
-    border: 12px solid transparent;
-    border-top: 12px solid #009cab;
-    border-bottom: 12px solid #009cab;
-    border-right: 12px solid #009cab;
+    border: 8px solid transparent;
+    border-top: 8px solid #009cab;
+    border-bottom: 8px solid #009cab;
+    border-right: 8px solid #009cab;
     border-radius: 50%;
-    width: 194px;
-    height: 194px;
+    width: 120px;
+    height: 120px;
     -webkit-animation: spin 2s linear infinite;
-    animation: spin 1s linear infinite;
+    animation: spin 0.8s linear infinite;
+}
+#loadDiv {
+    display: none;
+    text-align: center;
 }
 .animate-bottom {
     position: relative;

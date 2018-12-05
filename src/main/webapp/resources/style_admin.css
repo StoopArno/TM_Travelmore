@@ -128,126 +128,74 @@ ul.nav.navbar-nav.navbar-right{
     border-radius: 4px;
 }
 
-/* INDEX */
-/* INDEX carousel */
-.carousel .carousel-item {
-    height: 55vh;
-    background-size: cover;
-    background-repeat: no-repeat;
+/* LOADER */
+#loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    margin: -75px 0 0 -60px;
+    width: 120px;
+    height: 120px;
+    background-image: url(#{request.contextPath}/resources/images/loading.png) ;
     background-attachment: scroll;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
-
-#carousel-image1 {
-    background-image: url(#{request.contextPath}/resources/images/vliegtuig.jpg);
-    background-position: center center;
+#loader .circle{
+    border: 8px solid transparent;
+    border-top: 8px solid #009cab;
+    border-bottom: 8px solid #009cab;
+    border-right: 8px solid #009cab;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 0.8s linear infinite;
 }
-
-#carousel-image2 {
-    background-image: url(#{request.contextPath}/resources/images/bus.jpg);
-    background-position: center center;
-}
-
-/* INDEX zoek reis */
-.zoek-reis{
-    padding-top: 35px;
-    padding-bottom: 60px;
-}
-
-.custom-addon{
-    background: #fff;
-}
-
-.zoek-btn{
-    margin-top: 30px;
-    color: #FFF;
-    width: 100%;
-    background-color: #009cab;
-    border-color: #FFF;
-    text-transform: uppercase;
+#loadDiv {
+    display: none;
     text-align: center;
-    font-weight: 400;
-    transition: all .4s ease-in-out;
 }
-.zoek-btn:hover{
-    background: #fff;
-    color: #f04c25;
-    border: 1px solid #009cab;
-}
-
-/* INDEX nieuws */
-.nieuws{
-    padding-top: 60px;
-    padding-bottom: 60px;
-    background-color: lightgray;
+.animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s
 }
 
-/* LOGIN */
-.login-block{
-    background: #f04c25;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #009cab, #f04c25);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #009cab, #f04c25); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    width:100%;
-    min-height: 83vh;
-    padding : 50px 0;
-}
-.banner-sec{
-    background:url(https://sceptr.net/wp-content/uploads/2017/04/Landend-vliegtuig-op-luchthaven-Zaventem.jpg) no-repeat center;
-    background-size:cover;
-    min-height:500px;
-    border-radius: 0 10px 10px 0;
-    padding:0;
-}
-.containerLogin{
-    background:#fff;
-    border-radius: 10px;
-    box-shadow:10px 10px 0px rgba(0,0,0,0.1);
-    margin-bottom: 30px;
+/* ANIMATIONS */
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
 }
 
-.login-sec{
-    padding: 50px 30px;
-    position:relative;
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-.login-sec .copy-text{
-    position:absolute; width:80%; bottom:20px; font-size:13px; text-align:center;}
-.login-sec .copy-text i{color:#009cab;}
-.login-sec .copy-text a{color:#f04c25;}
-.login-sec h2{margin-bottom:30px; font-weight:600; font-size:30px; color: #f04c25;}
-.login-sec h2:after{content:" "; width:100px; height:5px; background:#009cab; display:block; margin-top:20px; border-radius:3px; margin-left:auto;margin-right:auto}
-
-
-.btn-login{
-    background: #f04c25;
-    color:#fff;
-    font-weight:600;
+@-webkit-keyframes animatebottom {
+    from { bottom:-100px; opacity:0 }
+    to { bottom:0px; opacity:1 }
 }
-.btn-login:hover, .btn-login:active{
-    background: rgba(255, 91, 48, 0.71);
+
+@keyframes animatebottom {
+    from{ bottom:-100px; opacity:0 }
+    to{ bottom:0; opacity:1 }
 }
-/*.banner-text{width:70%; position:absolute; bottom:40px; padding-left:20px;}*/
-/*.banner-text h2{color:#fff; font-weight:600;}*/
-/*.banner-text h2:after{content:" "; width:100px; height:5px; background:#FFF; display:block; margin-top:20px; border-radius:3px;}*/
-/*.banner-text p{color:#fff;}*/
 
 /* MEDIA QUERIES */
 @media (max-width: 576px) {
-    .carousel-item {
-        height: 40vh;
-    }
+
 }
 @media (min-width: 768px) {
-    .carousel-item {
-        height: 50vh;
-    }
+
 }
 @media (min-width: 992px) {
-    .carousel-item {
-        height: 50vh;
-    }
+
 }
 @media (min-width: 1200px) {
-    .carousel-item {
-        height: 60vh;
-    }
+
 }

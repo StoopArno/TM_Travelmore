@@ -3,7 +3,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <ui:composition>
-        <nav class="navbar navbar-default navbar-fixed-top navbar-expand-md order-md-0">
+        <nav class="navbar navbar-default navbar-fixed-top navbar-expand-md sticky-top">
             <div class="container">
                 <a class="navbar-brand" href="/travelmore/" title="HOME">
                     <h:graphicImage height="60px" library="images" name="navheader.png" />
@@ -16,12 +16,12 @@
                     <ul class="nav navbar-nav mr-auto">
                         <ui:fragment rendered="#{ViewController.activeTab=='home'}">
                             <li class="nav-item active">
-                                <h:outputLink value = "/index.xhtml" styleClass="nav-link">Home</h:outputLink>
+                                <h:outputLink value = "/travelmore/" styleClass="nav-link">Home</h:outputLink>
                             </li>
                         </ui:fragment>
                         <ui:fragment rendered="#{ViewController.activeTab!='home'}">
                             <li class="nav-item">
-                                <h:outputLink value = "/index.xhtml" styleClass="nav-link">Home</h:outputLink>
+                                <h:outputLink value = "/travelmore/" styleClass="nav-link">Home</h:outputLink>
                             </li>
                         </ui:fragment>
                         <ui:fragment rendered="#{ViewController.activeTab=='reizen'}">
@@ -34,39 +34,43 @@
                                 <h:outputLink value = "/travelmore/bezoeker/reizen.xhtml" styleClass="nav-link">Reizen</h:outputLink>
                             </li>
                         </ui:fragment>
-                        <ui:fragment rendered="#{ViewController.activeTab=='bookingen' and GebruikerController.aangemeld==true}">
+                        <ui:fragment rendered="#{ViewController.activeTab=='boekingen' and GebruikerController.aangemeld==true}">
                             <li class="nav-item active">
-                                <h:outputLink value = "/travelmore/gebruiker/bookingen.xhtml" styleClass="nav-link">Bookingen</h:outputLink>
+                                <h:outputLink value = "/travelmore/gebruiker/boekingen.xhtml" styleClass="nav-link">Boekingen</h:outputLink>
                             </li>
                         </ui:fragment>
-                        <ui:fragment rendered="#{ViewController.activeTab!='bookingen'  and GebruikerController.aangemeld==true}">
+                        <ui:fragment rendered="#{ViewController.activeTab!='boekingen'  and GebruikerController.aangemeld==true}">
                             <li class="nav-item">
-                                <h:outputLink value = "/travelmore/gebruiker/bookingen.xhtml" styleClass="nav-link">Bookingen</h:outputLink>
+                                <h:outputLink value = "/travelmore/gebruiker/boekingen.xhtml" styleClass="nav-link">Boekingen</h:outputLink>
                             </li>
                         </ui:fragment>
                     </ul>
                 </div>
                 <div class="collapse navbar-collapse text-right w-auto order-2 collapsemenu" id="navbarText2">
                     <ul class="nav navbar-nav mr-auto">
-                        <ui:fragment rendered="#{ViewController.activeTab=='bookingen'}">
+                        <ui:fragment rendered="#{ViewController.activeTab=='login'}">
                             <li class="nav-item active">
                                 <h:outputLink value = "/travelmore/bezoeker/login.xhtml" styleClass="nav-link" rendered="#{GebruikerController.getAangemeld() == false}">Aanmelden</h:outputLink>
                             </li>
                         </ui:fragment>
-                        <ui:fragment rendered="#{ViewController.activeTab!='bookingen'}">
+                        <ui:fragment rendered="#{ViewController.activeTab!='login'}">
                             <li class="nav-item">
                                 <h:outputLink value = "/travelmore/bezoeker/login.xhtml" styleClass="nav-link" rendered="#{GebruikerController.getAangemeld() == false}">Aanmelden</h:outputLink>
                             </li>
                         </ui:fragment>
-                        <h:panelGroup class="nav-item dropdown" rendered="#{GebruikerController.getAangemeld()}">
-                            <a class="nav-link dropdown-toggle navbar-text active" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                #{GebruikerController.aangemeldeGebruiker.naam}
-                            </a>
-                            <div class="dropdown-menu test" aria-labelledby="navbarDropdownMenuLink">
-                                <h:form>
-                                    <h:commandLink value="Uitloggen" class="dropdown-item" action="#{GebruikerController.logout}" />
-                                </h:form>
-                            </div>
+                        <h:panelGroup rendered="#{GebruikerController.getAangemeld()}">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle navbar-text active" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="white-space: nowrap">
+                                    #{GebruikerController.aangemeldeGebruiker.naam}
+                                </a>
+                                <div class="dropdown-menu test" aria-labelledby="navbarDropdownMenuLink">
+                                    <h:form>
+                                        <h:commandLink value="Admin dashboard" class="dropdown-item" action="#{GebruikerController.admin}" rendered="#{GebruikerController.aangemeldeGebruiker.soortGebruiker.getId()==2}"/>
+                                        <h:commandLink value="Mijn gegevens" class="dropdown-item" action="#{GebruikerController.gegevens}" />
+                                        <h:commandLink value="Uitloggen" class="dropdown-item" action="#{GebruikerController.logout}" />
+                                    </h:form>
+                                </div>
+                            </li>
                         </h:panelGroup>
                     </ul>
                 </div>

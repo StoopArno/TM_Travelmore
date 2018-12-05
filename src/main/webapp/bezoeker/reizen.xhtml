@@ -2,94 +2,87 @@
 <!DOCTYPE html
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+<html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:c="http://java.sun.com/jsp/jstl/core">
-
-<ui:composition template="/templates/layout.xhtml">
-<ui:define name="header">
-    <ui:include src="/templates/adminHeader.xhtml" />
-</ui:define>
-    <ui:define name="title">Onze reizen</ui:define>
-<ui:define name="content">
-<br/>
 <h:body>
-    <h:form>
-        <ui:composition template="/templates/layout.xhtml">
-            <ui:define name="content">
-                <h1>Onze reizen : </h1>
-                <div class="row">
-                    <p>filteren : </p>
-                    <h:inputText name="filtertekst"></h:inputText>
-                    <h:selectOneMenu>
-                        <f:selectItem itemLabel="vertrek locatie" itemValue="#{ReisController.getReizenFilterByVertrekLocatie(filtertekst.text)}"/>
-                        <f:selectItem itemLabel="aankomst locatie" itemValue="#{ReisController.getReizenFilterByAankomstLocatie(filtertekst.text)}"/>
-
-                        <f:selectItem itemLabel="transport" itemValue="#{ReisController.getReizenFilterByTransportmiddel(filtertekst.text)}"/>
-                    </h:selectOneMenu>
-                    <h:commandButton class="btn btn-primary"  value="filteren"/>
-                </div>
+<ui:composition template="/templates/layout.xhtml">
+    <f:metadata >
+        <f:viewAction action="#{ViewController.setActiveTab('reizen')}" />
+    </f:metadata>
+    <ui:composition template="/templates/layout.xhtml">
+        <ui:define name="title">Onze reizen</ui:define>
+        <ui:define name="content">
+            <!-- todo opmaak reizen overzicht -->
+            <div class="container">
                 <h:form>
-                <div class="row">
-                    <h:dataTable var="reis" class="table table-striped" value="#{ReisController.reizen}">
-                        <h:column>
-                            <f:facet name="header">Vertrek Locatie</f:facet>
-                            <h:outputText value="#{reis.vertrekLocatie.naam}" />
-                        </h:column>
+                    <h1>Onze reizen : </h1>
+                    <div class="row">
+                        <p>filteren : </p>
+                        <h:inputText name="filtertekst"></h:inputText>
+                        <h:selectOneMenu>
+                            <f:selectItem itemLabel="vertrek locatie" itemValue="#{ReisController.getReizenFilterByVertrekLocatie(filtertekst.text)}"/>
+                            <f:selectItem itemLabel="aankomst locatie" itemValue="#{ReisController.getReizenFilterByAankomstLocatie(filtertekst.text)}"/>
 
+                            <f:selectItem itemLabel="transport" itemValue="#{ReisController.getReizenFilterByTransportmiddel(filtertekst.text)}"/>
+                        </h:selectOneMenu>
+                        <h:commandButton class="btn btn-primary"  value="filteren"/>
+                    </div>
+                    <div class="row">
+                        <h:dataTable var="reis" class="table table-striped" value="#{ReisController.reizen}">
+                            <h:column>
+                                <f:facet name="header">Vertrek Locatie</f:facet>
+                                <h:outputText value="#{reis.vertrekLocatie.naam}" />
+                            </h:column>
 
-                        <h:column>
-                            <f:facet name="header">Vertrek Tijd</f:facet>
-                            <h:outputText value="#{reis.vertrekTijd}">
-                                <f:convertDateTime pattern="dd-MM-yyyy HH:MM" />
-                            </h:outputText>
+                            <h:column>
+                                <f:facet name="header">Vertrek Tijd</f:facet>
+                                <h:outputText value="#{reis.vertrekTijd}">
+                                    <f:convertDateTime pattern="dd-MM-yyyy HH:MM" />
+                                </h:outputText>
+                            </h:column>
 
-                        </h:column>
+                            <h:column>
+                                <f:facet name="header">Aankomst Locatie</f:facet>
+                                <h:outputText value="#{reis.aankomstLocatie.naam}" />
+                            </h:column>
 
-                        <h:column>
-                            <f:facet name="header">Aankomst Locatie</f:facet>
-                            <h:outputText value="#{reis.aankomstLocatie.naam}" />
-                        </h:column>
+                            <h:column>
+                                <f:facet name="header">Aankomst Tijd</f:facet>
+                                <h:outputText value="#{reis.aankomstTijd}">
+                                    <f:convertDateTime pattern="dd-MM-yyyy HH:MM" />
+                                </h:outputText>
+                            </h:column>
 
-                        <h:column>
-                            <f:facet name="header">Aankomst Tijd</f:facet>
-                            <h:outputText value="#{reis.aankomstTijd}">
-                                <f:convertDateTime pattern="dd-MM-yyyy HH:MM" />
-                            </h:outputText>
+                            <h:column name="Plaatsen">
+                                <f:facet name="header">Plaatsen/al geboekt</f:facet>
+                                <h:outputText value="#{reis.plaatsen} / "  />
+                                <h:outputText value="#{BookingController.aantalPlaatenOver(reis.id)}"/>
+                            </h:column>
 
-                        </h:column>
+                            <h:column>
+                                <f:facet name="header">prijs/persoon</f:facet>
+                                <h:outputText value="#{reis.prijsPerPersoon}" />
+                            </h:column>
 
-                        <h:column name="Plaatsen">
-                            <f:facet name="header">Plaatsen/al geboekt</f:facet>
-                            <h:outputText value="#{reis.plaatsen} / "  />
-                            <h:outputText value="#{BookingController.aantalPlaatenOver(reis.id)}"/>
-                        </h:column>
+                            <h:column>
+                                <f:facet name="header">transportmiddel</f:facet>
+                                <h:outputText value="#{reis.transportmiddel}" />
+                            </h:column>
 
-                        <h:column>
-                            <f:facet name="header">prijs/persoon</f:facet>
-                            <h:outputText value="#{reis.prijsPerPersoon}" />
-                        </h:column>
-
-                        <h:column>
-                            <f:facet name="header">transportmiddel</f:facet>
-                            <h:outputText value="#{reis.transportmiddel}" />
-                        </h:column>
-
-                        <h:column rendered="#{GebruikerController.getAangemeld()}">
-                            <h:commandButton class="btn btn-primary" action="#{BookingController.navigateToBooken(reis.id)}" value="boeken"/>
-                        </h:column>
-                    </h:dataTable>
-
-                </div>
+                            <h:column rendered="#{GebruikerController.getAangemeld()}">
+                                <h:commandButton class="btn btn-primary" action="#{BookingController.navigateToBooken(reis.id)}" value="boeken"/>
+                            </h:column>
+                        </h:dataTable>
+                    </div>
                 </h:form>
-            </ui:define>
-        </ui:composition>
-    </h:form>
-</h:body>
-</ui:define>
+            </div>
+        </ui:define>
+    </ui:composition>
 </ui:composition>
+</h:body>
 </html>

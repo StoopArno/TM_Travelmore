@@ -35,6 +35,16 @@ public class GebruikerController  {
         }
 
     }
+    public String admin(){
+        if(aangemeldeGebruiker.getSoortGebruiker().getId() == 2){
+            return "/admin/boekingen";
+        }else {
+            return "/";
+        }
+    }
+    public String gegevens(){
+        return "gebruiker/gegevens";
+    }
     public String logout(){
         setAangemeldeGebruiker(null);
         setAangemeld(false);
@@ -45,10 +55,10 @@ public class GebruikerController  {
             setAangemeldeGebruiker(this.gebruikerService.findGebruikerByEmail(gebruiker).get(0));
             setAangemeld(true);
             if(aangemeldeGebruiker.getSoortGebruiker().getId() == 1){
-                return "/index";
+                return "/";
             }
             else{
-                return "/admin/bookingen";
+                return "/admin/boekingen";
             }
 
         }else{

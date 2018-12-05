@@ -33,7 +33,7 @@
 
     <ui:include src="/templates/defLoader.xhtml" />
 
-    <div id="myDiv" style="display:none;" class="animate-bottom">
+    <div id="loadDiv" style="display:none;" class="animate-bottom">
         <ui:insert name="content" >
             <ui:include src="/templates/defContent.xhtml" />
         </ui:insert>
@@ -46,15 +46,15 @@
     <script src="#{request.contextPath}/resources/js/popper.min.js"></script>
     <script src="#{request.contextPath}/resources/js/bootstrap.min.js"></script>
     <script>
-        var myVar;
+        var loadVar;
 
         function myFunction() {
-            myVar = setTimeout(showPage, 1000);
+            loadVar = setTimeout(showPage, 800);
         }
 
         function showPage() {
             document.getElementById("loader").style.display = "none";
-            document.getElementById("myDiv").style.display = "block";
+            document.getElementById("loadDiv").style.display = "block";
         }
     </script>
 </h:body>

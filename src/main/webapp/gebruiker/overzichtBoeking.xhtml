@@ -7,6 +7,10 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:body>
     <ui:composition template="/templates/layout.xhtml">
+        <f:metadata >
+            <f:viewAction action="#{ViewController.setActiveTab('boekingen')}" />
+        </f:metadata>
+        <ui:define name="title">Overzicht boeking</ui:define>
         <ui:define name="content">
             <div>
                 <div class="container">
@@ -35,8 +39,6 @@
 
                                 </div>
                             </h:form>
-
-
                         </div>
                     </div>
                 </div>
