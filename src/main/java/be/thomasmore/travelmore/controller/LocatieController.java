@@ -17,13 +17,16 @@ import java.util.List;
 public class LocatieController {
 
     private Locatie geselecteerdeLocatie = new Locatie();
+
+    private Locatie locatie = new Locatie();
+
     private int geselecteerdeId;
 
     @Inject
     private LocatieService locatieService;
 
     public List<Locatie> getLocaties(){
-        return this.locatieService.findAllLocations();
+        return this.locatieService.findAllLocaties();
     }
 
     public List<Locatie> getVertrekLocaties(){
@@ -36,6 +39,14 @@ public class LocatieController {
 
     public Locatie getLocatieByID(){
         return this.locatieService.findLocationById(geselecteerdeLocatie.getId());
+    }
+
+    public void voegLocatieToe(){
+        this.locatieService.insert(locatie);
+    }
+
+    public Locatie getLocatie() {
+        return locatie;
     }
 
     public void updateLocatie(int locatieId, String naam, String stad, String code, String land){
