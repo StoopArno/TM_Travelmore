@@ -11,34 +11,14 @@ body{
 }
 .admintitle p, .admintitle h1{
     color: #fff;
-}
-
-
-
-
-
-
-
-
-
-/*.card{*/
-    /*margin-top: 20px !important;*/
-/*}*/
-/*.card-deck{*/
-    /*margin-bottom: 40px;*/
-/*}*/
-/*.test {*/
-    /*right: 0;*/
-    /*left: auto;*/
-/*}*/
-@media (max-width: 992px) {
-    .test {
-        left: 0;
-        right:auto;
-    }
+    margin: 0px;
+    padding: 0px;
 }
 
 /* NAVBAR */
+.navbar-text{
+    margin-right: 20px;
+}
 .navbar-toggle {
     background-color: rgb(96, 201, 235);
     border: 1px solid rgb(96, 201, 235);
@@ -46,7 +26,7 @@ body{
     transition: all .4s ease-in-out;
 }
 .navbar-default .navbar-toggle {
-    border-color: rgb(96, 201, 235);
+    border-color: #009cab;
 }
 .navbar-default .navbar-toggle .icon-bar{
     background: #fff;
@@ -55,7 +35,7 @@ body{
     background: #fff;
 }
 .navbar-toggle:hover .icon-bar, .navbar-toggle:focus .icon-bar {
-    background-color: rgb(96, 201, 235);
+    background-color: #009cab;
 }
 .form-control:focus {
     border-color: #009cab;
@@ -103,8 +83,8 @@ ul.nav.navbar-nav.navbar-right{
     color: #009cab;
 }
 .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover{
-    color: #009cab;
-    background: #e8f9ff;
+    color: #fff;
+    background: #009cab;
 }
 .navbar-nav>li>a {
     padding-top: 8px;
@@ -112,8 +92,8 @@ ul.nav.navbar-nav.navbar-right{
 }
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{
     background-color: transparent;
-    color: #009cab;
-    background: #e8f9ff;
+    color: #fff;
+    background: #009cab;
 }
 
 .navbar-toggler-icon i{
