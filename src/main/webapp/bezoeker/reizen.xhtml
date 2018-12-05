@@ -8,7 +8,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:f="http://java.sun.com/jsf/core"
-xmlns:c="http://java.sun.com/jsp/jstl/core">
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 <ui:composition template="/templates/layout.xhtml">
 <ui:define name="header">
@@ -35,7 +35,10 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
 
                         <h:column>
                             <f:facet name="header">Vertrek Tijd</f:facet>
-                            <h:outputText value="#{reis.vertrekTijd.time}" />
+                            <h:outputText value="#{reis.vertrekTijd}">
+                                <f:convertDateTime pattern="dd-MM-yyyy HH:MM" />
+                            </h:outputText>
+
                         </h:column>
 
                         <h:column>
@@ -45,7 +48,10 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
 
                         <h:column>
                             <f:facet name="header">Aankomst Tijd</f:facet>
-                            <h:outputText value="#{reis.aankomstTijd.time}" />
+                            <h:outputText value="#{reis.aankomstTijd}">
+                                <f:convertDateTime pattern="dd-MM-yyyy HH:MM" />
+                            </h:outputText>
+
                         </h:column>
 
                         <h:column name="Plaatsen">
