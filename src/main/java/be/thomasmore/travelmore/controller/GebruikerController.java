@@ -5,14 +5,19 @@ import be.thomasmore.travelmore.service.GebruikerService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.Serializable;
 
 @ManagedBean(name="GebruikerController")
 @SessionScoped
-public class GebruikerController {
+public class GebruikerController implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     private Gebruiker gebruiker = new Gebruiker();
-    private Gebruiker aangemeldeGebruiker = new Gebruiker();
+    private Gebruiker aangemeldeGebruiker;
     private Boolean isAangemeld = false;
 
     @Inject
@@ -31,10 +36,10 @@ public class GebruikerController {
         }
 
     }
-    public String logout(){
-        setAangemeldeGebruiker(null);
+    public void logout(){
+/*        setAangemeldeGebruiker(null);
         setAangemeld(false);
-        return "/index";
+        return "/index";*/
     }
     public String login(){
         if(this.gebruikerService.AuthenticateUser(gebruiker)){
@@ -43,7 +48,7 @@ public class GebruikerController {
             return "/index";
 
         }else{
-            return "nav";
+            return "/login";
         }
     }
     public Gebruiker getGebruiker() {
