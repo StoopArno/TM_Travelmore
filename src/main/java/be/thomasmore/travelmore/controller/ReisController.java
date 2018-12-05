@@ -10,9 +10,11 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import java.io.Console;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.SimpleTimeZone;
 
 @ManagedBean(name="ReisController", eager = true)
 @SessionScoped
@@ -73,7 +75,17 @@ public class ReisController {
         this.geselecteerdeId = geselecteerdeId;
     }
 
-
+    public Date formatStringToDate(String date, String time){
+        Date newDate = new Date();
+        try{
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            format.setTimeZone(SimpleTimeZone.getTimeZone(("GMT")));
+            newDate = format.parse(date);
+        } catch (ParseException e){
+            e.printStackTrace();
+        }
+        return newDate;
+    }
 
     /*    public Reis getReisByID(){
         return this.reisService.findReisById(geselecteerdeReis.getId());
