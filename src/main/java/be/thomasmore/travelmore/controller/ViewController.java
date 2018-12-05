@@ -1,11 +1,10 @@
 package be.thomasmore.travelmore.controller;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 
 @ManagedBean(name="ViewController")
-@RequestScoped
+@SessionScoped
 public class ViewController {
 
     public ViewController(){}
