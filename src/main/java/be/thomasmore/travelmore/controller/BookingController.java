@@ -33,7 +33,9 @@ public class BookingController {
     public void setGeselecteerdeBooking(Booking geselecteerdeBooking) {
         this.geselecteerdeBooking = geselecteerdeBooking;
     }
-
+    public String navigateToBooken(){
+        return "/gebruiker/booken";
+    }
     public int getGeselecteerdeId() {
         return geselecteerdeId;
     }

@@ -24,34 +24,35 @@
                     <ul class="nav navbar-nav mr-auto">
                         <ui:fragment rendered="#{ViewController.activeTab=='home'}">
                             <li class="nav-item active">
-                                <h:outputLink value = "/travelmore/" styleClass="nav-link">Home</h:outputLink>
+                                <h:outputLink value = "index.xhtml" styleClass="nav-link">Home</h:outputLink>
                             </li>
                         </ui:fragment>
                         <ui:fragment rendered="#{ViewController.activeTab!='home'}">
                             <li class="nav-item">
-                                <h:outputLink value = "/travelmore/" styleClass="nav-link">Home</h:outputLink>
+                                <h:outputLink value = "index.xhtml" styleClass="nav-link">Home</h:outputLink>
                             </li>
                         </ui:fragment>
 
                         <ui:fragment rendered="#{ViewController.activeTab=='reizen'}">
                             <li class="nav-item active">
-                                <h:outputLink value = "/travelmore/datatable.xhtml" styleClass="nav-link">Reizen</h:outputLink>
+                                <h:outputLink value = "/travelmore/bezoeker/reizen.xhtml" styleClass="nav-link">Reizen</h:outputLink>
                             </li>
                         </ui:fragment>
                         <ui:fragment rendered="#{ViewController.activeTab!='reizen'}">
                             <li class="nav-item">
-                                <h:outputLink value = "/travelmore/datatable.xhtml" styleClass="nav-link">Reizen</h:outputLink>
+                                <h:outputLink value = "/travelmore/bezoeker/reizen.xhtml" styleClass="nav-link">Reizen</h:outputLink>
                             </li>
                         </ui:fragment>
 
                         <ui:fragment rendered="#{ViewController.activeTab=='bookingen'}">
                             <li class="nav-item active">
-                                <h:outputLink value = "/travelmore/bookingen.xhtml" styleClass="nav-link">Bookingen</h:outputLink>
+                                <h:outputLink value = "/travelmore/gebruiker/bookingen.xhtml" styleClass="nav-link">Bookingen</h:outputLink>
                             </li>
                         </ui:fragment>
+
                         <ui:fragment rendered="#{ViewController.activeTab!='bookingen'}">
                             <li class="nav-item">
-                                <h:outputLink value = "/travelmore/bookingen.xhtml" styleClass="nav-link">Bookingen</h:outputLink>
+                                <h:outputLink value = "/travelmore/gebruiker/bookingen.xhtml" styleClass="nav-link">Bookingen</h:outputLink>
                             </li>
                         </ui:fragment>
                     </ul>
