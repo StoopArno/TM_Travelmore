@@ -4,9 +4,11 @@ import be.thomasmore.travelmore.domain.Reis;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
-import java.text.DecimalFormat;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 public class ReisRepository {
 
@@ -50,7 +52,10 @@ public class ReisRepository {
 
     public  List<Reis> FilterVertrektijd(String value) {
         Query  filterLocatie = entityManager.createNamedQuery(Reis.FILTERVERTREKTIJD);
-        return filterLocatie.setParameter("vertrektijd",  value ).getResultList();}
+      //  SimpleDateFormat format = new SimpleDateFormat("MMM d, yyyy HH:mm:ss");
+       // Date date;
+       // date = format.parse(value);
+        return filterLocatie.setParameter("vertrektijd", value  ).getResultList();}
 
 
     public List<Integer> findVertrekLocatieIds(){
