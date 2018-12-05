@@ -5,7 +5,9 @@
 .card{
     margin-top: 20px !important;
 }
-
+.card-deck{
+    margin-bottom: 40px;
+}
 .test {
     right: 0;
     left: auto;
@@ -95,8 +97,8 @@ ul.nav.navbar-nav.navbar-right{
     background: #e8f9ff;
 }
 
-.navbar-toggler-icon{
-    background-color: #009cab;
+.navbar-toggler-icon i{
+    color: #f04c25;
 }
 
 /* FOOTER */
@@ -176,6 +178,55 @@ ul.nav.navbar-nav.navbar-right{
     padding-bottom: 60px;
     background-color: lightgray;
 }
+
+/* LOGIN */
+.login-block{
+    background: #f04c25;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #009cab, #f04c25);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #009cab, #f04c25); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    width:100%;
+    min-height: 83vh;
+    padding : 50px 0;
+}
+.banner-sec{
+    background:url(https://sceptr.net/wp-content/uploads/2017/04/Landend-vliegtuig-op-luchthaven-Zaventem.jpg) no-repeat center;
+    background-size:cover;
+    min-height:500px;
+    border-radius: 0 10px 10px 0;
+    padding:0;
+}
+.containerLogin{
+    background:#fff;
+    border-radius: 10px;
+    box-shadow:10px 10px 0px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.login-sec{
+    padding: 50px 30px;
+    position:relative;
+}
+
+.login-sec .copy-text{
+    position:absolute; width:80%; bottom:20px; font-size:13px; text-align:center;}
+.login-sec .copy-text i{color:#009cab;}
+.login-sec .copy-text a{color:#f04c25;}
+.login-sec h2{margin-bottom:30px; font-weight:600; font-size:30px; color: #f04c25;}
+.login-sec h2:after{content:" "; width:100px; height:5px; background:#009cab; display:block; margin-top:20px; border-radius:3px; margin-left:auto;margin-right:auto}
+
+
+.btn-login{
+    background: #f04c25;
+    color:#fff;
+    font-weight:600;
+}
+.btn-login:hover, .btn-login:active{
+    background: rgba(255, 91, 48, 0.71);
+}
+/*.banner-text{width:70%; position:absolute; bottom:40px; padding-left:20px;}*/
+/*.banner-text h2{color:#fff; font-weight:600;}*/
+/*.banner-text h2:after{content:" "; width:100px; height:5px; background:#FFF; display:block; margin-top:20px; border-radius:3px;}*/
+/*.banner-text p{color:#fff;}*/
 
 /* MEDIA QUERIES */
 @media (max-width: 576px) {
