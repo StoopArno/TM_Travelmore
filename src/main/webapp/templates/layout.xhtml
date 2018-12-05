@@ -31,27 +31,15 @@
         </ui:insert>
     </div>
 
+    <h1><ui:insert name="title"></ui:insert></h1>
 
-    <div id="carousel">
-        <ui:insert name="carousel" >
-            <ui:include src="/templates/carousel.xhtml" />
-        </ui:insert>
-    </div>
+    <ui:insert name="content" >
+        <ui:include src="/templates/defContent.xhtml" />
+    </ui:insert>
 
-
-
-        <br/>
-        <h1><ui:insert name="title"></ui:insert></h1>
-        <ui:insert name="content" >
-            <ui:include src="/templates/defContent.xhtml" />
-        </ui:insert>
-
-    <div id="footer">
-        <ui:insert name="footer" >
-            <ui:include src="/templates/defFooter.xhtml" />
-        </ui:insert>
-    </div>
-
+    <ui:insert name="footer" >
+        <ui:include src="/templates/defFooter.xhtml" />
+    </ui:insert>
 
     <script src="#{request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
     <script src="#{request.contextPath}/resources/js/popper.min.js"></script>

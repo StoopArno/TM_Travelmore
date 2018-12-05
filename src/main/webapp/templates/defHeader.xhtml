@@ -9,10 +9,10 @@
                     <h:graphicImage height="60px" library="images" name="navheader.png" />
                     Travel<span>More</span>
                 </a>
-                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target=".collapsemenu" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"><i class="fas fa-bars fa-2x"></i></span>
                 </button>
-                <div class="collapse navbar-collapse w-75 order-1" id="navbarText">
+                <div class="collapse navbar-collapse w-75 order-1 collapsemenu" id="navbarText">
                     <ul class="nav navbar-nav mr-auto">
                         <ui:fragment rendered="#{ViewController.activeTab=='home'}">
                             <li class="nav-item active">
@@ -26,28 +26,28 @@
                         </ui:fragment>
                         <ui:fragment rendered="#{ViewController.activeTab=='reizen'}">
                             <li class="nav-item active">
-                                <h:outputLink value = "/travelmore/reizen.xhtml" styleClass="nav-link">Reizen</h:outputLink>
+                                <h:outputLink value = "/travelmore/bezoeker/reizen.xhtml" styleClass="nav-link">Reizen</h:outputLink>
                             </li>
                         </ui:fragment>
                         <ui:fragment rendered="#{ViewController.activeTab!='reizen'}">
                             <li class="nav-item">
-                                <h:outputLink value = "/travelmore/reizen.xhtml" styleClass="nav-link">Reizen</h:outputLink>
+                                <h:outputLink value = "/travelmore/bezoeker/reizen.xhtml" styleClass="nav-link">Reizen</h:outputLink>
                             </li>
                         </ui:fragment>
 
-                        <ui:fragment rendered="#{ViewController.activeTab=='boekingen'}">
+                        <ui:fragment rendered="#{ViewController.activeTab=='bookingen'}">
                             <li class="nav-item active">
-                                <h:outputLink value = "/travelmore/boekingen.xhtml" styleClass="nav-link">Boekingen</h:outputLink>
+                                <h:outputLink value = "/travelmore/gebruiker/bookingen.xhtml" styleClass="nav-link">Bookingen</h:outputLink>
                             </li>
                         </ui:fragment>
                         <ui:fragment rendered="#{ViewController.activeTab!='bookingen'}">
                             <li class="nav-item">
-                                <h:outputLink value = "/travelmore/boekingen.xhtml" styleClass="nav-link">Boekingen</h:outputLink>
+                                <h:outputLink value = "/travelmore/gebruiker/bookingen.xhtml" styleClass="nav-link">Bookingen</h:outputLink>
                             </li>
                         </ui:fragment>
                     </ul>
                 </div>
-                <div class="collapse navbar-collapse text-right w-auto order-2" id="navbarText2">
+                <div class="collapse navbar-collapse text-right w-auto order-2 collapsemenu" id="navbarText2">
                     <ul class="nav navbar-nav mr-auto">
                         <ui:fragment rendered="#{ViewController.activeTab=='bookingen'}">
                             <li class="nav-item active">
