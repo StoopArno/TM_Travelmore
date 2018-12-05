@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f = "http://java.sun.com/jsf/core">
+<h:head>
+    <title>Travel More!</title>
+
+
+</h:head>
+<h:body>
+    <b:accordion>
+    <b:panel collapsed="true">
+    <f:facet name="heading">
+        <i class="fa fa-user" style="padding-right:20px" />
+        <h:outputText value="Gebruiker toevoegen" />
+    </f:facet>
+    <b:form horizontal="true">
+        <b:inputText placeholder="Username" required="true" label="Username" colMd="10" labelColMd="2">
+            <f:facet name="prepend">
+                <b:icon name="user" />
+            </f:facet>
+        </b:inputText>
+
+        <b:inputText placeholder="Password" label="Password" colMd="10" labelColMd="2">
+            <f:facet name="prepend">
+                <b:iconAwesome name="key" />
+            </f:facet>
+        </b:inputText>
+
+        <p>Soort gebruiker</p>
+        <b:radiobutton value="#{radiobuttonBean.soortGebruiker}">
+            <f:selectItem itemValue="Reiziger"   itemLabel="Reiziger" />
+            <f:selectItem itemValue="Admin" itemLabel="Admin" />
+        </b:radiobutton>
+        <b:commandButton value="submit" action="#{radiobuttonBean.submitGebruiker}"
+                         look="primary" update="@form" />
+    </b:form>
+    </b:panel>
+    <b:panel collapsed="true">
+        <f:facet name="heading">
+            <i class="fa fa-hotel" style="padding-right:20px" />
+            <h:outputText value="Hotel toevoegen" />
+        </f:facet>
+        <b:form horizontal="true">
+            <b:inputText placeholder="Hotel" required="true" label="Hotel" colMd="10" labelColMd="2">
+                <f:facet name="prepend">
+                    <b:icon name="home" />
+                </f:facet>
+            </b:inputText>
+                <b:selectOneMenu id="hotelLocatie" required="true" label="Locatie" colMd="10" labelColMd="2">
+                    <f:facet name="prepend">
+                        <b:icon name="map-marker" />
+                    </f:facet>
+                    <!--<f:selectItems value="#{locatieController.getLocaties}" var="l" itemLabel="#{l.stad}, #{l.land}" itemValue="#{l.id}"/>-->
+                </b:selectOneMenu>
+            <b:touchSpin id="aantalSterren" label="Aantal sterren" required="true" col-md="3" value="#{spinBean.intSpinValue}" min="1" max="5" step="1" colMd="10" labelColMd="2">
+            <f:facet name="prepend">
+                <b:icon name="star" />
+            </f:facet>
+        </b:touchSpin>
+            <b:messages />
+            <b:commandButton value="submit" action="#{radiobuttonBean.submitGebruiker}"
+                             look="primary" update="@form" />
+        </b:form>
+    </b:panel>
+
+    <b:panel collapsed="true">
+        <f:facet name="heading">
+            <i class="fa fa-map-pin" style="padding-right:20px" />
+            <h:outputText value="Locatie toevoegen" />
+        </f:facet>
+        <b:form horizontal="true">
+            <b:inputText id="land" placeholder="Land" required="true" label="Land" colMd="10" labelColMd="2" value="#{locatieController.locatie.land}">
+                <f:facet name="prepend">
+                    <b:icon name="globe" />
+                </f:facet>
+            </b:inputText>
+            <b:inputText id="stad" placeholder="Stad" required="true" label="Stad" colMd="10" labelColMd="2" value="#{locatieController.locatie.stad}">
+                <f:facet name="prepend">
+                    <b:icon name="home" />
+                </f:facet>
+            </b:inputText>
+            <b:messages />
+            <b:commandButton value="Toevoegen" action="#{locatieController.voegLocatieToe}"
+                             look="primary" update="@form" />
+        </b:form>
+    </b:panel>
+    <b:panel collapsed="true">
+        <f:facet name="heading">
+            <i class="fa fa-plane" style="padding-right:20px" />
+            <h:outputText value="Soort transport toevoegen" />
+        </f:facet>
+        <b:form horizontal="true">
+            <b:inputText placeholder="Soort transport" required="true" label="Soort transport" colMd="10" labelColMd="2">
+                <f:facet name="prepend">
+                    <b:icon name="plane" />
+                </f:facet>
+            </b:inputText>
+            <b:commandButton value="submit" action="#{radiobuttonBean.submitGebruiker}"
+                             look="primary" update="@form" />
+        </b:form>
+    </b:panel>
+    <b:panel collapsed="true">
+        <f:facet name="heading">
+            <i class="fa fa-plane" style="padding-right:20px" />
+            <h:outputText value="Transportmiddel toevoegen" />
+        </f:facet>
+        <b:form horizontal="true">
+            <b:inputText placeholder="Soort transport" required="true" label="Soort transport" colMd="10" labelColMd="2">
+                <f:facet name="prepend">
+                    <b:icon name="plane" />
+                </f:facet>
+            </b:inputText>
+            <b:inputText placeholder="Maatschapij" required="true" label="Maatschapij" colMd="10" labelColMd="2">
+                <f:facet name="prepend">
+                    <b:icon name="plane" />
+                </f:facet>
+            </b:inputText>
+            <b:inputText placeholder="Naam" required="true" label="Naam" colMd="10" labelColMd="2">
+                <f:facet name="prepend">
+                    <b:icon name="plane" />
+                </f:facet>
+            </b:inputText>
+            <b:touchSpin id="aantalPlaatsen" label="Aantal plaatsen" required="true" col-md="3" value="#{spinBean.intSpinValue}" min="1" max="999" step="1" colMd="10" labelColMd="2">
+                <f:facet name="prepend">
+                    <b:icon name="male" />
+                </f:facet>
+            </b:touchSpin>
+
+            <b:commandButton value="submit" action="#{radiobuttonBean.submitGebruiker}"
+                             look="primary" update="@form" />
+        </b:form>
+    </b:panel>
+    </b:accordion>
+</h:body>
+</html>

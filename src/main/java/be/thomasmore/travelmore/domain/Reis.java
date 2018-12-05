@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -26,25 +27,34 @@ import java.util.Date;
                 @NamedQuery(
                         name = Reis.FIND_ALLAANKOMSTLOCATIEIDS,
                         query = "SELECT r.aankomstLocatie.id FROM Reis r"
+                ),
+                @NamedQuery(
+                       name = Reis.FILTERVERTREKLOCATIE,
+                        query = "SELECT r FROM Reis r Where lower(r.vertrekLocatie.naam) = :naam"
                 )
         }
 )
 public class Reis {
 
+    public Reis(){
+        setVertrekLocatie(new Locatie());
+        setAankomstLocatie(new Locatie());
+    }
+
     //properties
     public static final String FIND_ALL = "Reis.findAll";
     public static final String FIND_ALLVERTREKLOCATIEIDS = "Reis.findVertrekLocatieIds";
     public static final String FIND_ALLAANKOMSTLOCATIEIDS = "Reis.findAankomstLocatieIds";
-
+    public static final String FILTERVERTREKLOCATIE = "Reis.filtervertreklocatie";
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "vertrekLocatieID")
     private Locatie vertrekLocatie;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "aankomstLocatieID")
     private Locatie aankomstLocatie;
 
@@ -65,7 +75,7 @@ public class Reis {
     private int plaatsen;
 
     public String toString(){
-        return vertrekLocatie + " --> " + aankomstLocatie;
+        return id + " - " + vertrekLocatie + " --> " + aankomstLocatie;
     }
 
     public int getId() {
@@ -131,4 +141,7 @@ public class Reis {
     public void setPlaatsen(int plaatsen) {
         this.plaatsen = plaatsen;
     }
+
+
+
 }

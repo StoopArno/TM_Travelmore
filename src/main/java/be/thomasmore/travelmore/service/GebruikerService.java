@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import be.thomasmore.travelmore.domain.Gebruiker;
+import be.thomasmore.travelmore.domain.SoortGebruiker;
 import be.thomasmore.travelmore.repository.GebruikerRepository;
 
 import javax.ejb.Stateless;
@@ -24,6 +25,10 @@ public class GebruikerService {
         List<Gebruiker> gebruikers = gebruikerRepository.findGeruikerByEmail(gebruiker);
         if(gebruikers.size() == 0){
             gebruiker.setWachtwoord(hashPassword(gebruiker.getWachtwoord()));
+            SoortGebruiker soort = new SoortGebruiker();
+            soort.setId(1);
+            soort.setSoort("gebruiker");
+            gebruiker.setSoortGebruiker(soort);
             gebruikerRepository.insert(gebruiker);
             return true;
           }else{
@@ -64,4 +69,12 @@ public class GebruikerService {
             return false;
         }
     }
+
+    public List<Gebruiker> findAllLocations() {
+        return gebruikerRepository.findAll();
+    }
+
+    public void update(Gebruiker gebruiker) { gebruikerRepository.update(gebruiker); }
+
+    public void delete(int id){ gebruikerRepository.delete(id); }
 }

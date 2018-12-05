@@ -20,7 +20,7 @@
     -->
     <filter>
         <filter-name>logFilter</filter-name>
-        <filter-class>be.thomasmore.travelmore.LogFilter</filter-class>
+        <filter-class>be.thomasmore.travelmore.filters.LogFilter</filter-class>
     </filter>
 
     <!--

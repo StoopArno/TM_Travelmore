@@ -3,6 +3,10 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <ui:composition>
+        <!--<nav class="navbar navbar-expand-lg navbar-light bg-light">-->
+            <!--<a class="navbar-brand" href="/">-->
+                <!--<img src="../resources/images/logos/playstore-icon.png" width="30" height="30" alt=""/>-->
+                <!--Travelmore-->
         <style>
             .test {
                 right: 0;
@@ -14,13 +18,19 @@
                     right:auto;
                 }
             }
+
+            .navbar{
+                background-color: #00716C !important;
+            }
+
+
         </style>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="/travelmore/index.xhtml">
                 <h:graphicImage height="80px" library="images" name="headerlogo_transparent.png" />
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <!--<span class="navbar-toggler-icon"></span>-->
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
@@ -45,10 +55,13 @@
                         #{GebruikerController.aangemeldeGebruiker.naam}
                     </a>
                     <div class="dropdown-menu test" aria-labelledby="navbarDropdownMenuLink">
-                        <h:button value="Uitloggen" class="dropdown-item" outcome="#{GebruikerController.logout()}" />
+                        <h:form>
+                        <h:commandLink value="Uitloggen" class="dropdown-item" action="#{GebruikerController.logout}" />
+                        </h:form>
                     </div>
                 </h:panelGroup>
             </div>
         </nav>
     </ui:composition>
+
 </html>

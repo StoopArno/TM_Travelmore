@@ -10,14 +10,17 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.List;
 
 @ManagedBean(name="GebruikerController")
 @SessionScoped
-public class GebruikerController implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class GebruikerController  {
 
     private Gebruiker gebruiker = new Gebruiker();
-    private Gebruiker aangemeldeGebruiker;
+    private Gebruiker aangemeldeGebruiker = new Gebruiker();
+    private Gebruiker geselecteerdeGebruiker = new Gebruiker();
+    private int geselecteerdeId;
+
     private Boolean isAangemeld = false;
 
     @Inject
@@ -36,16 +39,21 @@ public class GebruikerController implements Serializable {
         }
 
     }
-    public void logout(){
-/*        setAangemeldeGebruiker(null);
+    public String logout(){
+        setAangemeldeGebruiker(null);
         setAangemeld(false);
-        return "/index";*/
+        return "/index";
     }
     public String login(){
         if(this.gebruikerService.AuthenticateUser(gebruiker)){
             setAangemeldeGebruiker(this.gebruikerService.findGebruikerByEmail(gebruiker).get(0));
             setAangemeld(true);
-            return "/index";
+            if(aangemeldeGebruiker.getSoortGebruiker().getId() == 1){
+                return "/index";
+            }
+            else{
+                return "/admin/bookingen";
+            }
 
         }else{
             return "/login";
@@ -73,6 +81,51 @@ public class GebruikerController implements Serializable {
 
     public void setAangemeldeGebruiker(Gebruiker aangemeldeGebruiker) {
         this.aangemeldeGebruiker = aangemeldeGebruiker;
+    }
+
+    public Gebruiker getGeselecteerdeGebruiker() {
+        return geselecteerdeGebruiker;
+    }
+    public void setGeselecteerdeGebruiker(Gebruiker geselecteerdeGebruiker) {
+        this.geselecteerdeGebruiker = geselecteerdeGebruiker;
+    }
+
+    public int getGeselecteerdeId() {
+        return geselecteerdeId;
+    }
+    public void setGeselecteerdeId(int geselecteerdeId) {
+        this.setGeselecteerdeGebruiker(gebruikerService.findGebruikerById(geselecteerdeId));
+        this.geselecteerdeId = geselecteerdeId;
+    }
+
+    public List<Gebruiker> getGebruikers(){
+        return gebruikerService.findAllLocations();
+    }
+
+    public void newGebruiker(){
+        geselecteerdeGebruiker = new Gebruiker();
+        geselecteerdeGebruiker.setId(0);
+    }
+
+    public void updateGebruiker(int gebruikerId, String voornaam, String achternaam, String adres, String gemeente, String email){
+        geselecteerdeGebruiker = (gebruikerId == 0) ? new Gebruiker() : gebruikerService.findGebruikerById(gebruikerId);
+        geselecteerdeGebruiker.setVoornaam(voornaam);
+        geselecteerdeGebruiker.setAchternaam(achternaam);
+        geselecteerdeGebruiker.setAdres(adres);
+        geselecteerdeGebruiker.setGemeente(gemeente);
+        geselecteerdeGebruiker.setEmail(email);
+        if(gebruikerId == 0){
+            geselecteerdeGebruiker.setWachtwoord("wachtwoord");
+            gebruikerService.insert(geselecteerdeGebruiker);
+        }
+        else{
+            gebruikerService.update(geselecteerdeGebruiker);
+        }
+        newGebruiker();
+    }
+
+    public void deleteGebruiker(int id){
+        gebruikerService.delete(id);
     }
 }
 

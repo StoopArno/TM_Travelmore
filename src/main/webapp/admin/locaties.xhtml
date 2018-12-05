@@ -8,6 +8,11 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
     <ui:composition template="/templates/layout.xhtml">
+
+        <f:metadata >
+            <f:viewAction action="#{ViewController.setActiveTab('locaties')}" />
+        </f:metadata>
+
         <ui:define name="header">
             <ui:include src="/templates/adminHeader.xhtml" />
         </ui:define>
@@ -98,9 +103,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="locatieModallabel">
-                                        <h:outputText rendered="#{empty LocatieController.geselecteerdeLocatie.naam}">Nieuwe</h:outputText>
-                                        Locatie #{LocatieController.geselecteerdeLocatie.naam}
-                                        <h:outputText rendered="#{not empty LocatieController.geselecteerdeLocatie.naam}">wijzigen</h:outputText>
+                                        Locatie aanpassen/wijzigen
                                     </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
