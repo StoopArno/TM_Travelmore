@@ -14,6 +14,11 @@ import javax.persistence.*;
                         name = Booking.FIND_BY_ID,
                         query = "SELECT b FROM Booking b WHERE b.id = :id"
 
+                ),
+                @NamedQuery(
+                        name = Booking.FIND_BY_USER_ID,
+                        query = "SELECT b FROM Booking b WHERE b.gebruiker.id = :id"
+
                 )
         }
 )
@@ -23,6 +28,7 @@ public class Booking {
     //properties
     public static final String FIND_ALL = "Booking.findAll";
     public static final String FIND_BY_ID = "Booking.findById";
+    public static final String FIND_BY_USER_ID = "Booking.findByUserId";
 
 
     @Id

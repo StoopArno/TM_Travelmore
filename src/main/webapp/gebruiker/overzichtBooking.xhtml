@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:body>
+    <ui:composition template="/templates/layout.xhtml">
+        <ui:define name="content">
+            <div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label>
+                                #{BookingController.geslecteerdeReis.vertrekLocatie.land}, #{BookingController.geslecteerdeReis.vertrekLocatie.naam}
+                                ---> #{BookingController.geslecteerdeReis.aankomstLocatie.land}, #{BookingController.geslecteerdeReis.aankomstLocatie.naam}
+                            </label>
+                            <label> #{BookingController.geslecteerdeReis.vertrekTijd.time} --->  #{BookingController.geslecteerdeReis.aankomstTijd.time} </label>
+                            <label>#{BookingController.geslecteerdeReis.transportmiddel}</label><br></br>
+                            <label>#{BookingController.geslecteerdeReis.prijsPerPersoon}</label>
+                        </div>
+                        <div class="col-md-7">
+                            <h:form class="login-form">
+                                <div class="form-group">
+                                    <label >Totaal bedrag : #{BookingController.nieuweBooking.aantalPersonen} * #{BookingController.nieuweBooking.prijsPPTeBetalen} = #{BookingController.nieuweBooking.prijsPPTeBetalen * BookingController.nieuweBooking.aantalPersonen}</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <a href="../index.xhtml">Terug</a>
+
+                                    <h:commandButton value="Reserveren" class="btn btn-primary  float-right" action="#{BookingController.navigateToOverzichtBooking}" />
+                                    <h:commandButton value="PayPal" class="btn btn-primary mr-2 float-right" action="#{BookingController.betaalBooking(GebruikerController.aangemeldeGebruiker.id)}" />
+                                    <h:commandButton value="Bancontact" class="btn btn-primary mr-2 float-right" action="#{BookingController.betaalBooking(GebruikerController.aangemeldeGebruiker.id)}" />
+
+                                </div>
+                            </h:form>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

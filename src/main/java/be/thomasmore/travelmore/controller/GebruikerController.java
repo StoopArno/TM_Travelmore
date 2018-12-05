@@ -22,8 +22,8 @@ public class GebruikerController  {
     @Inject
     private GebruikerService gebruikerService;
 
-    public  Gebruiker getGebruikerByID(){
-        return this.gebruikerService.findGebruikerById(getGebruiker().getId());
+    public  Gebruiker getGebruikerByID(int id){
+        return this.gebruikerService.findGebruikerById(id);
     }
     public String registreerGebruiker(){
         if(this.gebruikerService.insert(gebruiker)){

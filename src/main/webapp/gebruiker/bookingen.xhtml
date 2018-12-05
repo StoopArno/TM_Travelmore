@@ -23,7 +23,7 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
                 <br/>
                 <div class="accordion" id="accordionReizen">
                     <h:form>
-                        <ui:repeat value="#{ReisController.reizen}" var="reis">
+                        <ui:repeat value="#{BookingController.getReizenByUserId(GebruikerController.aangemeldeGebruiker.id)}" var="reis">
 
                             <div class="card">
                                 <div class="card-header" id="heading#{reis.id}">

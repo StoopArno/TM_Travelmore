@@ -19,7 +19,9 @@ public class BookingRepository {
     public Booking findByBookingHashCode(String bookingHashCode) {
         return entityManager.find(Booking.class, bookingHashCode);
     }
-
+    public List<Booking> findAllByUserId(int id) {
+        return entityManager.createNamedQuery(Booking.FIND_BY_USER_ID, Booking.class).setParameter("id",id).getResultList();
+    }
     public List<Booking> findAll() {
         return entityManager.createNamedQuery(Booking.FIND_ALL, Booking.class).getResultList();
     }
