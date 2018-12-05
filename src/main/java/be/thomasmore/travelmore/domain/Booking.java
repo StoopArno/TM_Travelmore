@@ -32,7 +32,6 @@ public class Booking {
     public static final String FIND_ALL = "Booking.findAll";
     public static final String FIND_BY_ID = "Booking.findById";
     public static final String COUNTPLAATSEN = "Booking.countPlaatsen";
-
     public static final String FIND_BY_USER_ID = "Booking.findByUserId";
 
 

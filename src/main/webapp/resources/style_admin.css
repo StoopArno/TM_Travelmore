@@ -1,0 +1,257 @@
+/* IMPORTS */
+@import url(http://fonts.googleapis.com/css?family=Roboto:100,400,700);
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab);
+
+/* BODY */
+body{
+    background-color: #5f5f5f;
+}
+
+
+.card{
+    margin-top: 20px !important;
+}
+.card-deck{
+    margin-bottom: 40px;
+}
+.test {
+    right: 0;
+    left: auto;
+}
+@media (max-width: 992px) {
+    .test {
+        left: 0;
+        right:auto;
+    }
+}
+
+/* NAVBAR */
+.navbar-toggle {
+    background-color: rgb(96, 201, 235);
+    border: 1px solid rgb(96, 201, 235);
+    border-radius: 0;
+    transition: all .4s ease-in-out;
+}
+.navbar-default .navbar-toggle {
+    border-color: rgb(96, 201, 235);
+}
+.navbar-default .navbar-toggle .icon-bar{
+    background: #fff;
+}
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover{
+    background: #fff;
+}
+.navbar-toggle:hover .icon-bar, .navbar-toggle:focus .icon-bar {
+    background-color: rgb(96, 201, 235);
+}
+.form-control:focus {
+    border-color: #009cab;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.navbar-default .navbar-brand{
+    border: 1px solid transparent;
+    color: #009cab;
+    font-size: 33px;
+    padding: 10px 10px;
+    height: auto;
+    font-weight: 400;
+    letter-spacing: -1px;
+    text-transform: capitalize;
+}
+ul.nav.navbar-nav.navbar-right{
+    margin-top: 10px;
+}
+.navbar-default .navbar-brand span{
+    color: #f04c25;
+}
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover{
+    color: #009cab;
+}
+.navbar-default {
+    background-color: #fff;
+    border-color: transparent;
+    padding: 5px 0px;
+    border-radius: 0;
+    text-transform: uppercase;
+}
+.navbar-default .navbar-nav>li>a{
+    color: #009cab;
+    padding-right: 20px;
+    padding-left: 20px;
+    border: 1px solid transparent;
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    transition: all .4s ease-in-out;
+}
+.navbar-default .navbar-nav>li>a:hover{
+    color: #009cab;
+}
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover{
+    color: #009cab;
+    background: #e8f9ff;
+}
+.navbar-nav>li>a {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{
+    background-color: transparent;
+    color: #009cab;
+    background: #e8f9ff;
+}
+
+.navbar-toggler-icon i{
+    color: #f04c25;
+}
+
+/* FOOTER */
+.footer{
+    text-align: center;
+    padding: 20px;
+    background:  #009cab;
+    color: #fff;
+}
+.footer a{
+    color: #fff;
+    padding: 5px;
+}
+.footer a:hover{
+    color: #fff;
+}
+.footer a:hover, footer a:focus{
+    text-decoration: none;
+    color: #fff;
+}
+.top {
+    display: inline-block;
+    float: right;
+    background-color: #f04c25;
+    border-radius: 4px;
+}
+
+/* INDEX */
+/* INDEX carousel */
+.carousel .carousel-item {
+    height: 55vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+}
+
+#carousel-image1 {
+    background-image: url(#{request.contextPath}/resources/images/vliegtuig.jpg);
+    background-position: center center;
+}
+
+#carousel-image2 {
+    background-image: url(#{request.contextPath}/resources/images/bus.jpg);
+    background-position: center center;
+}
+
+/* INDEX zoek reis */
+.zoek-reis{
+    padding-top: 35px;
+    padding-bottom: 60px;
+}
+
+.custom-addon{
+    background: #fff;
+}
+
+.zoek-btn{
+    margin-top: 30px;
+    color: #FFF;
+    width: 100%;
+    background-color: #009cab;
+    border-color: #FFF;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 400;
+    transition: all .4s ease-in-out;
+}
+.zoek-btn:hover{
+    background: #fff;
+    color: #f04c25;
+    border: 1px solid #009cab;
+}
+
+/* INDEX nieuws */
+.nieuws{
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background-color: lightgray;
+}
+
+/* LOGIN */
+.login-block{
+    background: #f04c25;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #009cab, #f04c25);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #009cab, #f04c25); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    width:100%;
+    min-height: 83vh;
+    padding : 50px 0;
+}
+.banner-sec{
+    background:url(https://sceptr.net/wp-content/uploads/2017/04/Landend-vliegtuig-op-luchthaven-Zaventem.jpg) no-repeat center;
+    background-size:cover;
+    min-height:500px;
+    border-radius: 0 10px 10px 0;
+    padding:0;
+}
+.containerLogin{
+    background:#fff;
+    border-radius: 10px;
+    box-shadow:10px 10px 0px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.login-sec{
+    padding: 50px 30px;
+    position:relative;
+}
+
+.login-sec .copy-text{
+    position:absolute; width:80%; bottom:20px; font-size:13px; text-align:center;}
+.login-sec .copy-text i{color:#009cab;}
+.login-sec .copy-text a{color:#f04c25;}
+.login-sec h2{margin-bottom:30px; font-weight:600; font-size:30px; color: #f04c25;}
+.login-sec h2:after{content:" "; width:100px; height:5px; background:#009cab; display:block; margin-top:20px; border-radius:3px; margin-left:auto;margin-right:auto}
+
+
+.btn-login{
+    background: #f04c25;
+    color:#fff;
+    font-weight:600;
+}
+.btn-login:hover, .btn-login:active{
+    background: rgba(255, 91, 48, 0.71);
+}
+/*.banner-text{width:70%; position:absolute; bottom:40px; padding-left:20px;}*/
+/*.banner-text h2{color:#fff; font-weight:600;}*/
+/*.banner-text h2:after{content:" "; width:100px; height:5px; background:#FFF; display:block; margin-top:20px; border-radius:3px;}*/
+/*.banner-text p{color:#fff;}*/
+
+/* MEDIA QUERIES */
+@media (max-width: 576px) {
+    .carousel-item {
+        height: 40vh;
+    }
+}
+@media (min-width: 768px) {
+    .carousel-item {
+        height: 50vh;
+    }
+}
+@media (min-width: 992px) {
+    .carousel-item {
+        height: 50vh;
+    }
+}
+@media (min-width: 1200px) {
+    .carousel-item {
+        height: 60vh;
+    }
+}
