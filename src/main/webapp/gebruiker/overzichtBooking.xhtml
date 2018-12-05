@@ -29,7 +29,7 @@
                                 <div class="form-check">
                                     <a href="../index.xhtml">Terug</a>
 
-                                    <h:commandButton value="Reserveren" class="btn btn-primary  float-right" action="#{BookingController.navigateToOverzichtBooking}" />
+                                    <h:commandButton value="Reserveren" class="btn btn-primary  float-right" action="#{BookingController.reserveerBooking(GebruikerController.aangemeldeGebruiker.id)}" />
                                     <h:commandButton value="PayPal" class="btn btn-primary mr-2 float-right" action="#{BookingController.betaalBooking(GebruikerController.aangemeldeGebruiker.id)}" />
                                     <h:commandButton value="Bancontact" class="btn btn-primary mr-2 float-right" action="#{BookingController.betaalBooking(GebruikerController.aangemeldeGebruiker.id)}" />
 

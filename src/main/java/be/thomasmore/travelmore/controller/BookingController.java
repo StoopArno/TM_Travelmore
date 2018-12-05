@@ -41,10 +41,22 @@ public class BookingController {
         List<Booking> test =  this.bookingService.findAllBookingsByUserId(gebruikersID);
         return test;
     }
-
+    public String reserveerBooking(int gerbuikerId){
+        nieuweBooking.setBetaald(false);
+        nieuweBooking.setGebruiker(gebruikerController.getGebruikerByID(gerbuikerId));
+        nieuweBooking.setReis(geslecteerdeReis);
+        bookingService.insert(nieuweBooking);
+        return "/index";
+    }
     public String navigateToBooken(int id){
         setGeslecteerdeReis(reisService.findReisById(id));
         return "/gebruiker/booken";
+    }
+    public String betaalReservatie(int bookingID){
+        Booking booking = bookingService.findBookingById(bookingID);
+        booking.setBetaald(true);
+        bookingService.update(booking);
+        return "/gebruiker/bookingen";
     }
     public String navigateToOverzichtBooking(){
         nieuweBooking.setPrijsPPTeBetalen(geslecteerdeReis.getPrijsPerPersoon());

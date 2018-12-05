@@ -34,4 +34,5 @@ public class BookingService {
     public void insert(Booking booking){
         bookingRepository.insert(booking);
     }
+    public void update(Booking booking){bookingRepository.update(booking);}
 }
