@@ -6,18 +6,31 @@
 body{
     background-color: #5f5f5f;
 }
+.admintitle{
+    margin: 20px;
+}
+.admintitle p, .admintitle h1{
+    color: #fff;
+}
 
 
-.card{
-    margin-top: 20px !important;
-}
-.card-deck{
-    margin-bottom: 40px;
-}
-.test {
-    right: 0;
-    left: auto;
-}
+
+
+
+
+
+
+
+/*.card{*/
+    /*margin-top: 20px !important;*/
+/*}*/
+/*.card-deck{*/
+    /*margin-bottom: 40px;*/
+/*}*/
+/*.test {*/
+    /*right: 0;*/
+    /*left: auto;*/
+/*}*/
 @media (max-width: 992px) {
     .test {
         left: 0;
