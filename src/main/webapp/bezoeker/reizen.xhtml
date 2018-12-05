@@ -22,10 +22,19 @@
         <ui:composition template="/templates/layout.xhtml">
             <ui:define name="content">
                 <h1>Onze reizen : </h1>
+                <div class="row">
+                    <p>filteren : </p>
+                    <h:inputText name="filtertekst"></h:inputText>
+                    <h:selectOneMenu>
+                        <f:selectItem itemLabel="vertrek locatie" itemValue="#{ReisController.getReizenFilterByVertrekLocatie(filtertekst.text)}"/>
+                        <f:selectItem itemLabel="aankomst locatie" itemValue="#{ReisController.getReizenFilterByAankomstLocatie(filtertekst.text)}"/>
+
+                        <f:selectItem itemLabel="transport" itemValue="#{ReisController.getReizenFilterByTransportmiddel(filtertekst.text)}"/>
+                    </h:selectOneMenu>
+                    <h:commandButton class="btn btn-primary"  value="filteren"/>
+                </div>
                 <h:form>
                 <div class="row">
-
-
                     <h:dataTable var="reis" class="table table-striped" value="#{ReisController.reizen}">
                         <h:column>
                             <f:facet name="header">Vertrek Locatie</f:facet>
