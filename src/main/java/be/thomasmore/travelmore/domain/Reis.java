@@ -9,7 +9,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+import java.util.GregorianCalendar;
 
 
 @Entity
@@ -52,6 +52,11 @@ import java.util.Date;
 )
 public class Reis {
 
+    public Reis(){
+        setVertrekLocatie(new Locatie());
+        setAankomstLocatie(new Locatie());
+    }
+
     //properties
     public static final String FIND_ALL = "Reis.findAll";
     public static final String FIND_ALLVERTREKLOCATIEIDS = "Reis.findVertrekLocatieIds";
@@ -65,20 +70,20 @@ public class Reis {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "vertrekLocatieID")
     private Locatie vertrekLocatie;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "aankomstLocatieID")
     private Locatie aankomstLocatie;
 
 
     @Column(name = "vertrekTijd")
-    private Date vertrekTijd;
+    private GregorianCalendar vertrekTijd;
 
     @Column(name = "aankomstTijd")
-    private Date aankomstTijd;
+    private GregorianCalendar aankomstTijd;
 
     @Column(name = "prijsPerPersoon")
     private double prijsPerPersoon;
@@ -90,7 +95,7 @@ public class Reis {
     private int plaatsen;
 
     public String toString(){
-        return vertrekLocatie + " --> " + aankomstLocatie;
+        return id + " - " + vertrekLocatie + " --> " + aankomstLocatie;
     }
 
     public int getId() {
@@ -117,19 +122,17 @@ public class Reis {
         this.aankomstLocatie = aankomstLocatie;
     }
 
-    public Date getVertrekTijd() {
+    public GregorianCalendar getVertrekTijd() {
         return vertrekTijd;
     }
-
-    public void setVertrekTijd(Date vertrekTijd) {
+    public void setVertrekTijd(GregorianCalendar vertrekTijd) {
         this.vertrekTijd = vertrekTijd;
     }
 
-    public Date getAankomstTijd() {
+    public GregorianCalendar getAankomstTijd() {
         return aankomstTijd;
     }
-
-    public void setAankomstTijd(Date aankomstTijd) {
+    public void setAankomstTijd(GregorianCalendar aankomstTijd) {
         this.aankomstTijd = aankomstTijd;
     }
 
