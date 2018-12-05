@@ -10,32 +10,80 @@
         </f:metadata>
 
         <ui:define name="content">
+            <section class="zoek-reis section-wrapper container">
+                <div class="text-center">
+                    <h2 class="section-title">
+                        Zoek een reis
+                    </h2>
+                    <p class="section-subtitle">
+                        Waar wil je graag naar toe?
+                    </p>
+                </div>
 
-            <h2 class="nieuws">Nieuws</h2>
+                <form class="row">
+                    <div class="col-md-3 col-sm-6">
+                            <div class="form-group form-dropdown">
+                                <select class="form-control border-radius" id="sel1">
+                                    <option>Amerika</option>
+                                    <option>Bangladesh</option>
+                                    <option>Canada</option>
+                                    <option>India</option>
+                                </select>
+                        </div>
+                    </div>
 
-            <div class="card-deck">
-                <div class="card">
-                    <img class="card-img-top" src="/travelmore/resources/images/staking.jpg" alt="Staking" />
-                    <div class="card-body">
-                        <h5 class="card-title">Staking Ryanair</h5>
-                        <p class="card-text">De belgische vluchten vanuit ryanair kunnen vertragingen oplopen door de staking die er al enkele dagen gaande is.</p>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="input-group">
+                            <input type="date" class="form-control border-radius border-right" placeholder="Aankomst"/>
+                            <span class="input-group-addon border-radius custom-addon"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="input-group">
+                            <input type="date" class="form-control border-radius border-right" placeholder="Vertrek"/>
+                            <span class="input-group-addon border-radius custom-addon"><i class="ion-ios-calendar"></i>
+					        </span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="btn btn-default border-radius custom-button">
+                            Zoeken
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <section class="nieuws">
+                <div class="container">
+                    <h2 class="text-center">Nieuws</h2>
+
+                    <div class="card-deck">
+                        <div class="card">
+                            <img class="card-img-top" src="/travelmore/resources/images/staking.jpg" alt="Staking" />
+                            <div class="card-body">
+                                <h5 class="card-title">Staking Ryanair</h5>
+                                <p class="card-text">De belgische vluchten vanuit ryanair kunnen vertragingen oplopen door de staking die er al enkele dagen gaande is.</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img class="card-img-top" src="/travelmore/resources/images/vulkaan.jpg" alt="Vulkaan" />
+                            <div class="card-body">
+                                <h5 class="card-title">Vulkaan</h5>
+                                <p class="card-text">Vulkaan katrina zorgt voor ernstige vertragingen in Hawai.</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img class="card-img-top" src="/travelmore/resources/images/bagage.jpg" alt="Bagage" />
+                            <div class="card-body">
+                                <h5 class="card-title">Bagage</h5>
+                                <p class="card-text">Onze maatschappijen waar wij mee samenwerken zijn onlangs verkozen tot beste bagage afhandelaars van de wereld. Dit is bepaald door het agentschap van luchtverkeer.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="card">
-                    <img class="card-img-top" src="/travelmore/resources/images/vulkaan.jpg" alt="Vulkaan" />
-                    <div class="card-body">
-                        <h5 class="card-title">Vulkaan</h5>
-                        <p class="card-text">Vulkaan katrina zorgt voor ernstige vertragingen in Hawai.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card-img-top" src="/travelmore/resources/images/bagage.jpg" alt="Bagage" />
-                    <div class="card-body">
-                        <h5 class="card-title">Bagage</h5>
-                        <p class="card-text">Onze maatschappijen waar wij mee samenwerken zijn onlangs verkozen tot beste bagage afhandelaars van de wereld. Dit is bepaald door het agentschap van luchtverkeer.</p>
-                    </div>
-                </div>
-            </div>
+            </section>
         </ui:define>
     </ui:composition>
 </h:body>
