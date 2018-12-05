@@ -30,7 +30,7 @@ import java.util.GregorianCalendar;
                 ),
                 @NamedQuery(
 
-                       name = Reis.FILTERVERTREKLOCATIE,
+                        name = Reis.FILTERVERTREKLOCATIE,
                         query = "SELECT r FROM Reis r Where lower(r.vertrekLocatie.naam) = :naam"
                 ),
                 @NamedQuery(
@@ -165,7 +165,4 @@ public class Reis {
     public void setPlaatsen(int plaatsen) {
         this.plaatsen = plaatsen;
     }
-
-
-
 }
