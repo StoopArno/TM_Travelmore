@@ -21,7 +21,7 @@ public class LocatieService {
         return locatieRepository.findById(id);
     }
 
-    public List<Locatie> findAllLocations() {
+    public List<Locatie> findAllLocaties() {
         return locatieRepository.findAll();
     }
 
@@ -41,5 +41,4 @@ public class LocatieService {
 
         return  locatieRepository.findAllAankomstLocaties(reisRepository.findAankomstLocatieIds());
     }
-
 }

@@ -9,7 +9,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+import java.util.GregorianCalendar;
 
 
 @Entity
@@ -29,36 +29,67 @@ import java.util.Date;
                         query = "SELECT r.aankomstLocatie.id FROM Reis r"
                 ),
                 @NamedQuery(
+<<<<<<< HEAD
                       name = Reis.FILTERVERTREKLOCATIE,
                        query = "SELECT r FROM Reis r Where lower(r.aankomstLocatie.naam) LIKE :naam"
                 )
+=======
+                       name = Reis.FILTERVERTREKLOCATIE,
+                        query = "SELECT r FROM Reis r Where lower(r.vertrekLocatie.naam) = :naam"
+                ),
+                @NamedQuery(
+                        name = Reis.FILTERAANKOMSTLOCATIE,
+                        query = "SELECT r FROM Reis r Where lower(r.aankomstLocatie.naam) = :naam"
+                ),
+                @NamedQuery(
+                        name = Reis.FILTERAANTALPLAATSEN,
+                        query = "SELECT r FROM Reis r Where r.plaatsen = :plaatsen"
+                ),
+                @NamedQuery(
+                        name = Reis.FILTERPRIJSPERPERSOON,
+                        query = "SELECT r FROM Reis r Where r.prijsPerPersoon = :prijs"
+                ),
+                @NamedQuery(
+                        name = Reis.FILTERTRANSPORTMIDDEL,
+                        query = "SELECT r FROM Reis r Where lower(r.transportmiddel) = :naam"
+                ),
+>>>>>>> 590f37565f7515e77b119d9c3b07089b9640fa0d
         }
 )
 public class Reis {
+
+    public Reis(){
+        setVertrekLocatie(new Locatie());
+        setAankomstLocatie(new Locatie());
+    }
 
     //properties
     public static final String FIND_ALL = "Reis.findAll";
     public static final String FIND_ALLVERTREKLOCATIEIDS = "Reis.findVertrekLocatieIds";
     public static final String FIND_ALLAANKOMSTLOCATIEIDS = "Reis.findAankomstLocatieIds";
     public static final String FILTERVERTREKLOCATIE = "Reis.filtervertreklocatie";
+    public static final String FILTERAANKOMSTLOCATIE = "Reis.filteraankomstlocatie";
+    public static final String FILTERAANTALPLAATSEN = "Reis.filteraantalplaatsen";
+    public static final String FILTERPRIJSPERPERSOON = "Reis.filterprijsperpersoon";
+    public static final String FILTERTRANSPORTMIDDEL = "Reis.filterTransportmiddel";
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "vertrekLocatieID")
     private Locatie vertrekLocatie;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "aankomstLocatieID")
     private Locatie aankomstLocatie;
 
 
     @Column(name = "vertrekTijd")
-    private Date vertrekTijd;
+    private GregorianCalendar vertrekTijd;
 
     @Column(name = "aankomstTijd")
-    private Date aankomstTijd;
+    private GregorianCalendar aankomstTijd;
 
     @Column(name = "prijsPerPersoon")
     private double prijsPerPersoon;
@@ -70,7 +101,7 @@ public class Reis {
     private int plaatsen;
 
     public String toString(){
-        return vertrekLocatie + " --> " + aankomstLocatie;
+        return id + " - " + vertrekLocatie + " --> " + aankomstLocatie;
     }
 
     public int getId() {
@@ -97,19 +128,17 @@ public class Reis {
         this.aankomstLocatie = aankomstLocatie;
     }
 
-    public Date getVertrekTijd() {
+    public GregorianCalendar getVertrekTijd() {
         return vertrekTijd;
     }
-
-    public void setVertrekTijd(Date vertrekTijd) {
+    public void setVertrekTijd(GregorianCalendar vertrekTijd) {
         this.vertrekTijd = vertrekTijd;
     }
 
-    public Date getAankomstTijd() {
+    public GregorianCalendar getAankomstTijd() {
         return aankomstTijd;
     }
-
-    public void setAankomstTijd(Date aankomstTijd) {
+    public void setAankomstTijd(GregorianCalendar aankomstTijd) {
         this.aankomstTijd = aankomstTijd;
     }
 

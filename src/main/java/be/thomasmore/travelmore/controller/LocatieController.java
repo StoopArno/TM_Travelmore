@@ -17,13 +17,16 @@ import java.util.List;
 public class LocatieController {
 
     private Locatie geselecteerdeLocatie = new Locatie();
+
+    private Locatie locatie = new Locatie();
+
     private int geselecteerdeId;
 
     @Inject
     private LocatieService locatieService;
 
     public List<Locatie> getLocaties(){
-        return this.locatieService.findAllLocations();
+        return this.locatieService.findAllLocaties();
     }
 
     public List<Locatie> getVertrekLocaties(){
@@ -38,8 +41,15 @@ public class LocatieController {
         return this.locatieService.findLocationById(geselecteerdeLocatie.getId());
     }
 
+    public void voegLocatieToe(){
+        this.locatieService.insert(locatie);
+    }
+
+    public Locatie getLocatie() {
+        return locatie;
+    }
+
     public void updateLocatie(int locatieId, String naam, String stad, String code, String land){
-        System.out.println("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
         Locatie locatie = (locatieId == 0) ? new Locatie() : locatieService.findLocationById(locatieId);
         locatie.setNaam(naam);
         locatie.setStad(stad);
@@ -72,9 +82,5 @@ public class LocatieController {
     public void setGeselecteerdeId(int geselecteerdeId) {
         this.setGeselecteerdeLocatie(locatieService.findLocationById(geselecteerdeId));
         this.geselecteerdeId = geselecteerdeId;
-    }
-
-    public void test(){
-        System.out.println("ttttttttttttttttttttttttttttttttttttttttttttttttttt ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt");
     }
 }

@@ -1,5 +1,6 @@
 package be.thomasmore.travelmore.controller;
 
+import be.thomasmore.travelmore.domain.Locatie;
 import be.thomasmore.travelmore.domain.Reis;
 import be.thomasmore.travelmore.service.LocatieService;
 import be.thomasmore.travelmore.service.ReisService;
@@ -22,16 +23,24 @@ public class ReisController {
 
     @Inject
     private ReisService reisService;
+    @Inject
     private LocatieService locatieService;
 
     public List<Reis> getReizen(){
         return this.reisService.findAllReis();
     }
 
-    public  List<Reis> getReizenFilterByVertrekLocatie () {return this.reisService.filterReisVertrekLocatie();}
+    public  List<Reis> getReizenFilterByVertrekLocatie(String value) {return this.reisService.filterReisVertrekLocatie(value);}
+
+    public  List<Reis> getReizenFilterByAankomstLocatie(String value) {return this.reisService.filterReisAankomstLocatie(value);}
+
+    public  List<Reis> getReizenFilterByAantalPlaatsen(String value) {return this.reisService.filterReisAantalPlaatsen(value);}
+
+    public  List<Reis> getReizenFilterByPrijsPerPersoon(String value) {return this.reisService.filterReisPrijsPerPersoon(value);}
+
+    public  List<Reis> getReizenFilterByTransportmiddel(String value) {return this.reisService.filterReisTransportmiddel(value);}
 
     public void updateReis(int reisId, int vertrekLocatieId, int aankomstLocatieId, double prijsPerPersoon, String transportmiddel, int plaatsen){
-        System.out.println("uhrguihsud hgfshdigujsdf hgj khfxiughdufihg uidxh figudrhu hgdxfhgsudfh guidxfhlu ghdsfuxighfuig huidgu dhig");
         Reis reis = (reisId == 0) ? new Reis() : reisService.findReisById(reisId);
         reis.setVertrekLocatie(locatieService.findLocationById(vertrekLocatieId));
         reis.setAankomstLocatie(locatieService.findLocationById(aankomstLocatieId));
@@ -42,10 +51,7 @@ public class ReisController {
         reis.setPlaatsen(plaatsen);
         if(reisId == 0){reisService.insert(reis);}
         else{reisService.update(reis);}
-    }
-
-    public void test(){
-        System.out.println("ttttttttttttttttttttttttttttttttttttttttttttttttttt ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt");
+        newReis();
     }
 
     public void newReis(){
@@ -65,6 +71,9 @@ public class ReisController {
     }
 
     public int getGeselecteerdeId() {
+        if(geselecteerdeReis == null){
+            geselecteerdeReis = new Reis();
+        }
         return geselecteerdeId;
     }
     public void setGeselecteerdeId(int geselecteerdeId) {

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<ui:composition template="/templates/layout.xhtml">
+
+    <f:metadata >
+        <f:viewAction action="#{ViewController.setActiveTab('bookingen')}" />
+    </f:metadata>
+
+    <ui:define name="carousel"></ui:define>
+    <ui:define name="header">
+        <ui:include src="/templates/adminHeader.xhtml" />
+    </ui:define>
+    <ui:define name="title">Bookingen bekijken</ui:define>
+    <ui:define name="content">
+        <br/>
+        <div class="accordion" id="accordionBookingen">
+            <h:form>
+                <ui:repeat value="#{BookingController.bookingen}" var="booking">
+
+                    <div class="card">
+                        <div class="card-header" id="heading#{booking.id}">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse#{booking.id}" aria-controls="collapse#{booking.id}">
+                                <div class="row">
+                                    <div class="col-12 text-left">
+                                        #{booking.gebruiker}<br />
+                                        #{booking.reis} <br />
+                                        <h:outputText rendered="true" value="Betaald!" />
+                                        <h:outputText rendered="#{!booking.betaald}" value="Nog niet betaald!" />
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+
+                        <div id="collapse#{booking.id}" class="collapse" aria-labelledby="heading#{booking.id}" data-parent="#accordionBookingen">
+                            <div class="card-body">
+
+                                <div class="form-group row">
+                                    <label for="gebruiker#{booking.id}" class="col-sm-2 col-form-label">Gebruiker</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText value="#{booking.gebruiker}" styleClass="form-control" id="displayGEbruiker#{booking.id}" readonly="true"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="prijs#{booking.id}" class="col-sm-2 col-form-label">Prijs</label>
+                                    <div class="col-sm-7">
+                                        <h:inputText value="#{booking.aantalPersonen} x #{booking.prijsPPTeBetalen} = #{booking.aantalPersonen * booking.prijsPPTeBetalen}" styleClass="form-control" id="displayisPrijs#{booking.id}" readonly="true"/>
+                                    </div>
+                                    <label for="isBetaald#{booking.id}" class="col-sm-2 col-form-label">Betaald?</label>
+                                    <div class="col-sm-1">
+                                        <h:selectBooleanCheckbox  value="#{booking.betaald}" styleClass="form-control" id="displayisBetaald#{booking.id}" readonly="true"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="reis#{booking.id}" class="col-sm-2 col-form-label">Reis</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText value="#{booking.reis}" styleClass="form-control" id="displayReis#{booking.id}" readonly="true"/>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </ui:repeat>
+
+            </h:form>
+        </div>
+
+    </ui:define>
+</ui:composition>
+</html>
