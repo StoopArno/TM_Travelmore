@@ -24,11 +24,14 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
                 <h1>Onze reizen : </h1>
                 <h:form>
                 <div class="row">
+
+
                     <h:dataTable var="reis" class="table table-striped" value="#{ReisController.reizen}">
                         <h:column>
                             <f:facet name="header">Vertrek Locatie</f:facet>
                             <h:outputText value="#{reis.vertrekLocatie.naam}" />
                         </h:column>
+
 
                         <h:column>
                             <f:facet name="header">Vertrek Tijd</f:facet>

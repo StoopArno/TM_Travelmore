@@ -29,7 +29,6 @@ import java.util.GregorianCalendar;
                         query = "SELECT r.aankomstLocatie.id FROM Reis r"
                 ),
                 @NamedQuery(
-
                         name = Reis.FILTERVERTREKLOCATIE,
                         query = "SELECT r FROM Reis r Where lower(r.vertrekLocatie.naam) = :naam"
                 ),
@@ -86,10 +85,10 @@ public class Reis {
 
 
     @Column(name = "vertrekTijd")
-    private GregorianCalendar vertrekTijd;
+    private Date vertrekTijd;
 
     @Column(name = "aankomstTijd")
-    private GregorianCalendar aankomstTijd;
+    private Date aankomstTijd;
 
     @Column(name = "prijsPerPersoon")
     private double prijsPerPersoon;
@@ -128,17 +127,19 @@ public class Reis {
         this.aankomstLocatie = aankomstLocatie;
     }
 
-    public GregorianCalendar getVertrekTijd() {
+    public Date getVertrekTijd() {
         return vertrekTijd;
     }
-    public void setVertrekTijd(GregorianCalendar vertrekTijd) {
+
+    public void setVertrekTijd(Date vertrekTijd) {
         this.vertrekTijd = vertrekTijd;
     }
 
-    public GregorianCalendar getAankomstTijd() {
+    public Date getAankomstTijd() {
         return aankomstTijd;
     }
-    public void setAankomstTijd(GregorianCalendar aankomstTijd) {
+
+    public void setAankomstTijd(Date aankomstTijd) {
         this.aankomstTijd = aankomstTijd;
     }
 
