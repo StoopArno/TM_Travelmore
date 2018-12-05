@@ -31,7 +31,23 @@ import java.util.GregorianCalendar;
                 @NamedQuery(
                        name = Reis.FILTERVERTREKLOCATIE,
                         query = "SELECT r FROM Reis r Where lower(r.vertrekLocatie.naam) = :naam"
-                )
+                ),
+                @NamedQuery(
+                        name = Reis.FILTERAANKOMSTLOCATIE,
+                        query = "SELECT r FROM Reis r Where lower(r.aankomstLocatie.naam) = :naam"
+                ),
+                @NamedQuery(
+                        name = Reis.FILTERAANTALPLAATSEN,
+                        query = "SELECT r FROM Reis r Where r.plaatsen = :plaatsen"
+                ),
+                @NamedQuery(
+                        name = Reis.FILTERPRIJSPERPERSOON,
+                        query = "SELECT r FROM Reis r Where r.prijsPerPersoon = :prijs"
+                ),
+                @NamedQuery(
+                        name = Reis.FILTERTRANSPORTMIDDEL,
+                        query = "SELECT r FROM Reis r Where lower(r.transportmiddel) = :naam"
+                ),
         }
 )
 public class Reis {
@@ -46,6 +62,10 @@ public class Reis {
     public static final String FIND_ALLVERTREKLOCATIEIDS = "Reis.findVertrekLocatieIds";
     public static final String FIND_ALLAANKOMSTLOCATIEIDS = "Reis.findAankomstLocatieIds";
     public static final String FILTERVERTREKLOCATIE = "Reis.filtervertreklocatie";
+    public static final String FILTERAANKOMSTLOCATIE = "Reis.filteraankomstlocatie";
+    public static final String FILTERAANTALPLAATSEN = "Reis.filteraantalplaatsen";
+    public static final String FILTERPRIJSPERPERSOON = "Reis.filterprijsperpersoon";
+    public static final String FILTERTRANSPORTMIDDEL = "Reis.filterTransportmiddel";
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)

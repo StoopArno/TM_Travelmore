@@ -22,7 +22,7 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
             <ui:define name="content">
                 <h1>Onze reizen : </h1>
                 <div class="row">
-                    <b:dataTable value="#{ReisController.reizenFilterByVertrekLocatie}"
+                    <b:dataTable value="#{ReisController.getReizenFilterByTransportmiddel('auto')}"
                                  var="reis">
                         <b:dataTableColumn label="Vertrek Locatie" value="#{reis.vertrekLocatie.naam}"/>
                         <b:dataTableColumn label="Vertrek Tijd" value="#{reis.vertrekTijd}" />
@@ -30,6 +30,7 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
                         <b:dataTableColumn label="Aankomst Tijd" value="#{reis.aankomstTijd}" />
                         <b:dataTableColumn label="Aantal plaatsen" value="#{reis.plaatsen}" />
                         <b:dataTableColumn label="Prijs per persoon" value="#{reis.prijsPerPersoon}"  />
+                        <b:dataTableColumn label="Transportmiddel" value="#{reis.transportmiddel}"/>
                     </b:dataTable>
                 </div>
             </ui:define>
