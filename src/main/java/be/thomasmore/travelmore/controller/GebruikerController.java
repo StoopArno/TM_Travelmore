@@ -7,9 +7,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.Serializable;
 import java.util.List;
 
 @ManagedBean(name="GebruikerController")
@@ -99,7 +96,7 @@ public class GebruikerController  {
     }
 
     public List<Gebruiker> getGebruikers(){
-        return gebruikerService.findAllLocations();
+        return gebruikerService.findAllGebruikers();
     }
 
     public void newGebruiker(){

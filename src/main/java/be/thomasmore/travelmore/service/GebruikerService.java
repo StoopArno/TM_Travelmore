@@ -70,7 +70,7 @@ public class GebruikerService {
         }
     }
 
-    public List<Gebruiker> findAllLocations() {
+    public List<Gebruiker> findAllGebruikers() {
         return gebruikerRepository.findAll();
     }
 
