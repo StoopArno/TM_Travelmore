@@ -21,13 +21,8 @@ public class BookingService {
         return bookingRepository.findById(id);
     }
 
-    public List<Reis> findAllReizenByUserBookings(int gebruikersID){
-        List<Booking> bookings= bookingRepository.findAllByUserId(gebruikersID);
-        List<Reis> output = new ArrayList<>();
-        for(Booking item:bookings ){
-            output.add(reisService.findReisById(item.getReis().getId()));
-        }
-        return output;
+    public List<Booking> findAllBookingsByUserId(int gebruikersID){
+        return bookingRepository.findAllByUserId(gebruikersID);
 }
 
     public List<Booking> findAllBookings() {

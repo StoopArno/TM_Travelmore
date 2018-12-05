@@ -8,6 +8,7 @@ import be.thomasmore.travelmore.service.ReisService;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
+import java.awt.print.Book;
 import java.util.List;
 
 @ManagedBean(name = "BookingController")
@@ -34,10 +35,8 @@ public class BookingController {
         return this.bookingService.findBookingById(geselecteerdeBooking.getId());
     }
 
-    public  int aantalPlaatenOver(int id) { return  this.bookingService.aantalPlaatsenOver(id);}
-
-    public List<Reis> getReizenByUserId(int gebruikersID){
-        return this.bookingService.findAllReizenByUserBookings(gebruikersID);
+    public List<Booking> getReizenByUserId(int gebruikersID){
+        return this.bookingService.findAllBookingsByUserId(gebruikersID);
     }
 
     public String navigateToBooken(int id){
@@ -56,6 +55,9 @@ public class BookingController {
         return "/index";
     }
 
+
+
+    //GETTERS en SETTERS
     public Booking getGeselecteerdeBooking() {
         return geselecteerdeBooking;
     }

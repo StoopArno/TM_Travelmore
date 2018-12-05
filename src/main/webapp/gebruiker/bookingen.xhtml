@@ -23,57 +23,66 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
                 <br/>
                 <div class="accordion" id="accordionReizen">
                     <h:form>
-                        <ui:repeat value="#{BookingController.getReizenByUserId(GebruikerController.aangemeldeGebruiker.id)}" var="reis">
+                        <ui:repeat value="#{BookingController.getReizenByUserId(GebruikerController.aangemeldeGebruiker.id)}" var="booking">
 
                             <div class="card">
-                                <div class="card-header" id="heading#{reis.id}">
-                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse#{reis.id}" aria-controls="collapse#{reis.id}">
+                                <div class="card-header" id="heading#{booking.reis.id}">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse#{booking.reis.id}" aria-controls="collapse#{booking.reis.id}">
                                         <div class="row">
                                             <div class="col-12">
-                                                <h:outputText value="#{reis}" />
+                                                <h:outputText value="#{booking.reis}" />
                                             </div>
                                         </div>
                                     </button>
                                 </div>
 
-                                <div id="collapse#{reis.id}" class="collapse" aria-labelledby="heading#{reis.id}" data-parent="#accordionReizen">
+                                <div id="collapse#{booking.reis.id}" class="collapse" aria-labelledby="heading#{booking.reis.id}" data-parent="#accordionReizen">
                                     <div class="card-body">
 
                                         <div class="form-group row">
-                                            <label for="vertrekLocatie#{reis.id}" class="col-sm-2 col-form-label">Vertreklocatie</label>
+                                            <label for="vertrekLocatie#{booking.reis.id}" class="col-sm-2 col-form-label">Vertreklocatie</label>
                                             <div class="col-sm-10">
-                                                <h:inputText value="#{reis.vertrekLocatie}" styleClass="form-control" id="displayVertrekLocatie#{reis.id}" readonly="true"/>
+                                                <h:inputText value="#{booking.reis.vertrekLocatie}" styleClass="form-control" id="displayVertrekLocatie#{booking.reis.id}" readonly="true"/>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label for="vertrekTijd#{reis.id}" class="col-sm-2 col-form-label">Vertrektijd</label>
+                                            <label for="vertrekTijd#{booking.reis.id}" class="col-sm-2 col-form-label">Vertrektijd</label>
                                             <div class="col-sm-10">
-                                                <h:inputText value="#{reis.vertrekTijd.time}" styleClass="form-control" id="displayVertrekTijd#{reis.id}" readonly="true"/>
+                                                <h:inputText value="#{booking.reis.vertrekTijd}" styleClass="form-control" id="displayVertrekTijd#{booking.reis.id}" readonly="true">
+                                                    <f:convertDateTime pattern="dd-MM-yyyy HH:MM" />
+                                                </h:inputText>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label for="aankomstLocatie#{reis.id}" class="col-sm-2 col-form-label">Aankomstlocatie</label>
+                                            <label for="aankomstLocatie#{booking.reis.id}" class="col-sm-2 col-form-label">Aankomstlocatie</label>
                                             <div class="col-sm-10">
-                                                <h:inputText value="#{reis.aankomstLocatie}" styleClass="form-control" id="displayAankomstLocatie#{reis.id}" readonly="true"/>
+                                                <h:inputText value="#{booking.reis.aankomstLocatie}" styleClass="form-control" id="displayAankomstLocatie#{booking.reis.id}" readonly="true"/>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label for="aankomstTijd#{reis.id}" class="col-sm-2 col-form-label">AankomstTijd</label>
+                                            <label for="aankomstTijd#{booking.reis.id}" class="col-sm-2 col-form-label">AankomstTijd</label>
                                             <div class="col-sm-10">
-                                                <h:inputText value="#{reis.aankomstTijd.time}" styleClass="form-control" id="displayAankomstTijd#{reis.id}" readonly="true"/>
+                                                <h:inputText value="#{booking.reis.aankomstTijd}" styleClass="form-control" id="displayAankomstTijd#{booking.reis.id}" readonly="true">
+                                                    <f:convertDateTime pattern="dd-MM-yyyy HH:MM" />
+                                                </h:inputText>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label for="transportmiddel#{reis.id}" class="col-sm-2 col-form-label">Transportmiddel</label>
+                                            <label for="transportmiddel#{booking.reis.id}" class="col-sm-2 col-form-label">Transportmiddel</label>
                                             <div class="col-sm-10">
-                                                <h:inputText value="#{reis.transportmiddel}" styleClass="form-control" id="displayTransportmiddel#{reis.id}" readonly="true"/>
+                                                <h:inputText value="#{booking.reis.transportmiddel}" styleClass="form-control" id="displayTransportmiddel#{booking.reis.id}" readonly="true"/>
                                             </div>
                                         </div>
-
+                                        <div class="form-group row">
+                                            <label for="betaalt#{booking.reis.id}" class="col-sm-2 col-form-label">Betaalt</label>
+                                            <div class="col-sm-10">
+                                                <h:inputText rendered="" value="OK!" styleClass="form-control" id="displayBetaalt#{booking.reis.id}" readonly="true"/>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
