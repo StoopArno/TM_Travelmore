@@ -29,6 +29,8 @@ public class BookingService {
         return bookingRepository.findAll();
     }
 
+    public  int aantalPlaatsenOver(int id) {return  bookingRepository.countPlaatsen(id);}
+
     public void insert(Booking booking){
         bookingRepository.insert(booking);
     }

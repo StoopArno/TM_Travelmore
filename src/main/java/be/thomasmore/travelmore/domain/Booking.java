@@ -16,9 +16,12 @@ import javax.persistence.*;
 
                 ),
                 @NamedQuery(
+                        name = Booking.COUNTPLAATSEN,
+                        query = "SELECT b.aantalPersonen FROM Booking b WHERE b.reis.id = :id"
+                ),
+                @NamedQuery(
                         name = Booking.FIND_BY_USER_ID,
                         query = "SELECT b FROM Booking b WHERE b.gebruiker.id = :id"
-
                 )
         }
 )
@@ -28,6 +31,8 @@ public class Booking {
     //properties
     public static final String FIND_ALL = "Booking.findAll";
     public static final String FIND_BY_ID = "Booking.findById";
+    public static final String COUNTPLAATSEN = "Booking.countPlaatsen";
+
     public static final String FIND_BY_USER_ID = "Booking.findByUserId";
 
 
