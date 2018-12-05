@@ -17,7 +17,6 @@ public class GebruikerController  {
     private Gebruiker aangemeldeGebruiker = new Gebruiker();
     private Gebruiker geselecteerdeGebruiker = new Gebruiker();
     private int geselecteerdeId;
-
     private Boolean isAangemeld = false;
 
     @Inject

@@ -1,6 +1,7 @@
 package be.thomasmore.travelmore.filters;
 
 import be.thomasmore.travelmore.controller.GebruikerController;
+import be.thomasmore.travelmore.controller.ViewController;
 import be.thomasmore.travelmore.domain.Gebruiker;
 
 import javax.faces.bean.ManagedProperty;
@@ -26,9 +27,11 @@ public class LogFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) resp;
         HttpServletRequest request = (HttpServletRequest) req;
         GebruikerController user =  (GebruikerController)request.getSession().getAttribute("GebruikerController");
+        ViewController view =  (ViewController)request.getSession().getAttribute("ViewController");
         if(user.getAangemeldeGebruiker().getSoortGebruiker().getId() == 1){ //If user is already authenticated
             response.sendRedirect("/travelmore/index.xhtml");
         }else{
+            view.setActiveTab("bookingen");
             chain.doFilter(req, resp);
         }
     }
