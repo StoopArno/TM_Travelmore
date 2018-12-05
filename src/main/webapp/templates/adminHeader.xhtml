@@ -58,9 +58,10 @@
                     </ui:fragment>
                 </ul>
                 <span class="navbar-text">
-                        <h:outputLink value = "/travelmore/login.xhtml" rendered="#{false}">Meld aan</h:outputLink>
                         <h:outputLink value = "/travelmore/login.xhtml" rendered="#{true}" >Account Admin</h:outputLink> |
-                        <h:outputLink value = "/travelmore/login.xhtml" rendered="#{true}" >Meld af</h:outputLink>
+                    <h:form>
+                        <h:commandLink value="Uitloggen" class="dropdown-item" action="#{GebruikerController.logout}" />
+                    </h:form>
                 </span>
             </div>
         </nav>
