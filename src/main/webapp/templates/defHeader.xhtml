@@ -6,13 +6,13 @@
         <nav class="navbar navbar-default navbar-fixed-top navbar-expand-md order-md-0">
             <div class="container">
                 <div class="navbar-header">
-                    <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarText" aria-expanded="false" aria-label="Toggle navigation">-->
-                        <!--<span class="sr-only">Toggle navigation</span>-->
-                        <!--<span><i class="material-icons">menu</i></span>-->
-                    <!--</button>-->
-                    <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">-->
-                        <!--<span class="navbar-toggler-icon"></span>-->
-                    <!--</button>-->
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span><i class="material-icons">menu</i></span>
+                    </button>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
                     <a class="navbar-brand" href="/travelmore/" title="HOME">
                         <h:graphicImage height="60px" library="images" name="navheader.png" />
                         Travel<span>More</span>
@@ -33,7 +33,7 @@
 
                         <ui:fragment rendered="#{ViewController.activeTab=='reizen'}">
                             <li class="nav-item active">
-                                <a class="nav-link" href="">Reizen</a>
+                                <a class="nav-link" href="#">Reizen</a>
                             </li>
                         </ui:fragment>
                         <ui:fragment rendered="#{ViewController.activeTab!='reizen'}">
