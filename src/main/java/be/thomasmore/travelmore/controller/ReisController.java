@@ -45,21 +45,6 @@ public class ReisController {
     public  List<Reis> getFilterToepassen(){
 
 
-
-
-        boolean test;
-
-
-        // hier in deze if zit de fout !!!
-      /*  if (filterTekst != null  ){
-            if(isNumeric(filterTekst))
-            {
-
-            }
-        }*/
-
-
-
         if (geselecteerdeFilter == null || geselecteerdeFilter.equals("0") || filterTekst == null  || filterTekst.equals("")){
             return getReizen();
         }else if(this.geselecteerdeFilter.equals("1")){
@@ -72,6 +57,10 @@ public class ReisController {
             return getReizenFilterByAantalPlaatsen(filterTekst);
         }else if(this.geselecteerdeFilter.equals("5") && isNumeric(filterTekst)){
             return getReizenFilterByPrijsPerPersoon(filterTekst);
+        }else if(this.geselecteerdeFilter.equals("6")){
+            return getReizenFilterByAankomstTijd(filterTekst);
+        }else if(this.geselecteerdeFilter.equals("7")){
+            return getReizenFilterByVertrekTijd(filterTekst);
         }else {
            return getReizen();
         }
