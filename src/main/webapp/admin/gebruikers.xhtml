@@ -8,178 +8,182 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 <h:body>
-<ui:composition template="/templates/layout_admin.xhtml">
-    <f:metadata >
-        <f:viewAction action="#{ViewController.setActiveTab('gebruikers')}" />
-    </f:metadata>
-    <ui:define name="title">Gebruikers beheren</ui:define>
-    <ui:define name="content">
-        <div class="container-fluid">
-            <div class="row admintitle">
-                <div class="col">
-                    <h1>Gebruikers beheren</h1>
-                </div>
-                 <div class="col-auto">
-                    <h:form >
-                        <h:commandButton action="#{GebruikerController.newGebruiker()}" value="Maak nieuwe gebruiker aan" styleClass="btn btn-primary">
-                            <f:ajax event="action" render="@all" onevent="showGebruikerModal"/>
-                        </h:commandButton>
-                        <div class="modal fade" id="gebruikerModal" tabindex="-1" role="dialog" aria-labelledby="gebruikerModallabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="reisModallabel">
-                                            Gebruiker aanpassen/wijzigen
-                                        </h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
+    <ui:composition template="/templates/layout_admin.xhtml">
+        <f:metadata >
+            <f:viewAction action="#{ViewController.setActiveTab('gebruikers')}" />
+        </f:metadata>
 
-                                    <div class="modal-body">
-                                        <div class="form-group row">
-                                            <label for="updateVoornaam" class="col-sm-2 col-form-label">Voornaam</label>
-                                            <div class="col-sm-10">
-                                                <h:inputText value="#{GebruikerController.geselecteerdeGebruiker.voornaam}" binding="#{voornaam}" styleClass="form-control" id="updateVoornaam" />
-                                            </div>
-
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="updateAchternaam"  class="col-sm-2 col-form-label">Achternaam</label>
-                                            <div class="col-sm-10">
-                                                <h:inputText binding="#{achternaam}" value="#{GebruikerController.geselecteerdeGebruiker.achternaam}" styleClass="form-control" id="updateAchternaam" />
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="updateGemeente" class="col-sm-2 col-form-label">Gemeente</label>
-                                            <div class="col-sm-10">
-                                                <h:inputText binding="#{gemeente}" value="#{GebruikerController.geselecteerdeGebruiker.gemeente}" styleClass="form-control" id="updateGemeente" />
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="updateAdres" class="col-sm-2 col-form-label">Adres</label>
-                                            <div class="col-sm-10">
-                                                <h:inputText binding="#{adres}" value="#{GebruikerController.geselecteerdeGebruiker.adres}" styleClass="form-control" id="updateAdres" />
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="updateEmail" class="col-sm-2 col-form-label">Email</label>
-                                            <div class="col-sm-10">
-                                                <h:inputText binding="#{email}" value="#{GebruikerController.geselecteerdeGebruiker.email}" styleClass="form-control" id="updateEmail"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <h:commandButton type="submit" action="#{GebruikerController.updateGebruiker(GebruikerController.geselecteerdeGebruiker.id, voornaam.value, achternaam.value, adres.value, gemeente.value, email.value)}" styleClass="btn btn-primary" value="Sla reis op" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </h:form>
-                 </div>
-                <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="confirmModalLabel">Bevestiging</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                Weet u zeker dat u de gebruiker #{GebruikerController.geselecteerdeGebruiker} wilt verwijderen?
-                                Deze actie kan niet ongedaan gemaakt worden!
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuleer</button>
-                                <h:commandButton action="#{GebruikerController.deleteGebruiker(GebruikerController.geselecteerdeId)}" value="Bevestig" styleClass="btn btn-danger" />
-                            </div>
-                        </div>
+        <ui:define name="footer"></ui:define>
+        <ui:define name="title">Gebruikers beheren</ui:define>
+        <ui:define name="content">
+            <h:form>
+                <div class="container">
+                    <div class="col">
+                        <h1>Gebruikers beheren</h1>
                     </div>
-                </div>
-            </div>
-            <div class="accordion" id="accordionGebruikers">
-                <ui:repeat value="#{GebruikerController.gebruikers}" var="gebruiker">
-                    <div class="card">
-                        <div class="card-header" id="heading#{gebruiker.id}">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse#{gebruiker.id}" aria-controls="collapse#{gebruiker.id}">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h:outputText value="#{gebruiker}" />
+                    <div class="modal fade" id="gebruikerModal" tabindex="-1" role="dialog" aria-labelledby="gebruikerModallabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="reisModallabel">
+                                        Gebruiker aanpassen/wijzigen
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <div class="form-group row">
+                                        <label for="updateVoornaam" class="col-sm-2 col-form-label">Voornaam</label>
+                                        <div class="col-sm-10">
+                                            <h:inputText value="#{GebruikerController.geselecteerdeGebruiker.voornaam}" binding="#{voornaam}" styleClass="form-control" id="updateVoornaam" />
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="updateAchternaam"  class="col-sm-2 col-form-label">Achternaam</label>
+                                        <div class="col-sm-10">
+                                            <h:inputText binding="#{achternaam}" value="#{GebruikerController.geselecteerdeGebruiker.achternaam}" styleClass="form-control" id="updateAchternaam" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="updateGemeente" class="col-sm-2 col-form-label">Gemeente</label>
+                                        <div class="col-sm-10">
+                                            <h:inputText binding="#{gemeente}" value="#{GebruikerController.geselecteerdeGebruiker.gemeente}" styleClass="form-control" id="updateGemeente" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="updateAdres" class="col-sm-2 col-form-label">Adres</label>
+                                        <div class="col-sm-10">
+                                            <h:inputText binding="#{adres}" value="#{GebruikerController.geselecteerdeGebruiker.adres}" styleClass="form-control" id="updateAdres" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="updateEmail" class="col-sm-2 col-form-label">Email</label>
+                                        <div class="col-sm-10">
+                                            <h:inputText binding="#{email}" value="#{GebruikerController.geselecteerdeGebruiker.email}" styleClass="form-control" id="updateEmail"/>
+                                        </div>
                                     </div>
                                 </div>
-                            </button>
-                            <div class="float-right">
-                                <div class="row">
-                                    <div class="col-5">
-                                        <h:commandButton value="Pas aan" styleClass="btn btn-primary">
-                                            <f:setPropertyActionListener target="#{GebruikerController.geselecteerdeId}" value="#{gebruiker.id}" />
-                                            <f:ajax event="action" render="@all" onevent="showGebruikerModal"/>
-                                        </h:commandButton>
-                                    </div>
-                                    <div class="offset-1 col-5">
-                                        <h:commandButton value="Verwijder" styleClass="btn btn-danger">
-                                            <f:setPropertyActionListener target="#{GebruikerController.geselecteerdeId}" value="#{gebruiker.id}" />
-                                            <f:ajax event="action" render="@all" onevent="showConfirmModal"/>
-                                        </h:commandButton>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="collapse#{gebruiker.id}" class="collapse" aria-labelledby="heading#{gebruiker.id}" data-parent="#accordionGebruikers">
-                            <div class="card-body">
-                                <div class="form-group row">
-                                    <label for="voornaam#{gebruiker.id}" class="col-sm-2 col-form-label">Voornaam</label>
-                                    <div class="col-sm-4">
-                                        <h:inputText value="#{gebruiker.voornaam}" styleClass="form-control" id="displayVoornaam#{gebruiker.id}" readonly="true"/>
-                                    </div>
-                                    <label for="achternaam#{gebruiker.id}" class="col-sm-2 col-form-label">Achternaam</label>
-                                    <div class="col-sm-4">
-                                        <h:inputText value="#{gebruiker.achternaam}" styleClass="form-control" id="displayAchternaam#{gebruiker.id}" readonly="true"/>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="gemeente#{gebruiker.id}" class="col-sm-2 col-form-label">Gemeente</label>
-                                    <div class="col-sm-10">
-                                        <h:inputText value="#{gebruiker.gemeente}" styleClass="form-control" id="displayGemeente#{gebruiker.id}" readonly="true"/>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="adres#{gebruiker.id}" class="col-sm-2 col-form-label">Adres</label>
-                                    <div class="col-sm-10">
-                                        <h:inputText value="#{gebruiker.adres}" styleClass="form-control" id="displayAdres#{gebruiker.id}" readonly="true"/>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="email#{gebruiker.id}" class="col-sm-2 col-form-label">Email</label>
-                                    <div class="col-sm-10">
-                                        <h:inputText value="#{gebruiker.email}" styleClass="form-control" id="displayEmail#{gebruiker.id}" readonly="true"/>
-                                    </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <h:commandButton type="submit" action="#{GebruikerController.updateGebruiker()}" styleClass="btn btn-primary" value="Sla reis op" />
                                 </div>
                             </div>
                         </div>
                     </div>
-                </ui:repeat>
-            </div>
-        </div>
-        <script>
-            function showGebruikerModal(data) {
-                if (data.status == "success") {
-                    $('#gebruikerModal').modal();
+
+                    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="confirmModalLabel">Bevestiging</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Weet u zeker dat u de gebruiker #{GebruikerController.geselecteerdeGebruiker} wilt verwijderen?
+                                    Deze actie kan niet ongedaan gemaakt worden!
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuleer</button>
+                                    <h:commandButton action="#{GebruikerController.deleteGebruiker(GebruikerController.geselecteerdeId)}" value="Bevestig" styleClass="btn btn-danger" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion" id="accordionGebruikers">
+                        <ui:repeat value="#{GebruikerController.gebruikers}" var="gebruiker">
+                            <div class="card">
+                                <div class="card-header" id="heading#{gebruiker.id}">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse#{gebruiker.id}" aria-controls="collapse#{gebruiker.id}">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h:outputText value="#{gebruiker}" />
+                                            </div>
+                                        </div>
+                                    </button>
+                                    <div class="float-right">
+                                        <div class="row">
+                                            <div class="col-5">
+                                                <h:commandButton value="Pas aan" styleClass="btn btn-primary">
+                                                    <f:setPropertyActionListener target="#{GebruikerController.geselecteerdeId}" value="#{gebruiker.id}" />
+                                                    <f:ajax event="action" render="@all" onevent="showGebruikerModal"/>
+                                                </h:commandButton>
+                                            </div>
+                                            <div class="offset-1 col-5">
+                                                <h:commandButton value="Verwijder" styleClass="btn btn-danger">
+                                                    <f:setPropertyActionListener target="#{GebruikerController.geselecteerdeId}" value="#{gebruiker.id}" />
+                                                    <f:ajax event="action" render="@all" onevent="showConfirmModal"/>
+                                                </h:commandButton>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="collapse#{gebruiker.id}" class="collapse" aria-labelledby="heading#{gebruiker.id}" data-parent="#accordionGebruikers">
+                                    <div class="card-body">
+                                        <div class="form-group row">
+                                            <label for="voornaam#{gebruiker.id}" class="col-sm-2 col-form-label">Voornaam</label>
+                                            <div class="col-sm-4">
+                                                <h:inputText value="#{gebruiker.voornaam}" styleClass="form-control" id="displayVoornaam#{gebruiker.id}" readonly="true"/>
+                                            </div>
+                                            <label for="achternaam#{gebruiker.id}" class="col-sm-2 col-form-label">Achternaam</label>
+                                            <div class="col-sm-4">
+                                                <h:inputText value="#{gebruiker.achternaam}" styleClass="form-control" id="displayAchternaam#{gebruiker.id}" readonly="true"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="gemeente#{gebruiker.id}" class="col-sm-2 col-form-label">Gemeente</label>
+                                            <div class="col-sm-10">
+                                                <h:inputText value="#{gebruiker.gemeente}" styleClass="form-control" id="displayGemeente#{gebruiker.id}" readonly="true"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="adres#{gebruiker.id}" class="col-sm-2 col-form-label">Adres</label>
+                                            <div class="col-sm-10">
+                                                <h:inputText value="#{gebruiker.adres}" styleClass="form-control" id="displayAdres#{gebruiker.id}" readonly="true"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="email#{gebruiker.id}" class="col-sm-2 col-form-label">Email</label>
+                                            <div class="col-sm-10">
+                                                <h:inputText value="#{gebruiker.email}" styleClass="form-control" id="displayEmail#{gebruiker.id}" readonly="true"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ui:repeat>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-right">
+                            <h:commandButton action="#{GebruikerController.newGebruiker()}" value="Maak nieuwe gebruiker aan" styleClass="btn btn-primary">
+                                <f:ajax event="action" render="@all" onevent="showGebruikerModal"/>
+                            </h:commandButton>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+            <script>
+                function showGebruikerModal(data) {
+                    if (data.status == "success") {
+                        $('#gebruikerModal').modal();
+                    }
                 }
-            }
-            function showConfirmModal(data) {
-                if (data.status == "success") {
-                    $('#confirmModal').modal();
+                function showConfirmModal(data) {
+                    if (data.status == "success") {
+                        $('#confirmModal').modal();
+                    }
                 }
-            }
-        </script>
-    </ui:define>
-</ui:composition>
+            </script>
+        </ui:define>
+    </ui:composition>
 </h:body>
 </html>

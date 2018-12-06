@@ -84,8 +84,14 @@ public class Reis {
     @Column(name = "vertrekTijd")
     private Date vertrekTijd;
 
+    @Column(name = "vertrekDatum")
+    private Date vertrekDatum;
+
     @Column(name = "aankomstTijd")
     private Date aankomstTijd;
+
+    @Column(name = "aankomstDatum")
+    private Date aankomstDatum;
 
     @Column(name = "prijsPerPersoon")
     private double prijsPerPersoon;
@@ -135,12 +141,28 @@ public class Reis {
         this.vertrekTijd = vertrekTijd;
     }
 
+    public Date getVertrekDatum() {
+        return vertrekDatum;
+    }
+
+    public void setVertrekDatum(Date vertrekDatum) {
+        this.vertrekDatum = vertrekDatum;
+    }
+
     public Date getAankomstTijd() {
         return aankomstTijd;
     }
 
     public void setAankomstTijd(Date aankomstTijd) {
         this.aankomstTijd = aankomstTijd;
+    }
+
+    public Date getAankomstDatum() {
+        return aankomstDatum;
+    }
+
+    public void setAankomstDatum(Date aankomstDatum) {
+        this.aankomstDatum = aankomstDatum;
     }
 
     public double getPrijsPerPersoon() {

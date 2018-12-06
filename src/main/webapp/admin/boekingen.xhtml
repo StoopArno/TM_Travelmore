@@ -8,69 +8,75 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 <h:body>
-<ui:composition template="/templates/layout_admin.xhtml">
-    <f:metadata >
-        <f:viewAction action="#{ViewController.setActiveTab('boekingen')}" />
-    </f:metadata>
-    <ui:define name="title">Boekingen beheren</ui:define>
-    <ui:define name="content">
-        <!-- todo volledige opmaak -->
-        <div class="accordion" id="accordionBookingen">
+    <ui:composition template="/templates/layout_admin.xhtml">
+        <f:metadata >
+            <f:viewAction action="#{ViewController.setActiveTab('boekingen')}" />
+        </f:metadata>
+
+        <ui:define name="footer"></ui:define>
+        <ui:define name="title">Boekingen bekijken</ui:define>
+        <ui:define name="content">
             <h:form>
-                <ui:repeat value="#{BookingController.bookingen}" var="booking">
-
-                    <div class="card">
-                        <div class="card-header" id="heading#{booking.id}">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse#{booking.id}" aria-controls="collapse#{booking.id}">
-                                <div class="row">
-                                    <div class="col-12 text-left">
-                                        #{booking.gebruiker}<br />
-                                        #{booking.reis} <br />
-                                        <h:outputText rendered="true" value="Betaald!" />
-                                        <h:outputText rendered="#{!booking.betaald}" value="Nog niet betaald!" />
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
-
-                        <div id="collapse#{booking.id}" class="collapse" aria-labelledby="heading#{booking.id}" data-parent="#accordionBookingen">
-                            <div class="card-body">
-
-                                <div class="form-group row">
-                                    <label for="gebruiker#{booking.id}" class="col-sm-2 col-form-label">Gebruiker</label>
-                                    <div class="col-sm-10">
-                                        <h:inputText value="#{booking.gebruiker}" styleClass="form-control" id="displayGEbruiker#{booking.id}" readonly="true"/>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="prijs#{booking.id}" class="col-sm-2 col-form-label">Prijs</label>
-                                    <div class="col-sm-7">
-                                        <h:inputText value="#{booking.aantalPersonen} x #{booking.prijsPPTeBetalen} = #{booking.aantalPersonen * booking.prijsPPTeBetalen}" styleClass="form-control" id="displayisPrijs#{booking.id}" readonly="true"/>
-                                    </div>
-                                    <label for="isBetaald#{booking.id}" class="col-sm-2 col-form-label">Betaald?</label>
-                                    <div class="col-sm-1">
-                                        <h:selectBooleanCheckbox  value="#{booking.betaald}" styleClass="form-control" id="displayisBetaald#{booking.id}" readonly="true"/>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="reis#{booking.id}" class="col-sm-2 col-form-label">Reis</label>
-                                    <div class="col-sm-10">
-                                        <h:inputText value="#{booking.reis}" styleClass="form-control" id="displayReis#{booking.id}" readonly="true"/>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
+                <div class="container">
+                    <div class="col">
+                        <h1>Boekingen bekijken</h1>
                     </div>
+                    <div class="accordion" id="accordionBookingen">
+                        <ui:repeat value="#{BookingController.bookingen}" var="booking">
 
-                </ui:repeat>
+                            <div class="card">
+                                <div class="card-header" id="heading#{booking.id}">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse#{booking.id}" aria-controls="collapse#{booking.id}">
+                                        <div class="row">
+                                            <div class="col-12 text-left">
+                                                #{booking.gebruiker}<br />
+                                                #{booking.reis} <br />
+                                                <h:outputText rendered="true" value="Betaald!" />
+                                                <h:outputText rendered="#{!booking.betaald}" value="Nog niet betaald!" />
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
 
+                                <div id="collapse#{booking.id}" class="collapse" aria-labelledby="heading#{booking.id}" data-parent="#accordionBookingen">
+                                    <div class="card-body">
+
+                                        <div class="form-group row">
+                                            <label for="gebruiker#{booking.id}" class="col-sm-2 col-form-label">Gebruiker</label>
+                                            <div class="col-sm-10">
+                                                <h:inputText value="#{booking.gebruiker}" styleClass="form-control" id="displayGEbruiker#{booking.id}" readonly="true"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="prijs#{booking.id}" class="col-sm-2 col-form-label">Prijs</label>
+                                            <div class="col-sm-7">
+                                                <h:inputText value="#{booking.aantalPersonen} x #{booking.prijsPPTeBetalen} = #{booking.aantalPersonen * booking.prijsPPTeBetalen}" styleClass="form-control" id="displayisPrijs#{booking.id}" readonly="true"/>
+                                            </div>
+                                            <label for="isBetaald#{booking.id}" class="col-sm-2 col-form-label">Betaald?</label>
+                                            <div class="col-sm-1">
+                                                <h:selectBooleanCheckbox  value="#{booking.betaald}" styleClass="form-control" id="displayisBetaald#{booking.id}" readonly="true"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="reis#{booking.id}" class="col-sm-2 col-form-label">Reis</label>
+                                            <div class="col-sm-10">
+                                                <h:inputText value="#{booking.reis}" styleClass="form-control" id="displayReis#{booking.id}" readonly="true"/>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </ui:repeat>
+                    </div>
+                </div>
             </h:form>
-        </div>
 
-    </ui:define>
-</ui:composition>
+
+        </ui:define>
+    </ui:composition>
 </h:body>
 </html>

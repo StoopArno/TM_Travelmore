@@ -157,19 +157,14 @@ public class ReisController {
 
 
 
-    public void updateReis(int reisId, int vertrekLocatieId, int aankomstLocatieId, double prijsPerPersoon, String transportmiddel, int plaatsen, String foto){
-        Reis reis = (reisId == 0) ? new Reis() : reisService.findReisById(reisId);
-        reis.setVertrekLocatie(locatieService.findLocationById(vertrekLocatieId));
-        reis.setAankomstLocatie(locatieService.findLocationById(aankomstLocatieId));
-        //reis.setVertrekTijd(vertrekTijd);
-        //reis.setAankomstTijd(aankomstTijd);
-        reis.setPrijsPerPersoon(prijsPerPersoon);
-        reis.setTransportmiddel(transportmiddel);
-        reis.setPlaatsen(plaatsen);
-        reis.setFoto(foto);
-        if(reisId == 0){reisService.insert(reis);}
-        else{reisService.update(reis);}
-        newReis();
+    public void updateReis(int vertrekLocatieId, int aankomstLocatieId){
+        geselecteerdeReis.setVertrekLocatie(locatieService.findLocationById(vertrekLocatieId));
+        geselecteerdeReis.setAankomstLocatie(locatieService.findLocationById(aankomstLocatieId));
+        if (geselecteerdeReis.getId() == 0) {
+            reisService.insert(geselecteerdeReis);
+        } else {
+            reisService.update(geselecteerdeReis);
+        }
     }
 
     public void newReis(){
@@ -199,17 +194,6 @@ public class ReisController {
         this.geselecteerdeId = geselecteerdeId;
     }
 
-    public Date formatStringToDate(String date, String time){
-        Date newDate = new Date();
-        try{
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            format.setTimeZone(SimpleTimeZone.getTimeZone(("GMT")));
-            newDate = format.parse(date);
-        } catch (ParseException e){
-            e.printStackTrace();
-        }
-        return newDate;
-    }
 
     /*    public Reis getReisByID(){
         return this.reisService.findReisById(geselecteerdeReis.getId());
