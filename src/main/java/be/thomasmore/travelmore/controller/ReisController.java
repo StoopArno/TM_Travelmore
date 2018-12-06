@@ -30,18 +30,33 @@ public class ReisController {
     @Inject
     private LocatieService locatieService;
 
+    public static boolean isNumeric(String str)
+    {
+        try{
+            double d = Double.parseDouble(str);
+        }
+        catch (NumberFormatException nfe)
+        {
+            return false;
+        }
+        return true;
+    }
+
     public  List<Reis> getFilterToepassen(){
 
 
 
 
-        double test;
+        boolean test;
 
 
         // hier in deze if zit de fout !!!
-        if (filterTekst != null ){
-            test = Double.parseDouble(filterTekst);
-        }
+      /*  if (filterTekst != null  ){
+            if(isNumeric(filterTekst))
+            {
+
+            }
+        }*/
 
 
 
@@ -54,9 +69,9 @@ public class ReisController {
             return getReizenFilterByAankomstLocatie(filterTekst);
         }else if(this.geselecteerdeFilter.equals("3")){
             return getReizenFilterByTransportmiddel(filterTekst);
-        }else if(this.geselecteerdeFilter.equals("4")){
+        }else if(this.geselecteerdeFilter.equals("4") && isNumeric(filterTekst)){
             return getReizenFilterByAantalPlaatsen(filterTekst);
-        }else if(this.geselecteerdeFilter.equals("5")){
+        }else if(this.geselecteerdeFilter.equals("5") && isNumeric(filterTekst)){
             return getReizenFilterByPrijsPerPersoon(filterTekst);
         }else {
            return getReizen();
