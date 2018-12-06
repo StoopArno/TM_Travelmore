@@ -30,11 +30,11 @@ import java.util.GregorianCalendar;
                 ),
                 @NamedQuery(
                         name = Reis.FILTERVERTREKLOCATIE,
-                        query = "SELECT r FROM Reis r Where lower(r.vertrekLocatie.naam) = :naam"
+                        query = "SELECT r FROM Reis r Where lower(r.vertrekLocatie.land) = :naam"
                 ),
                 @NamedQuery(
                         name = Reis.FILTERAANKOMSTLOCATIE,
-                        query = "SELECT r FROM Reis r Where lower(r.aankomstLocatie.naam) = :naam"
+                        query = "SELECT r FROM Reis r Where lower(r.aankomstLocatie.land) = :naam"
                 ),
                 @NamedQuery(
                         name = Reis.FILTERAANTALPLAATSEN,
