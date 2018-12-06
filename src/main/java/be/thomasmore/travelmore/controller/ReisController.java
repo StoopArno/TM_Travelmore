@@ -22,12 +22,50 @@ public class ReisController {
 
     private Reis geselecteerdeReis = new Reis();
     private int geselecteerdeId;
+    public String geselecteerdeFilter;
+    public String filterTekst;
 
     @Inject
     private ReisService reisService;
     @Inject
     private LocatieService locatieService;
 
+    public  List<Reis> getFilterToepassen(){
+
+        if (geselecteerdeFilter == null || geselecteerdeFilter.equals("0") || filterTekst == null  || filterTekst.equals("")){
+            return getReizen();
+        }else if(this.geselecteerdeFilter.equals("1")){
+            return getReizenFilterByVertrekLocatie(filterTekst);
+        }else if(this.geselecteerdeFilter.equals("2")){
+            return getReizenFilterByAankomstLocatie(filterTekst);
+        }else if(this.geselecteerdeFilter.equals("3")){
+            return getReizenFilterByTransportmiddel(filterTekst);
+        }else {
+           return getReizen();
+        }
+
+    }
+
+    public void submitFilter(){
+        getFilterToepassen();
+    }
+
+
+    public String getFilterTekst() {
+        return filterTekst;
+    }
+
+    public void setFilterTekst(String filterTekst) {
+        this.filterTekst = filterTekst;
+    }
+
+    public String getGeselecteerdeFilter() {
+        return geselecteerdeFilter;
+    }
+
+    public void setGeselecteerdeFilter(String geselecteerdeFilter) {
+        this.geselecteerdeFilter = geselecteerdeFilter;
+    }
 
     public  List<Reis> getReizen() {return this.reisService.findAllReis();}
 
