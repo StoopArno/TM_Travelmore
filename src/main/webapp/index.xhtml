@@ -25,16 +25,13 @@
                     </p>
                 </div>
 
-                <form class="row">
+                <h:form class="row">
                     <div class="col-md-3 col-sm-6">
-                            <div class="form-group form-dropdown">
+                            <div class="form-group">
                                 <label for="locatie">Naar?</label>
-                                <select class="form-control border-radius" id="locatie">
-                                    <option>Amerika</option>
-                                    <option>Bangladesh</option>
-                                    <option>Canada</option>
-                                    <option>India</option>
-                                </select>
+                                <div class="input-group">
+                                    <h:inputText  value="#{ReisController.locatieZoek}" class="form-control border-radius border-right" id="locatie"/>
+                                </div>
                         </div>
                     </div>
 
@@ -42,7 +39,7 @@
                         <div class="form-group">
                             <label for="vertrek">Vertrekken?</label>
                             <div class="input-group">
-                                <input type="date" class="form-control border-radius border-right" id="vertrek"/>
+                                <h:inputText   value="#{ReisController.vertrekTijdZoek}" class="form-control border-radius border-right" id="vertrek"/>
                             </div>
                         </div>
                     </div>
@@ -51,17 +48,17 @@
                         <div class="form-group">
                             <label for="terugkeren">Terugkeren?</label>
                             <div class="input-group">
-                                <input type="date" class="form-control border-radius border-right" id="terugkeren"/>
+                                <h:inputText type="date" value="#{ReisController.aankomstTijdZoek}" class="form-control border-radius border-right" id="terugkeren"/>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-3 col-sm-6">
                         <div class="form-group">
-                            <button class="btn btn-default zoek-btn" id="zoek">Zoeken</button>
+                            <h:commandButton class="btn btn-default zoek-btn" value="Zoeken" action="#{ReisController.zoekReizen()}" id="zoek"></h:commandButton>
                         </div>
                     </div>
-                </form>
+                </h:form>
             </section>
 
             <section class="grijs">
@@ -76,10 +73,10 @@
                     <ui:repeat value="#{ReisController.randomReizen}" var="reis">
                         <div class="col-xl-4 col-lg-6 col-md-6 mb-4">
                             <div class="card h-100">
-                                <a href="#" class="card-img-top" style="background-image: url(#{reis.foto})"/>
+                                <div class="card-img-top card-img-top-reizen" style="background-image: url(#{reis.foto})"/>
                                 <div class="card-body">
                                     <h3 class="card-title row">
-                                        <a class="col reistitle" href="#">#{reis.aankomstLocatie.naam}</a>
+                                        <span class="col reistitle">#{reis.aankomstLocatie.naam}</span>
                                         <ui:fragment rendered="#{reis.transportmiddel == 'bus'}">
                                             <span class="col-auto reistitle"><i class="fas fa-bus fa-lg fa-fw"></i></span>
                                         </ui:fragment>

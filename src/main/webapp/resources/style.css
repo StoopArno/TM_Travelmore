@@ -191,7 +191,7 @@ ul.nav.navbar-nav.navbar-right{
 }
 
 /* REIZEN */
-.card-img-top{
+.card-img-top-reizen{
     width: 100%;
     height: 400px;
     background-repeat: no-repeat;
@@ -199,9 +199,6 @@ ul.nav.navbar-nav.navbar-right{
 }
 .reistitle{
     color: #f04c25;
-}
-a.reistitle:hover{
-    color: #009cab;
 }
 .prijstitle{
     color: #009cab;

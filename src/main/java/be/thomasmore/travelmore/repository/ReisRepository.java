@@ -119,4 +119,24 @@ public class ReisRepository {
         entityManager.remove(locatie);
     }
 
+    public List<Reis> zoekenReis(String naam, String vertrekdate, String aankomstdate){
+
+        Query  filterLocatie = entityManager.createNamedQuery(Reis.FIND_ALL);
+        List<Reis> listReizen =filterLocatie.getResultList();
+        List<Reis> listFiltered = new ArrayList<Reis>();
+
+        vertrekdate = vertrekdate.replace('/','-');
+        aankomstdate = aankomstdate.replace('/','-');
+        for(Reis r : listReizen)
+        {
+
+            if(r.getAankomstLocatie().getLand().equals(naam) && r.getVertrekTijd().toString().contains(vertrekdate) && r.getAankomstTijd().toString().contains(aankomstdate))
+            {
+                listFiltered.add(r);
+            }
+        }
+        return listFiltered;
+
+    }
+
 }
