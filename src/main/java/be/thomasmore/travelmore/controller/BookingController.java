@@ -1,14 +1,19 @@
 package be.thomasmore.travelmore.controller;
 
 import be.thomasmore.travelmore.domain.Booking;
+import be.thomasmore.travelmore.domain.Gebruiker;
 import be.thomasmore.travelmore.domain.Reis;
 import be.thomasmore.travelmore.service.BookingService;
+import be.thomasmore.travelmore.service.MailService;
 import be.thomasmore.travelmore.service.ReisService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
+import javax.mail.MessagingException;
 import java.awt.print.Book;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 @ManagedBean(name = "BookingController")
@@ -46,6 +51,7 @@ public class BookingController {
         nieuweBooking.setGebruiker(gebruikerController.getGebruikerByID(gerbuikerId));
         nieuweBooking.setReis(geslecteerdeReis);
         bookingService.insert(nieuweBooking);
+        nieuweBooking = new Booking();
         return "/gebruiker/boekingen";
     }
     public String navigateToBooken(int id){
@@ -56,6 +62,7 @@ public class BookingController {
         Booking booking = bookingService.findBookingById(bookingID);
         booking.setBetaald(true);
         bookingService.update(booking);
+
         return "/gebruiker/boekingen";
     }
     public String navigateToOverzichtBooking(){
@@ -63,10 +70,31 @@ public class BookingController {
         return "/gebruiker/overzichtBoeking";
     }
     public String betaalBooking(int gerbuikerId){
+        Gebruiker gebruiker = gebruikerController.getGebruikerByID(gerbuikerId);
         nieuweBooking.setBetaald(true);
-        nieuweBooking.setGebruiker(gebruikerController.getGebruikerByID(gerbuikerId));
+        nieuweBooking.setGebruiker(gebruiker);
         nieuweBooking.setReis(geslecteerdeReis);
         bookingService.insert(nieuweBooking);
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+
+        String msg =
+                "Beste " + gebruiker.getNaam() +
+                ", <br/>bedankt voor je boeking bij TravelMore! <br/><br/>Hier is je boeking:" +
+                " <br/><strong>Reis: </strong>" +
+                nieuweBooking.getReis().getVertrekLocatie().getLand() +",  "+nieuweBooking.getReis().getVertrekLocatie().getStad()+" "+nieuweBooking.getReis().getVertrekLocatie().getNaam()+
+                " -> " +
+                nieuweBooking.getReis().getAankomstLocatie().getLand() + ",  "+nieuweBooking.getReis().getAankomstLocatie().getStad()+ " "+nieuweBooking.getReis().getAankomstLocatie().getNaam()+
+                "<br/><strong>Datum: </strong>" + df.format(nieuweBooking.getReis().getAankomstTijd()) + " - " +df.format(nieuweBooking.getReis().getAankomstTijd()) +
+                "<br/><strong>Aantal personen: </strong>" + nieuweBooking.getAantalPersonen() + "<br/>" +
+                "<br/><strong>Prijs: </strong>" + nieuweBooking.getAantalPersonen() +" X "+ nieuweBooking.getPrijsPPTeBetalen() +" = " +nieuweBooking.getAantalPersonen() *nieuweBooking.getPrijsPPTeBetalen()   + "<br/>"
+                ;
+
+        try {
+            MailService.send(gebruiker.getEmail(),"TravelMore | Booking",msg);
+        }
+        catch(MessagingException ex) {
+        }
+        nieuweBooking = new Booking();
         return "/gebruiker/boekingen";
     }
 
