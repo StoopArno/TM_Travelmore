@@ -61,7 +61,7 @@ public class ReisController {
     public static boolean isNumeric(String str)
     {
         try{
-            double d = Double.parseDouble(str);
+            double d = Double.parseDouble(str.trim());
         }
         catch (NumberFormatException nfe)
         {
@@ -86,21 +86,20 @@ public class ReisController {
         if (geselecteerdeFilter == null || geselecteerdeFilter.equals("0") || filterTekst == null  || filterTekst.equals("")){
             return getReizen();
         }else if(this.geselecteerdeFilter.equals("1")){
-            return getReizenFilterByVertrekLocatie(filterTekst);
+            return getReizenFilterByVertrekLocatie(filterTekst.trim());
         }else if(this.geselecteerdeFilter.equals("2")){
-            return getReizenFilterByAankomstLocatie(filterTekst);
+            return getReizenFilterByAankomstLocatie(filterTekst.trim());
         }else if(this.geselecteerdeFilter.equals("3")){
-            return getReizenFilterByTransportmiddel(filterTekst);
+            return getReizenFilterByTransportmiddel(filterTekst.trim());
         }else if(this.geselecteerdeFilter.equals("4") && isNumeric(filterTekst)){
-            return getReizenFilterByAantalPlaatsen(filterTekst);
+            return getReizenFilterByAantalPlaatsen(filterTekst.trim());
         }else if(this.geselecteerdeFilter.equals("5") && isNumeric(filterTekst)){
-            return getReizenFilterByPrijsPerPersoon(filterTekst);
+            return getReizenFilterByPrijsPerPersoon(filterTekst.trim());
         }else if(this.geselecteerdeFilter.equals("6")){
-            return getReizenFilterByAankomstTijd(filterTekst);
+            return getReizenFilterByAankomstTijd(filterTekst.trim());
         }else if(this.geselecteerdeFilter.equals("7")){
-            return getReizenFilterByVertrekTijd(filterTekst);
+            return getReizenFilterByVertrekTijd(filterTekst.trim());
         }else if(this.geselecteerdeFilter.equals("8")){
-            filterTekst = "";
             return this.reisService.reisZoeken(locatieZoek,vertrekTijdZoek,aankomstTijdZoek);
         }else {
            return getReizen();
