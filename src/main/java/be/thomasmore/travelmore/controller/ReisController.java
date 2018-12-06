@@ -12,9 +12,7 @@ import javax.inject.Inject;
 import java.io.Console;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.SimpleTimeZone;
+import java.util.*;
 
 @ManagedBean(name="ReisController", eager = true)
 @SessionScoped
@@ -41,6 +39,18 @@ public class ReisController {
         }
         return true;
     }
+
+    public  List<Reis> getRandomReizen(){
+        Random rand = new Random();
+        List<Reis> reizen =  getReizen();
+        List<Reis> randomReizen = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            int randomIndex = rand.nextInt(reizen.size());
+            randomReizen.add(reizen.get(randomIndex));
+        }
+        return randomReizen;
+    }
+
 
     public  List<Reis> getFilterToepassen(){
 

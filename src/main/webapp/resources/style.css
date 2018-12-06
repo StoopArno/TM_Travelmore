@@ -173,10 +173,21 @@ ul.nav.navbar-nav.navbar-right{
 }
 
 /* INDEX nieuws */
-.nieuws{
+.grijs{
+    background-color: #009cab;
     padding-top: 60px;
     padding-bottom: 60px;
-    background-color: lightgray;
+}
+.grijs .section-title{
+    color: #fff;
+}
+.wit{
+    background-color: #fff;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+.wit .section-title{
+    color: #1d2124;
 }
 
 /* REIZEN */
@@ -282,7 +293,7 @@ a.reistitle:hover{
     -webkit-animation-name: animatebottom;
     -webkit-animation-duration: 1s;
     animation-name: animatebottom;
-    animation-duration: 1s
+    animation-duration: 0.5s
 }
 
 /* ANIMATIONS */
