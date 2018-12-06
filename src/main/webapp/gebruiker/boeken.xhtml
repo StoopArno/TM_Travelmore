@@ -12,29 +12,45 @@
     </f:metadata>
     <ui:define name="title">Reis boeken</ui:define>
     <ui:define name="content">
-        <div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-5">
-                            <label>
-                                #{BookingController.geslecteerdeReis.vertrekLocatie.land}, #{BookingController.geslecteerdeReis.vertrekLocatie.naam}
-                                ---> #{BookingController.geslecteerdeReis.aankomstLocatie.land}, #{BookingController.geslecteerdeReis.aankomstLocatie.naam}
-                            </label>
-                            <label> #{BookingController.geslecteerdeReis.vertrekTijd.time} --->  #{BookingController.geslecteerdeReis.aankomstTijd.time} </label>
-                            <label>#{BookingController.geslecteerdeReis.transportmiddel}</label><br></br>
-                            <label>#{BookingController.geslecteerdeReis.prijsPerPersoon}</label>
-                    </div>
-                    <div class="col-md-7">
-                        <h:form class="login-form">
-                            <div class="form-group">
-                                <label >Aantal personen</label>
-                                <h:inputText value="#{BookingController.nieuweBooking.aantalPersonen}" type="text" class="form-control" />
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card card-booking mb-5">
+                        <h:form>
+                        <div class="card-img-top card-img-top-reizen" style="background-image: url(#{BookingController.geslecteerdeReis.foto})"/>
+                        <h5 class="card-header">Reis</h5>
+                        <div class="card-body p-3">
+                            <div class="card-title row">
+                                <div class="col">
+                                    <h3 class="reistitle">#{BookingController.geslecteerdeReis.vertrekLocatie.naam}</h3>
+                                    <p class="card-text"><i class="far fa-calendar-alt fa-fw"></i> #{BookingController.geslecteerdeReis.vertrekDatum} #{BookingController.geslecteerdeReis.vertrekTijd}</p>
+                                    <p class="card-text"><i class="fas fa-plane-departure fa-fw"></i> #{BookingController.geslecteerdeReis.vertrekLocatie.stad} (#{BookingController.geslecteerdeReis.vertrekLocatie.code}) - #{BookingController.geslecteerdeReis.vertrekLocatie.land}</p>
+                                </div>
+                                <div class="col-auto">
+                                    <ui:fragment rendered="#{BookingController.geslecteerdeReis.transportmiddel == 'bus'}">
+                                        <h3 class="reistitle"><i class="fas fa-bus fa-lg fa-fw"></i></h3>
+                                    </ui:fragment>
+                                    <ui:fragment rendered="#{BookingController.geslecteerdeReis.transportmiddel == 'vliegtuig'}">
+                                        <h3 class="reistitle"><i class="fas fa-plane fa-lg fa-fw"></i></h3>
+                                    </ui:fragment>
+                                </div>
+                                <div class="col text-right">
+                                    <h3 class="reistitle">#{BookingController.geslecteerdeReis.aankomstLocatie.naam}</h3>
+                                    <p class="card-text"> #{BookingController.geslecteerdeReis.aankomstDatum} #{BookingController.geslecteerdeReis.aankomstTijd} <i class="far fa-calendar-alt fa-fw"></i></p>
+                                    <p class="card-text">#{BookingController.geslecteerdeReis.aankomstLocatie.stad} (#{BookingController.geslecteerdeReis.aankomstLocatie.code}) - #{BookingController.geslecteerdeReis.aankomstLocatie.land} <i class="fas fa-plane-arrival fa-fw"></i></p>
+                                </div>
                             </div>
-
-                            <div class="form-check">
-                                <a href="../index.xhtml">Terug</a>
-
-                                <h:commandButton value="PrijsBerekenen" class="btn btn-primary float-right" action="#{BookingController.navigateToOverzichtBooking}" />
+                        </div>
+                        <h5 class="card-header">Aantal personen</h5>
+                        <div class="card-body">
+                            <h4 class="reistitle"><i class="fas fa-euro-sign fa-fw"></i>#{BookingController.geslecteerdeReis.prijsPerPersoon} / per persoon</h4>
+                            <div class="form-group">
+                                    <label >Aantal personen</label>
+                                    <h:inputText value="#{BookingController.nieuweBooking.aantalPersonen}" type="text" class="form-control" />
+                                </div>
+                        </div>
+                            <div class="card-footer text-right">
+                                <h:commandButton value="Prijs berekenen" class="btn bestelbtn text-right" action="#{BookingController.navigateToOverzichtBooking}" />
                             </div>
                         </h:form>
                     </div>

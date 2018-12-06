@@ -212,6 +212,19 @@ ul.nav.navbar-nav.navbar-right{
     color: #fff;
 }
 
+/* BOEKEN */
+
+.boekenHeader{
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 50vh;
+}
+.card-booking .card-header{
+    background-color: #009cab ;
+    color: #fff;
+}
+
 /* LOGIN */
 .login-block{
     background: #f04c25;  /* fallback for old browsers */

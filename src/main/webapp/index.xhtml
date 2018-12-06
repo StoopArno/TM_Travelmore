@@ -91,7 +91,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="row">
-                                        <span class="col">#{reis.plaatsen - BookingController.aantalPlaatsenOver(reis.id)} plaatsen</span>
+                                        <span class="col">#{reis.plaatsen - BookingController.aantalPlaatsenOver(reis.id)} plaatsen #{reis.id}</span>
                                         <h:form styleClass="col-auto text-right">
                                             <h:outputLink class="btn bestelbtn" value="/travelmore/bezoeker/login.xhtml" rendered="#{GebruikerController.getAangemeld() == false}">Nu boeken</h:outputLink>
                                             <h:commandButton class="btn bestelbtn" action="#{BookingController.navigateToBooken(reis.id)}" value="Nu boeken" rendered="#{GebruikerController.getAangemeld() == true}"/>
