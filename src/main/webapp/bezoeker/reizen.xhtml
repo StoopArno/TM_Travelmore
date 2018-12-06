@@ -23,15 +23,15 @@
                         <div class="col-lg-3">
                             <!-- todo filters hier -->
                             <div class="card fixed-top sticky-top">
-                                <div class="card-header">
-                                    <h5 class="mb-0">Zoeken</h5>
-                                </div>
-                                <div class="card-body">
-                                    <h:form class="form-inline my-2 my-lg-0">
-                                        <input class="form-control mr-sm-2" type="search" placeholder="Zoeken" aria-label="Zoeken"/>
-                                        <button class="btn btn-default zoek-btn" type="submit">Zoeken</button>
-                                    </h:form>
-                                </div>
+                                <!--<div class="card-header">-->
+                                    <!--<h5 class="mb-0">Zoeken</h5>-->
+                                <!--</div>-->
+                                <!--<div class="card-body">-->
+                                    <!--<h:form class="form-inline my-2 my-lg-0">-->
+                                        <!--<input class="form-control mr-sm-2" type="search" placeholder="Zoeken" aria-label="Zoeken"/>-->
+                                        <!--<button class="btn btn-default zoek-btn" type="submit">Zoeken</button>-->
+                                    <!--</h:form>-->
+                                <!--</div>-->
 
                                     <div class="card-header" >
                                         <h5 class="mb-0">Filteren</h5>
@@ -87,7 +87,7 @@
                                             </div>
                                             <div class="card-footer">
                                                 <div class="row">
-                                                    <span class="col">#{BookingController.aantalPlaatsenOver(reis.id)}/#{reis.plaatsen} plaatsen</span>
+                                                    <span class="col">#{reis.plaatsen - BookingController.aantalPlaatsenOver(reis.id)} plaatsen</span>
                                                     <h:form styleClass="col-auto text-right">
                                                         <h:outputLink class="btn bestelbtn" value="/travelmore/bezoeker/login.xhtml" rendered="#{GebruikerController.getAangemeld() == false}">Nu boeken</h:outputLink>
                                                         <h:commandButton class="btn bestelbtn" action="#{BookingController.navigateToBooken(reis.id)}" value="Nu boeken" rendered="#{GebruikerController.getAangemeld() == true}"/>
