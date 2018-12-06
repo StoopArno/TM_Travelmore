@@ -52,6 +52,7 @@ public class ReisController {
 
     public String locatieZoek;
 
+
     @Inject
     private ReisService reisService;
     @Inject
@@ -84,6 +85,8 @@ public class ReisController {
     public  List<Reis> getFilterToepassen(){
 
 
+
+
         if (geselecteerdeFilter == null || geselecteerdeFilter.equals("0") || filterTekst == null  || filterTekst.equals("")){
             return getReizen();
         }else if(this.geselecteerdeFilter.equals("1")){
@@ -107,6 +110,8 @@ public class ReisController {
         }
 
     }
+
+
 
     public void submitFilter(){
         getFilterToepassen();
