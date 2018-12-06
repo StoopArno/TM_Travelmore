@@ -15,7 +15,6 @@ public class IngelogtFilter implements Filter {
     }
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
-        chain.doFilter(req, resp);
         HttpServletResponse response = (HttpServletResponse) resp;
         HttpServletRequest request = (HttpServletRequest) req;
         GebruikerController user =  (GebruikerController)request.getSession().getAttribute("GebruikerController");

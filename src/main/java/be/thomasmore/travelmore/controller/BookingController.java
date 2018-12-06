@@ -9,9 +9,12 @@ import be.thomasmore.travelmore.service.ReisService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.mail.MessagingException;
 import java.awt.print.Book;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -56,9 +59,11 @@ public class BookingController {
         nieuweBooking = new Booking();
         return "/gebruiker/boekingen";
     }
-    public String navigateToBooken(int id){
+    public void navigateToBooken(int id) throws IOException {
         setGeslecteerdeReis(reisService.findReisById(id));
-        return "/gebruiker/boeken";
+        FacesContext fc = FacesContext.getCurrentInstance();
+        ExternalContext ec = fc.getExternalContext();
+        ec.redirect("/travelmore/gebruiker/boeken.xhtml");
     }
     public String betaalReservatie(int bookingID){
         Booking booking = bookingService.findBookingById(bookingID);

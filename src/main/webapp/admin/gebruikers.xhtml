@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <h:commandButton type="submit" action="#{GebruikerController.updateGebruiker()}" styleClass="btn btn-primary" value="Sla reis op" />
+                                    <h:commandButton type="submit" action="#{GebruikerController.updateGebruiker()}" styleClass="btn btn-primary" value="Sla gebruiker op" />
                                 </div>
                             </div>
                         </div>
@@ -98,7 +98,68 @@
                             </div>
                         </div>
                     </div>
+                    <div class="modal fade" id="toevoegModal" tabindex="-1" role="dialog" aria-labelledby="toevoegModallabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="reisModallabel2">
+                                        Gebruiker aanpassen/wijzigen
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
 
+                                <div class="modal-body">
+                                    <div class="form-group row">
+                                        <label for="updateVoornaam2" class="col-sm-2 col-form-label">Voornaam</label>
+                                        <div class="col-sm-10">
+                                            <h:inputText value="#{GebruikerController.gebruiker.voornaam}"  styleClass="form-control" id="updateVoornaam2" />
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="updateAchternaam2"  class="col-sm-2 col-form-label">Achternaam</label>
+                                        <div class="col-sm-10">
+                                            <h:inputText  value="#{GebruikerController.gebruiker.achternaam}" styleClass="form-control" id="updateAchternaam2" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="updateGemeente2" class="col-sm-2 col-form-label">Gemeente</label>
+                                        <div class="col-sm-10">
+                                            <h:inputText  value="#{GebruikerController.gebruiker.gemeente}" styleClass="form-control" id="updateGemeente2" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="updateAdres2" class="col-sm-2 col-form-label">Adres</label>
+                                        <div class="col-sm-10">
+                                            <h:inputText  value="#{GebruikerController.gebruiker.adres}" styleClass="form-control" id="updateAdres2" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="updateEmail2" class="col-sm-2 col-form-label">Email</label>
+                                        <div class="col-sm-10">
+                                            <h:inputText  value="#{GebruikerController.gebruiker.email}" styleClass="form-control" id="updateEmail2"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="updatePassword2" class="col-sm-2 col-form-label">Wachtwoord</label>
+                                        <div class="col-sm-10">
+                                            <h:inputText type="password"  value="#{GebruikerController.gebruiker.wachtwoord}" styleClass="form-control" id="updatePassword2"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <h:commandButton type="submit" action="#{GebruikerController.registreerGebruiker()}" styleClass="btn btn-primary" value="Sla gebruiker op" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="accordion" id="accordionGebruikers">
                         <ui:repeat value="#{GebruikerController.gebruikers}" var="gebruiker">
                             <div class="card">
@@ -165,7 +226,7 @@
                     <div class="row">
                         <div class="col-12 text-right">
                             <h:commandButton action="#{GebruikerController.newGebruiker()}" value="Maak nieuwe gebruiker aan" styleClass="btn btn-primary">
-                                <f:ajax event="action" render="@all" onevent="showGebruikerModal"/>
+                                <f:ajax event="action" render="@all" onevent="showToevoegModal"/>
                             </h:commandButton>
                         </div>
                     </div>
@@ -175,6 +236,11 @@
                 function showGebruikerModal(data) {
                     if (data.status == "success") {
                         $('#gebruikerModal').modal();
+                    }
+                }
+                function showToevoegModal(data) {
+                    if (data.status == "success") {
+                        $('#toevoegModal').modal();
                     }
                 }
                 function showConfirmModal(data) {

@@ -49,14 +49,11 @@ public class LocatieController {
         return locatie;
     }
 
-    public void updateLocatie(int locatieId, String naam, String stad, String code, String land){
-        Locatie locatie = (locatieId == 0) ? new Locatie() : locatieService.findLocationById(locatieId);
-        locatie.setNaam(naam);
-        locatie.setStad(stad);
-        locatie.setCode(code);
-        locatie.setLand(land);
-        if(locatieId == 0){locatieService.insert(locatie);}
-            else{locatieService.update(locatie);}
+    public void updateLocatie(){
+
+        if(geselecteerdeLocatie.getId() == 0)
+        {locatieService.insert(geselecteerdeLocatie);}
+            else{locatieService.update(geselecteerdeLocatie);}
 
     }
 

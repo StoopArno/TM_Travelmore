@@ -65,8 +65,6 @@
                                 </a>
                                 <div class="dropdown-menu test" aria-labelledby="navbarDropdownMenuLink">
                                     <h:form>
-                                        <h:commandLink value="Admin dashboard" class="dropdown-item" action="#{GebruikerController.admin}" rendered="#{GebruikerController.aangemeldeGebruiker.soortGebruiker.getId()==2}"/>
-                                        <h:commandLink value="Mijn gegevens" class="dropdown-item" action="#{GebruikerController.gegevens}" />
                                         <h:commandLink value="Uitloggen" class="dropdown-item" action="#{GebruikerController.logout}" />
                                     </h:form>
                                 </div>

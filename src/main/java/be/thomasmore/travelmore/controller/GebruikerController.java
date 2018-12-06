@@ -113,21 +113,9 @@ public class GebruikerController  {
         geselecteerdeGebruiker.setId(0);
     }
 
-    public void updateGebruiker(int gebruikerId, String voornaam, String achternaam, String adres, String gemeente, String email){
-        geselecteerdeGebruiker = (gebruikerId == 0) ? new Gebruiker() : gebruikerService.findGebruikerById(gebruikerId);
-        geselecteerdeGebruiker.setVoornaam(voornaam);
-        geselecteerdeGebruiker.setAchternaam(achternaam);
-        geselecteerdeGebruiker.setAdres(adres);
-        geselecteerdeGebruiker.setGemeente(gemeente);
-        geselecteerdeGebruiker.setEmail(email);
-        if(gebruikerId == 0){
-            geselecteerdeGebruiker.setWachtwoord("wachtwoord");
-            gebruikerService.insert(geselecteerdeGebruiker);
-        }
-        else{
-            gebruikerService.update(geselecteerdeGebruiker);
-        }
-        newGebruiker();
+    public void updateGebruiker(){
+        gebruikerService.update(geselecteerdeGebruiker);
+        geselecteerdeGebruiker = new Gebruiker();
     }
 
     public void deleteGebruiker(int id){
