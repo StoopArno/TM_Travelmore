@@ -1,22 +1,23 @@
 package be.thomasmore.travelmore.repository;
+import be.thomasmore.travelmore.controller.BookingController;
+
 import be.thomasmore.travelmore.domain.Reis;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
+
 
 public class ReisRepository {
 
 
     @PersistenceContext(unitName = "travelMorePU")
     private EntityManager entityManager;
-
+    @Inject
+    private BookingController bookingController;
 
     public Reis findById(int id) {
         return entityManager.find(Reis.class, id);
@@ -44,7 +45,8 @@ public class ReisRepository {
         List<Reis> listReizen = filterLocatie.getResultList();
         List<Reis> listfiltered = new ArrayList<Reis>();
         for (Reis r : listReizen) {
-            if (r.getPlaatsen() >= Integer.parseInt(value)) {
+            if((r.getPlaatsen() - bookingController.aantalPlaatsenOver(r.getId())) >= Integer.parseInt(value))
+ {
                 listfiltered.add(r);
             }
         }
