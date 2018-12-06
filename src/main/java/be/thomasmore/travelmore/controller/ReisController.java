@@ -104,6 +104,7 @@ public class ReisController {
         }else if(this.geselecteerdeFilter.equals("7")){
             return getReizenFilterByVertrekTijd(filterTekst);
         }else if(this.geselecteerdeFilter.equals("8")){
+            filterTekst = "";
             return this.reisService.reisZoeken(locatieZoek,vertrekTijdZoek,aankomstTijdZoek);
         }else {
            return getReizen();
@@ -153,7 +154,7 @@ public class ReisController {
     public  String  zoekReizen() {
 
         geselecteerdeFilter = "8";
-        filterTekst ="nietleeg";
+        filterTekst =" ";
 
         return "/bezoeker/reizen";
     }

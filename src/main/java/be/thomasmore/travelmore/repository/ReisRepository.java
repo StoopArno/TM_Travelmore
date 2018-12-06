@@ -130,7 +130,7 @@ public class ReisRepository {
         for(Reis r : listReizen)
         {
 
-            if(r.getAankomstLocatie().getLand().equals(naam) && r.getVertrekTijd().toString().contains(vertrekdate) && r.getAankomstTijd().toString().contains(aankomstdate))
+            if(r.getAankomstLocatie().getLand().toLowerCase().equals(naam.toLowerCase()) && r.getVertrekTijd().toString().contains(vertrekdate) && r.getAankomstTijd().toString().contains(aankomstdate))
             {
                 listFiltered.add(r);
             }
