@@ -28,10 +28,10 @@ public class GebruikerController  {
     public String registreerGebruiker(){
         if(this.gebruikerService.insert(gebruiker)){
             gebruiker = new Gebruiker();
-            return "/index";
+            return "/bezoeker/login";
 
         }else{
-            return "nav";
+            return "/index";
         }
 
     }
@@ -39,7 +39,7 @@ public class GebruikerController  {
         if(aangemeldeGebruiker.getSoortGebruiker().getId() == 2){
             return "/admin/boekingen";
         }else {
-            return "/";
+            return "/index";
         }
     }
     public String gegevens(){
@@ -55,7 +55,7 @@ public class GebruikerController  {
             setAangemeldeGebruiker(this.gebruikerService.findGebruikerByEmail(gebruiker).get(0));
             setAangemeld(true);
             if(aangemeldeGebruiker.getSoortGebruiker().getId() == 1){
-                return "/";
+                return "/index";
             }
             else{
                 return "/admin/boekingen";
