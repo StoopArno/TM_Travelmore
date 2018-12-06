@@ -55,7 +55,7 @@ public class GebruikerController  {
             setAangemeldeGebruiker(this.gebruikerService.findGebruikerByEmail(gebruiker).get(0));
             setAangemeld(true);
             if(aangemeldeGebruiker.getSoortGebruiker().getId() == 1){
-                return "/";
+                return "/index";
             }
             else{
                 return "/admin/boekingen";

@@ -50,24 +50,24 @@ public class BookingController {
     }
     public String navigateToBooken(int id){
         setGeslecteerdeReis(reisService.findReisById(id));
-        return "/gebruiker/booken";
+        return "/gebruiker/boeken";
     }
     public String betaalReservatie(int bookingID){
         Booking booking = bookingService.findBookingById(bookingID);
         booking.setBetaald(true);
         bookingService.update(booking);
-        return "/gebruiker/bookingen";
+        return "/gebruiker/boekingen";
     }
     public String navigateToOverzichtBooking(){
         nieuweBooking.setPrijsPPTeBetalen(geslecteerdeReis.getPrijsPerPersoon());
-        return "/gebruiker/overzichtBooking";
+        return "/gebruiker/overzichtBoeking";
     }
     public String betaalBooking(int gerbuikerId){
         nieuweBooking.setBetaald(true);
         nieuweBooking.setGebruiker(gebruikerController.getGebruikerByID(gerbuikerId));
         nieuweBooking.setReis(geslecteerdeReis);
         bookingService.insert(nieuweBooking);
-        return "/index";
+        return "/gebruiker/boekingen";
     }
 
     public Booking getGeselecteerdeBooking() {
