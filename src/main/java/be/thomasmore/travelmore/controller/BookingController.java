@@ -46,7 +46,7 @@ public class BookingController {
         nieuweBooking.setGebruiker(gebruikerController.getGebruikerByID(gerbuikerId));
         nieuweBooking.setReis(geslecteerdeReis);
         bookingService.insert(nieuweBooking);
-        return "/index";
+        return "/gebruiker/boekingen";
     }
     public String navigateToBooken(int id){
         setGeslecteerdeReis(reisService.findReisById(id));
