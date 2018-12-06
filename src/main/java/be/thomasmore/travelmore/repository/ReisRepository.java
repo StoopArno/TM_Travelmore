@@ -73,7 +73,7 @@ public class ReisRepository {
         List<Reis> listFiltered = new ArrayList<Reis>();
         for(Reis r : listReizen)
         {
-            if(r.getVertrekTijd().toString().contains(value))
+            if(r.getVertrekDatum().toString().contains(value))
             {
                 listFiltered.add(r);
             }
@@ -88,9 +88,8 @@ public class ReisRepository {
         List<Reis> listFiltered = new ArrayList<Reis>();
         for(Reis r : listReizen)
         {
-            if(r.getAankomstTijd().toString().contains(value))
+            if(r.getAankomstDatum().toString().contains(value))
             {
-                System.out.print(r.getAankomstTijd() + "################");
                 listFiltered.add(r);
             }
         }
@@ -130,7 +129,7 @@ public class ReisRepository {
         for(Reis r : listReizen)
         {
 
-            if(r.getAankomstLocatie().getLand().toLowerCase().equals(naam.toLowerCase()) && r.getVertrekTijd().toString().contains(vertrekdate) && r.getAankomstTijd().toString().contains(aankomstdate))
+            if(r.getAankomstLocatie().getLand().toLowerCase().equals(naam.toLowerCase()) && r.getVertrekDatum().toString().contains(vertrekdate) && r.getAankomstDatum().toString().contains(aankomstdate))
             {
                 listFiltered.add(r);
             }

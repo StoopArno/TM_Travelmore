@@ -47,7 +47,7 @@ import java.util.GregorianCalendar;
                 @NamedQuery(
                         name = Reis.FILTERTRANSPORTMIDDEL,
                         query = "SELECT r FROM Reis r Where lower(r.transportmiddel) = :naam"
-                ),
+                )
                 
         }
 )
