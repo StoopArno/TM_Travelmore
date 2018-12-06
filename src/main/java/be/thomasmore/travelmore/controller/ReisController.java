@@ -32,6 +32,20 @@ public class ReisController {
 
     public  List<Reis> getFilterToepassen(){
 
+
+
+
+        double test;
+
+
+        // hier in deze if zit de fout !!!
+        if (filterTekst != null ){
+            test = Double.parseDouble(filterTekst);
+        }
+
+
+
+
         if (geselecteerdeFilter == null || geselecteerdeFilter.equals("0") || filterTekst == null  || filterTekst.equals("")){
             return getReizen();
         }else if(this.geselecteerdeFilter.equals("1")){
@@ -40,6 +54,10 @@ public class ReisController {
             return getReizenFilterByAankomstLocatie(filterTekst);
         }else if(this.geselecteerdeFilter.equals("3")){
             return getReizenFilterByTransportmiddel(filterTekst);
+        }else if(this.geselecteerdeFilter.equals("4")){
+            return getReizenFilterByAantalPlaatsen(filterTekst);
+        }else if(this.geselecteerdeFilter.equals("5")){
+            return getReizenFilterByPrijsPerPersoon(filterTekst);
         }else {
            return getReizen();
         }
