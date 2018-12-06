@@ -25,16 +25,13 @@
                     </p>
                 </div>
 
-                <form class="row">
+                <h:form class="row">
                     <div class="col-md-3 col-sm-6">
-                            <div class="form-group form-dropdown">
+                            <div class="form-group">
                                 <label for="locatie">Naar?</label>
-                                <select class="form-control border-radius" id="locatie">
-                                    <option>Amerika</option>
-                                    <option>Bangladesh</option>
-                                    <option>Canada</option>
-                                    <option>India</option>
-                                </select>
+                                <div class="input-group">
+                                    <h:inputText  value="#{ReisController.locatieZoek}" class="form-control border-radius border-right" id="locatie"/>
+                                </div>
                         </div>
                     </div>
 
@@ -42,7 +39,7 @@
                         <div class="form-group">
                             <label for="vertrek">Vertrekken?</label>
                             <div class="input-group">
-                                <input type="date" class="form-control border-radius border-right" id="vertrek"/>
+                                <h:inputText  placeholder="yyyy/mm/dd" value="#{ReisController.vertrekTijdZoek}" class="form-control border-radius border-right" id="vertrek"/>
                             </div>
                         </div>
                     </div>
@@ -51,17 +48,17 @@
                         <div class="form-group">
                             <label for="terugkeren">Terugkeren?</label>
                             <div class="input-group">
-                                <input type="date" class="form-control border-radius border-right" id="terugkeren"/>
+                                <h:inputText type="date" value="#{ReisController.aankomstTijdZoek}" class="form-control border-radius border-right" id="terugkeren"/>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-3 col-sm-6">
                         <div class="form-group">
-                            <button class="btn btn-default zoek-btn" id="zoek">Zoeken</button>
+                            <h:commandButton class="btn btn-default zoek-btn" value="Zoeken" action="#{ReisController.zoekReizen()}" id="zoek"></h:commandButton>
                         </div>
                     </div>
-                </form>
+                </h:form>
             </section>
 
             <section class="grijs">

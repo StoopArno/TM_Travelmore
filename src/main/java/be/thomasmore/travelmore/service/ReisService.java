@@ -35,6 +35,8 @@ public class ReisService {
 
     public List<Reis> filterReisAankomstTijd(String value) {return  reisRepository.FilterAankomsttijd(value);}
 
+    public List<Reis> reisZoeken(String naam, String vertrekdatum, String aankomstdatum) {return  reisRepository.zoekenReis(naam,vertrekdatum,aankomstdatum);}
+
     public void insert(Reis reis) { reisRepository.insert(reis); }
 
     public void delete(int id) { reisRepository.delete(id); }

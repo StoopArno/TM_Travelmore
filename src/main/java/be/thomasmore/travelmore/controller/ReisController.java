@@ -22,6 +22,35 @@ public class ReisController {
     private int geselecteerdeId;
     public String geselecteerdeFilter;
     public String filterTekst;
+    public  String vertrekTijdZoek;
+
+    public String getAankomstTijdZoek() {
+        return aankomstTijdZoek;
+    }
+
+    public void setAankomstTijdZoek(String aankomstTijdZoek) {
+        this.aankomstTijdZoek = aankomstTijdZoek;
+    }
+
+    public String aankomstTijdZoek;
+
+    public String getVertrekTijdZoek() {
+        return vertrekTijdZoek;
+    }
+
+    public void setVertrekTijdZoek(String vertrekTijdZoek) {
+        this.vertrekTijdZoek = vertrekTijdZoek;
+    }
+
+    public String getLocatieZoek() {
+        return locatieZoek;
+    }
+
+    public void setLocatieZoek(String locatieZoek) {
+        this.locatieZoek = locatieZoek;
+    }
+
+    public String locatieZoek;
 
     @Inject
     private ReisService reisService;
@@ -71,6 +100,8 @@ public class ReisController {
             return getReizenFilterByAankomstTijd(filterTekst);
         }else if(this.geselecteerdeFilter.equals("7")){
             return getReizenFilterByVertrekTijd(filterTekst);
+        }else if(this.geselecteerdeFilter.equals("8")){
+            return this.reisService.reisZoeken(locatieZoek,vertrekTijdZoek,aankomstTijdZoek);
         }else {
            return getReizen();
         }
@@ -113,6 +144,14 @@ public class ReisController {
     public  List<Reis> getReizenFilterByVertrekTijd(String value) {return this.reisService.filterReisVertrekTijd(value);}
 
     public  List<Reis> getReizenFilterByAankomstTijd(String value) {return this.reisService.filterReisAankomstTijd(value);}
+
+    public  String  zoekReizen() {
+
+        geselecteerdeFilter = "8";
+        filterTekst ="nietleeg";
+
+        return "/bezoeker/reizen";
+    }
 
 
 
