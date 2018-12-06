@@ -5,6 +5,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -39,25 +40,62 @@ public class ReisRepository {
         return filterLocatie.setParameter("naam",   value.toLowerCase() ).getResultList();}
 
     public  List<Reis> FilterAantalPlaatsen(String value) {
-        Query  filterLocatie = entityManager.createNamedQuery(Reis.FILTERAANTALPLAATSEN);
-        return filterLocatie.setParameter("plaatsen",   Integer.parseInt(value)  ).getResultList();}
+        Query  filterLocatie = entityManager.createNamedQuery(Reis.FIND_ALL);
+        List<Reis> listReizen = filterLocatie.getResultList();
+        List<Reis> listfiltered = new ArrayList<Reis>();
+        for (Reis r : listReizen) {
+            if (r.getPlaatsen() >= Integer.parseInt(value)) {
+                listfiltered.add(r);
+            }
+        }
+        return listfiltered;
+    }
 
     public  List<Reis> FilterPrijsPerPersoon(String value) {
-        Query  filterLocatie = entityManager.createNamedQuery(Reis.FILTERPRIJSPERPERSOON);
-        return filterLocatie.setParameter("prijs",    Double.parseDouble(value)  ).getResultList();}
+        Query filterLocatie = entityManager.createNamedQuery(Reis.FIND_ALL);
+        List<Reis> listReizen = filterLocatie.getResultList();
+        List<Reis> listfiltered = new ArrayList<Reis>();
+        for (Reis r : listReizen) {
+            if (r.getPrijsPerPersoon() <= Double.parseDouble(value)) {
+                listfiltered.add(r);
+            }
+        }
+        return listfiltered;
+    }
 
     public  List<Reis> FilterTransportmiddel(String value) {
         Query  filterLocatie = entityManager.createNamedQuery(Reis.FILTERTRANSPORTMIDDEL);
         return filterLocatie.setParameter("naam",   value.toLowerCase() ).getResultList();}
 
     public  List<Reis> FilterVertrektijd(String value) {
-        Query  filterLocatie = entityManager.createNamedQuery(Reis.FILTERVERTREKTIJD);
-      //  SimpleDateFormat format = new SimpleDateFormat("MMM d, yyyy HH:mm:ss");
-       // Date date;
-       // date = format.parse(value);
-        return filterLocatie.setParameter("vertrektijd", value  ).getResultList();
+        Query  filterLocatie = entityManager.createNamedQuery(Reis.FIND_ALL);
+        List<Reis> listReizen =filterLocatie.getResultList();
+        List<Reis> listFiltered = new ArrayList<Reis>();
+        for(Reis r : listReizen)
+        {
+            if(r.getVertrekTijd().toString().contains(value))
+            {
+                listFiltered.add(r);
+            }
+        }
+        return listFiltered;
     }
 
+    public  List<Reis> FilterAankomsttijd(String value)
+    {
+        Query  filterLocatie = entityManager.createNamedQuery(Reis.FIND_ALL);
+        List<Reis> listReizen =filterLocatie.getResultList();
+        List<Reis> listFiltered = new ArrayList<Reis>();
+        for(Reis r : listReizen)
+        {
+            if(r.getAankomstTijd().toString().contains(value))
+            {
+                System.out.print(r.getAankomstTijd() + "################");
+                listFiltered.add(r);
+            }
+        }
+        return listFiltered;
+    }
 
     public List<Integer> findVertrekLocatieIds(){
         return entityManager.createNamedQuery(Reis.FIND_ALLVERTREKLOCATIEIDS, Integer.class).getResultList();

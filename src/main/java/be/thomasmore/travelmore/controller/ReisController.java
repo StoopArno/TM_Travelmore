@@ -98,6 +98,10 @@ public class ReisController {
 
     public  List<Reis> getReizenFilterByVertrekTijd(String value) {return this.reisService.filterReisVertrekTijd(value);}
 
+    public  List<Reis> getReizenFilterByAankomstTijd(String value) {return this.reisService.filterReisAankomstTijd(value);}
+
+
+
     public void updateReis(int reisId, int vertrekLocatieId, int aankomstLocatieId, double prijsPerPersoon, String transportmiddel, int plaatsen, String foto){
         Reis reis = (reisId == 0) ? new Reis() : reisService.findReisById(reisId);
         reis.setVertrekLocatie(locatieService.findLocationById(vertrekLocatieId));
