@@ -5,11 +5,10 @@
       xmlns:p="http://primefaces.org/ui">
 <h:body>
     <ui:composition template="/templates/layout.xhtml">
-
         <f:metadata >
             <f:viewAction action="#{ViewController.setActiveTab('home')}" />
         </f:metadata>
-
+        <ui:define name="title">Home</ui:define>
         <ui:define name="content">
             <div id="carousel">
                 <ui:insert name="carousel" >

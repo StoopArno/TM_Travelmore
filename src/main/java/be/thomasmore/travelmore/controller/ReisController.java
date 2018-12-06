@@ -43,7 +43,7 @@ public class ReisController {
 
     public  List<Reis> getReizenFilterByVertrekTijd(String value) {return this.reisService.filterReisVertrekTijd(value);}
 
-    public void updateReis(int reisId, int vertrekLocatieId, int aankomstLocatieId, double prijsPerPersoon, String transportmiddel, int plaatsen){
+    public void updateReis(int reisId, int vertrekLocatieId, int aankomstLocatieId, double prijsPerPersoon, String transportmiddel, int plaatsen, String foto){
         Reis reis = (reisId == 0) ? new Reis() : reisService.findReisById(reisId);
         reis.setVertrekLocatie(locatieService.findLocationById(vertrekLocatieId));
         reis.setAankomstLocatie(locatieService.findLocationById(aankomstLocatieId));
@@ -52,6 +52,7 @@ public class ReisController {
         reis.setPrijsPerPersoon(prijsPerPersoon);
         reis.setTransportmiddel(transportmiddel);
         reis.setPlaatsen(plaatsen);
+        reis.setFoto(foto);
         if(reisId == 0){reisService.insert(reis);}
         else{reisService.update(reis);}
         newReis();

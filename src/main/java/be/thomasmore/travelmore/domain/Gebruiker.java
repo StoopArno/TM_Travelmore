@@ -9,7 +9,7 @@ import java.util.Date;
         {
                 @NamedQuery(
                         name = Gebruiker.FIND_ALL,
-                        query = "SELECT g FROM Gebruiker g"
+                        query = "SELECT g FROM Gebruiker g ORDER BY achternaam,voornaam,gemeente"
                 ),
                 @NamedQuery(
                         name = Gebruiker.FIND_ALL_BY_EMAIL,
@@ -49,7 +49,7 @@ public class Gebruiker {
     private SoortGebruiker soortGebruiker;
 
     public String toString(){
-        return voornaam + " " + achternaam;
+        return achternaam + " " + voornaam + " | " + gemeente;
     }
 
     public int getId() {

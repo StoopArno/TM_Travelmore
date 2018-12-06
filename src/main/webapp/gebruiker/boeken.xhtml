@@ -7,6 +7,10 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:body>
 <ui:composition template="/templates/layout.xhtml">
+    <f:metadata >
+        <f:viewAction action="#{ViewController.setActiveTab('reizen')}" />
+    </f:metadata>
+    <ui:define name="title">Reis boeken</ui:define>
     <ui:define name="content">
         <div>
             <div class="container">
@@ -31,12 +35,8 @@
                                 <a href="../index.xhtml">Terug</a>
 
                                 <h:commandButton value="PrijsBerekenen" class="btn btn-primary float-right" action="#{BookingController.navigateToOverzichtBooking}" />
-
-
                             </div>
                         </h:form>
-
-
                     </div>
                 </div>
             </div>

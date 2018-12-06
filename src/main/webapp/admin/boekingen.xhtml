@@ -10,16 +10,11 @@
 <h:body>
 <ui:composition template="/templates/layout_admin.xhtml">
     <f:metadata >
-        <f:viewAction action="#{ViewController.setActiveTab('bookingen')}" />
+        <f:viewAction action="#{ViewController.setActiveTab('boekingen')}" />
     </f:metadata>
-
-    <ui:define name="carousel"></ui:define>
-    <ui:define name="header">
-        <ui:include src="/templates/adminHeader.xhtml" />
-    </ui:define>
-    <ui:define name="title">Bookingen bekijken</ui:define>
+    <ui:define name="title">Boekingen beheren</ui:define>
     <ui:define name="content">
-        <br/>
+        <!-- todo volledige opmaak -->
         <div class="accordion" id="accordionBookingen">
             <h:form>
                 <ui:repeat value="#{BookingController.bookingen}" var="booking">

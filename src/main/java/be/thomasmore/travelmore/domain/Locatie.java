@@ -8,7 +8,7 @@ import javax.persistence.*;
         {
                 @NamedQuery(
                         name = Locatie.FIND_ALL,
-                        query = "SELECT l FROM Locatie l"
+                        query = "SELECT l FROM Locatie l ORDER BY land,stad,naam"
                 ),
                 @NamedQuery(
                         name = Locatie.FIND_BY_ID,
@@ -47,7 +47,7 @@ public class Locatie {
 
 
     public String toString(){
-        return stad + " | " + naam;
+        return land + " | " + stad + " | " + code;
     }
 
     //getters en setters

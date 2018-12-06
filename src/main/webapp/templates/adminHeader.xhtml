@@ -13,14 +13,14 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
-                    <ui:fragment rendered="#{ViewController.activeTab=='bookingen'}">
+                    <ui:fragment rendered="#{ViewController.activeTab=='boekingen'}">
                         <li class="nav-item active">
-                            <a class="nav-link" href="/travelmore/admin/bookingen.xhtml">Bookingen</a>
+                            <a class="nav-link" href="/travelmore/admin/boekingen.xhtml">Boekingen</a>
                         </li>
                     </ui:fragment>
-                    <ui:fragment rendered="#{ViewController.activeTab!='bookingen'}">
+                    <ui:fragment rendered="#{ViewController.activeTab!='boekingen'}">
                         <li class="nav-item">
-                            <a class="nav-link" href="/travelmore/admin/bookingen.xhtml">Bookingen</a>
+                            <a class="nav-link" href="/travelmore/admin/boekingen.xhtml">Boekingen</a>
                         </li>
                     </ui:fragment>
 
@@ -58,9 +58,10 @@
                     </ui:fragment>
                 </ul>
                 <span class="navbar-text">
-                        <h:outputLink value = "/travelmore/login.xhtml" rendered="#{false}">Meld aan</h:outputLink>
                         <h:outputLink value = "/travelmore/login.xhtml" rendered="#{true}" >Account Admin</h:outputLink> |
-                        <h:outputLink value = "/travelmore/login.xhtml" rendered="#{true}" >Meld af</h:outputLink>
+                    <h:form>
+                        <h:commandLink value="Uitloggen" class="dropdown-item" action="#{GebruikerController.logout}" />
+                    </h:form>
                 </span>
             </div>
         </nav>

@@ -47,6 +47,9 @@ public class BookingRepository {
     public void insert(Booking booking) {
         entityManager.persist(booking);
     }
+    public void update(Booking booking){
+        entityManager.merge(booking);
+    }
 
 }
 

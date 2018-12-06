@@ -7,6 +7,10 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:body>
     <ui:composition template="/templates/layout.xhtml">
+        <f:metadata >
+            <f:viewAction action="#{ViewController.setActiveTab('boekingen')}" />
+        </f:metadata>
+        <ui:define name="title">Overzicht boeking</ui:define>
         <ui:define name="content">
             <div>
                 <div class="container">
@@ -29,14 +33,12 @@
                                 <div class="form-check">
                                     <a href="../index.xhtml">Terug</a>
 
-                                    <h:commandButton value="Reserveren" class="btn btn-primary  float-right" action="#{BookingController.navigateToOverzichtBooking}" />
+                                    <h:commandButton value="Reserveren" class="btn btn-primary  float-right" action="#{BookingController.reserveerBooking(GebruikerController.aangemeldeGebruiker.id)}" />
                                     <h:commandButton value="PayPal" class="btn btn-primary mr-2 float-right" action="#{BookingController.betaalBooking(GebruikerController.aangemeldeGebruiker.id)}" />
                                     <h:commandButton value="Bancontact" class="btn btn-primary mr-2 float-right" action="#{BookingController.betaalBooking(GebruikerController.aangemeldeGebruiker.id)}" />
 
                                 </div>
                             </h:form>
-
-
                         </div>
                     </div>
                 </div>

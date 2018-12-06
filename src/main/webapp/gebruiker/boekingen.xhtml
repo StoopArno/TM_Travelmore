@@ -10,17 +10,14 @@
       xmlns:b="http://bootsfaces.net/ui"
 xmlns:c="http://java.sun.com/jsp/jstl/core">
 
-<h:head>
-    <ui:define name="title">Reizen bewerken</ui:define>
-
-</h:head>
-
 <h:body>
-    <h:form>
-        <ui:composition template="/templates/layout.xhtml">
-            <ui:define name="title">Uw boekingen</ui:define>
-            <ui:define name="content">
-                <br/>
+    <ui:composition template="/templates/layout.xhtml">
+        <f:metadata >
+            <f:viewAction action="#{ViewController.setActiveTab('boekingen')}" />
+        </f:metadata>
+        <ui:define name="title">Uw boekingen</ui:define>
+        <ui:define name="content">
+            <h:form>
                 <div class="accordion" id="accordionReizen">
                     <h:form>
                         <ui:repeat value="#{BookingController.getReizenByUserId(GebruikerController.aangemeldeGebruiker.id)}" var="booking">
@@ -80,9 +77,9 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
                                         <div class="form-group row">
                                             <label for="betaalt#{booking.reis.id}" class="col-sm-2 col-form-label">Betaalt</label>
                                             <div class="col-sm-10">
-                                                <h:inputText rendered="#{booking.isBetaald}" value="OK!" styleClass="form-control" id="displayBetaalt#{booking.reis.id}" readonly="true"/>
-                                                <h:commandButton rendered="#{!booking.isBetaald}" value="PayPal" class="form-control float-right"/>
-                                                <h:commandButton rendered="#{!booking.isBetaald}" value="Bancontact" class="form-control  float-right"/>
+                                                <h:inputText rendered="#{booking.isBetaald()}" value="OK!" styleClass="form-control" id="displayBetaalt#{booking.reis.id}" readonly="true"/>
+                                                <h:commandButton rendered="#{!booking.isBetaald()}" value="PayPal" action="#{BookingController.betaalReservatie(booking.id)}" class="btn btn-primary  mr-2 float-left"/>
+                                                <h:commandButton rendered="#{!booking.isBetaald()}" value="Bancontact" action="#{BookingController.betaalReservatie(booking.id)}" class="btn btn-primary mr-2 float-left"/>
                                             </div>
                                         </div>
                                     </div>
@@ -92,8 +89,8 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
                         </ui:repeat>
                     </h:form>
                 </div>
-            </ui:define>
-        </ui:composition>
-    </h:form>
+            </h:form>
+        </ui:define>
+    </ui:composition>
 </h:body>
 </html>
