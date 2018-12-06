@@ -32,44 +32,40 @@
                                         <button class="btn btn-default zoek-btn" type="submit">Zoeken</button>
                                     </h:form>
                                 </div>
-                                <div class="card-header" >
-                                    <h5 class="mb-0">Sorteren</h5>
-                                </div>
-                                <div class="card-body">
-                                    Sorteer opties hier
-                                </div>
-                                <div class="card-header" >
-                                    <h5 class="mb-0">Filteren</h5>
-                                </div>
-                                <div class="card-body">
 
-                                     <h:form>
+                                    <div class="card-header" >
+                                        <h5 class="mb-0">Filteren</h5>
+                                    </div>
+                                    <div class="card-body">
 
-                                        <h:inputText value="#{ReisController.filterTekst}"  class="form-control mr-sm-2" id="filtertext" ></h:inputText>
+                                        <h:form>
 
-                                        <h:selectOneMenu styleClass="btn btn-default zoek-btn" value="#{ReisController.geselecteerdeFilter}">
-                                            <!--<f:selectItem itemLabel="vertrek locatie" itemValue="#{ReisController.getReizenFilterByVertrekLocatie(filtertekst.text)}"/>
-                                            <f:selectItem itemLabel="aankomst locatie" itemValue="#{ReisController.getReizenFilterByAankomstLocatie(filtertekst.text)}"/>
+                                            <h:inputText value="#{ReisController.filterTekst}"  class="form-control mr-sm-2" id="filtertext" ></h:inputText>
 
-                                            <f:selectItem itemLabel="transport" itemValue="#{ReisController.getReizenFilterByTransportmiddel(filtertekst.text)}"/>
-                                            -->
-                                            <f:selectItem itemLabel="Niets geselecteerd" itemValue="0"/>
-                                            <f:selectItem itemLabel="vertrek locatie" itemValue="1"/>
-                                            <f:selectItem itemLabel="aankomst locatie" itemValue="2"/>
-                                            <f:selectItem itemLabel="transport" itemValue="3"/>
-                                            <f:selectItem itemLabel="Aantal plaatsen" itemValue="4"/>
-                                            <f:selectItem itemLabel="Budget" itemValue="5"/>
-                                            <f:selectItem itemLabel="Aankomsttijd" itemValue="6"/>
-                                            <f:selectItem itemLabel="Vertrektijd" itemValue="7"/>
-                                        </h:selectOneMenu>
+                                            <h:selectOneMenu styleClass="btn btn-default zoek-btn" value="#{ReisController.geselecteerdeFilter}">
+                                                <!--<f:selectItem itemLabel="vertrek locatie" itemValue="#{ReisController.getReizenFilterByVertrekLocatie(filtertekst.text)}"/>
+                                                <f:selectItem itemLabel="aankomst locatie" itemValue="#{ReisController.getReizenFilterByAankomstLocatie(filtertekst.text)}"/>
+
+                                                <f:selectItem itemLabel="transport" itemValue="#{ReisController.getReizenFilterByTransportmiddel(filtertekst.text)}"/>
+                                                -->
+                                                <f:selectItem itemLabel="Niets geselecteerd" itemValue="0"/>
+                                                <f:selectItem itemLabel="vertrek locatie" itemValue="1"/>
+                                                <f:selectItem itemLabel="aankomst locatie" itemValue="2"/>
+                                                <f:selectItem itemLabel="transport" itemValue="3"/>
+                                                <f:selectItem itemLabel="Aantal plaatsen" itemValue="4"/>
+                                                <f:selectItem itemLabel="Budget" itemValue="5"/>
+                                                <f:selectItem itemLabel="Aankomsttijd" itemValue="6"/>
+                                                <f:selectItem itemLabel="Vertrektijd" itemValue="7"/>
+                                            </h:selectOneMenu>
 
 
 
 
 
-                                        <h:commandButton class="btn btn-default zoek-btn"  action="#{ReisController.submitFilter}" value="filter"/>
-                                     </h:form>
-                                </div>
+                                            <h:commandButton class="btn btn-default zoek-btn"  action="#{ReisController.submitFilter}" value="filter"/>
+                                        </h:form>
+                                    </div>
+
                             </div>
                             <!--<h1 class="my-4">Onze reizen</h1>-->
                             <!--<div class="list-group">-->

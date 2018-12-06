@@ -22,6 +22,7 @@ public class ReisController {
     private int geselecteerdeId;
     public String geselecteerdeFilter;
     public String filterTekst;
+    public String geselecteerdeSorteerFunctie;
 
     @Inject
     private ReisService reisService;
@@ -55,6 +56,8 @@ public class ReisController {
     public  List<Reis> getFilterToepassen(){
 
 
+
+
         if (geselecteerdeFilter == null || geselecteerdeFilter.equals("0") || filterTekst == null  || filterTekst.equals("")){
             return getReizen();
         }else if(this.geselecteerdeFilter.equals("1")){
@@ -75,6 +78,15 @@ public class ReisController {
            return getReizen();
         }
 
+    }
+
+
+    public String getGeselecteerdeSorteerFunctie() {
+        return geselecteerdeSorteerFunctie;
+    }
+
+    public void setGeselecteerdeSorteerFunctie(String geselecteerdeSorteerFunctie) {
+        this.geselecteerdeSorteerFunctie = geselecteerdeSorteerFunctie;
     }
 
     public void submitFilter(){
