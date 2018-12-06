@@ -86,13 +86,13 @@
                                         </ui:fragment>
                                     </h3>
                                     <h5 class="prijstitle"><i class="fas fa-euro-sign fa-fw"></i>#{reis.prijsPerPersoon}</h5>
-                                    <p class="card-text"><i class="far fa-calendar-alt fa-fw"></i> #{reis.vertrekTijd} - #{reis.aankomstTijd}</p>
+                                    <p class="card-text"><i class="far fa-calendar-alt fa-fw"></i> #{reis.vertrekDatum}</p>
                                     <p class="card-text"><i class="fas fa-plane-departure fa-fw"></i> #{reis.vertrekLocatie.stad} (#{reis.vertrekLocatie.code}) - #{reis.vertrekLocatie.land}</p>
                                     <p class="card-text"><i class="fas fa-plane-arrival fa-fw"></i> #{reis.aankomstLocatie.stad} (#{reis.aankomstLocatie.code}) - #{reis.aankomstLocatie.land}</p>
                                 </div>
                                 <div class="card-footer">
                                     <div class="row">
-                                        <span class="col">#{reis.plaatsen - BookingController.aantalPlaatsenOver(reis.id)} plaatsen #{reis.id}</span>
+                                        <span class="col">#{reis.plaatsen - BookingController.aantalPlaatsenOver(reis.id)} plaatsen</span>
                                         <h:form styleClass="col-auto text-right">
                                             <h:outputLink class="btn bestelbtn" value="/travelmore/bezoeker/login.xhtml" rendered="#{GebruikerController.getAangemeld() == false}">Nu boeken</h:outputLink>
                                             <h:commandButton class="btn bestelbtn" action="#{BookingController.navigateToBooken(reis.id)}" value="Nu boeken" rendered="#{GebruikerController.getAangemeld() == true}"/>

@@ -39,11 +39,10 @@
                                     <div class="card-body">
 
                                         <h:form>
-
                                             <h:inputText value="#{ReisController.filterTekst}"  class="form-control mr-sm-2" id="filtertext" ></h:inputText>
 
                                             <h:selectOneMenu styleClass="btn btn-default zoek-btn" value="#{ReisController.geselecteerdeFilter}">
-                                                <f:selectItem itemLabel="Niets geselecteerd" itemValue="0"/>
+                                                <f:selectItem itemLabel="Alles" itemValue="0"/>
                                                 <f:selectItem itemLabel="vertrek locatie" itemValue="1"/>
                                                 <f:selectItem itemLabel="aankomst locatie" itemValue="2"/>
                                                 <f:selectItem itemLabel="transport" itemValue="3"/>
@@ -52,10 +51,6 @@
                                                 <f:selectItem itemLabel="Aankomsttijd" itemValue="6"/>
                                                 <f:selectItem itemLabel="Vertrektijd" itemValue="7"/>
                                             </h:selectOneMenu>
-
-
-
-
 
                                             <h:commandButton class="btn btn-default zoek-btn"  action="#{ReisController.submitFilter}" value="filter"/>
                                         </h:form>
@@ -81,7 +76,7 @@
                                                     </ui:fragment>
                                                 </h3>
                                                 <h5 class="prijstitle"><i class="fas fa-euro-sign fa-fw"></i>#{reis.prijsPerPersoon}</h5>
-                                                <p class="card-text"><i class="far fa-calendar-alt fa-fw"></i> #{reis.vertrekTijd} - #{reis.aankomstTijd}</p>
+                                                <p class="card-text"><i class="far fa-calendar-alt fa-fw"></i> #{reis.vertrekDatum}</p>
                                                 <p class="card-text"><i class="fas fa-plane-departure fa-fw"></i> #{reis.vertrekLocatie.stad} (#{reis.vertrekLocatie.code}) - #{reis.vertrekLocatie.land}</p>
                                                 <p class="card-text"><i class="fas fa-plane-arrival fa-fw"></i> #{reis.aankomstLocatie.stad} (#{reis.aankomstLocatie.code}) - #{reis.aankomstLocatie.land}</p>
                                             </div>
