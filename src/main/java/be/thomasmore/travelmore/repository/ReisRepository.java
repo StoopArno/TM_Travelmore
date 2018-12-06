@@ -55,7 +55,8 @@ public class ReisRepository {
       //  SimpleDateFormat format = new SimpleDateFormat("MMM d, yyyy HH:mm:ss");
        // Date date;
        // date = format.parse(value);
-        return filterLocatie.setParameter("vertrektijd", value  ).getResultList();}
+        return filterLocatie.setParameter("vertrektijd", value  ).getResultList();
+    }
 
 
     public List<Integer> findVertrekLocatieIds(){

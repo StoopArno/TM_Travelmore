@@ -14,75 +14,148 @@
     <f:metadata >
         <f:viewAction action="#{ViewController.setActiveTab('reizen')}" />
     </f:metadata>
-    <ui:composition template="/templates/layout.xhtml">
         <ui:define name="title">Onze reizen</ui:define>
         <ui:define name="content">
             <!-- todo opmaak reizen overzicht -->
-            <div class="container">
-                <h:form>
-                    <h1>Onze reizen : </h1>
+            <div class="container-fluid">
+                <!-- Page Content -->
                     <div class="row">
-                        <p>filteren : </p>
-                        <h:inputText name="filtertekst"></h:inputText>
-                        <h:selectOneMenu>
-                            <f:selectItem itemLabel="vertrek locatie" itemValue="#{ReisController.getReizenFilterByVertrekLocatie(filtertekst.text)}"/>
-                            <f:selectItem itemLabel="aankomst locatie" itemValue="#{ReisController.getReizenFilterByAankomstLocatie(filtertekst.text)}"/>
+                        <div class="col-lg-3">
+                            <!-- todo filters hier -->
+                            <div class="card fixed-top sticky-top">
+                                <div class="card-header">
+                                    <h5 class="mb-0">Zoeken</h5>
+                                </div>
+                                <div class="card-body">
+                                    <h:form class="form-inline my-2 my-lg-0">
+                                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+                                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                    </h:form>
+                                </div>
+                                <div class="card-header" >
+                                    <h5 class="mb-0">Sorteren</h5>
+                                </div>
+                                <div class="card-body">
+                                    Sorteer opties hier
+                                </div>
+                                <div class="card-header" >
+                                    <h5 class="mb-0">Filteren</h5>
+                                </div>
+                                <div class="card-body">
+                                    Filter opties hier
+                                </div>
+                            </div>
+                            <!--<h1 class="my-4">Onze reizen</h1>-->
+                            <!--<div class="list-group">-->
+                                <!--<a href="#" class="list-group-item">Zoeken</a>-->
+                                <!--<a href="#" class="list-group-item">Sorteren</a>-->
+                                <!--<a href="#" class="list-group-item">Filteren</a>-->
+                                <!--<div class="row">-->
+                                    <!--<p>filteren : </p>-->
+                                    <!--<h:inputText name="filtertekst"></h:inputText>-->
+                                    <!--<h:selectOneMenu>-->
+                                        <!--<f:selectItem itemLabel="vertrek locatie" itemValue="#{ReisController.getReizenFilterByVertrekLocatie(filtertekst.text)}"/>-->
+                                        <!--<f:selectItem itemLabel="aankomst locatie" itemValue="#{ReisController.getReizenFilterByAankomstLocatie(filtertekst.text)}"/>-->
 
-                            <f:selectItem itemLabel="transport" itemValue="#{ReisController.getReizenFilterByTransportmiddel(filtertekst.text)}"/>
-                        </h:selectOneMenu>
-                        <h:commandButton class="btn btn-primary"  value="filteren"/>
+                                        <!--<f:selectItem itemLabel="transport" itemValue="#{ReisController.getReizenFilterByTransportmiddel(filtertekst.text)}"/>-->
+                                    <!--</h:selectOneMenu>-->
+                                    <!--<h:commandButton class="btn btn-primary"  value="filteren"/>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        </div>
+                        <!-- /.col-lg-3 -->
+
+                        <div class="col-lg-9">
+                            <div class="row">
+                                <ui:repeat value="#{ReisController.reizen}" var="reis">
+                                    <div class="col-xl-4 col-lg-6 col-md-6 mb-4">
+                                        <div class="card h-100">
+                                            <a href="#" class="card-img-top" style="background-image: url(#{reis.foto})"/>
+                                            <div class="card-body">
+                                                <h3 class="card-title row">
+                                                    <a class="col reistitle" href="#">#{reis.aankomstLocatie.naam}</a>
+                                                    <ui:fragment rendered="#{reis.transportmiddel == 'bus'}">
+                                                        <span class="col-auto reistitle"><i class="fas fa-bus fa-lg fa-fw"></i></span>
+                                                    </ui:fragment>
+                                                    <ui:fragment rendered="#{reis.transportmiddel == 'vliegtuig'}">
+                                                        <span class="col-auto reistitle"><i class="fas fa-plane fa-lg fa-fw"></i></span>
+                                                    </ui:fragment>
+                                                </h3>
+                                                <h5 class="prijstitle"><i class="fas fa-euro-sign fa-fw"></i>#{reis.prijsPerPersoon}</h5>
+                                                <p class="card-text"><i class="far fa-calendar-alt fa-fw"></i> #{reis.vertrekTijd} - #{reis.aankomstTijd}</p>
+                                                <p class="card-text"><i class="fas fa-plane-departure fa-fw"></i> #{reis.vertrekLocatie.stad} (#{reis.vertrekLocatie.code}) - #{reis.vertrekLocatie.land}</p>
+                                                <p class="card-text"><i class="fas fa-plane-arrival fa-fw"></i> #{reis.aankomstLocatie.stad} (#{reis.aankomstLocatie.code}) - #{reis.aankomstLocatie.land}</p>
+                                            </div>
+                                            <div class="card-footer">
+                                                <div class="row">
+                                                    <span class="col">#{reis.plaatsen} plaatsen over</span>
+                                                    <h:form styleClass="col-auto text-right">
+                                                        <h:commandButton class="btn bestelbtn" action="#{GebruikerController.login()}" value="Nu boeken" rendered="#{GebruikerController.getAangemeld() == false}"/>
+                                                        <h:commandButton class="btn bestelbtn" action="#{BookingController.navigateToBooken(reis.id)}" value="Nu boeken" rendered="#{GebruikerController.getAangemeld() == true}"/>
+                                                    </h:form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ui:repeat>
+                            </div>
+                        </div>
                     </div>
-                    <div class="row">
-                        <h:dataTable var="reis" class="table table-striped" value="#{ReisController.reizen}">
-                            <h:column>
-                                <f:facet name="header">Vertrek Locatie</f:facet>
-                                <h:outputText value="#{reis.vertrekLocatie.naam}" />
-                            </h:column>
 
-                            <h:column>
-                                <f:facet name="header">Vertrek Tijd</f:facet>
-                                <h:outputText value="#{reis.vertrekTijd}">
-                                    <f:convertDateTime pattern="dd-MM-yyyy HH:MM" />
-                                </h:outputText>
-                            </h:column>
 
-                            <h:column>
-                                <f:facet name="header">Aankomst Locatie</f:facet>
-                                <h:outputText value="#{reis.aankomstLocatie.naam}" />
-                            </h:column>
+                <!--<h:form>-->
+                    <!--<h1>Onze reizen : </h1>-->
 
-                            <h:column>
-                                <f:facet name="header">Aankomst Tijd</f:facet>
-                                <h:outputText value="#{reis.aankomstTijd}">
-                                    <f:convertDateTime pattern="dd-MM-yyyy HH:MM" />
-                                </h:outputText>
-                            </h:column>
+                    <!--<div class="row">-->
+                        <!--<h:dataTable var="reis" class="table table-striped" value="#{ReisController.reizen}">-->
+                            <!--<h:column>-->
+                                <!--<f:facet name="header">Vertrek Locatie</f:facet>-->
+                                <!--<h:outputText value="#{reis.vertrekLocatie.naam}" />-->
+                            <!--</h:column>-->
 
-                            <h:column name="Plaatsen">
-                                <f:facet name="header">Plaatsen/al geboekt</f:facet>
-                                <h:outputText value="#{reis.plaatsen} / "  />
-                                <h:outputText value="#{BookingController.aantalPlaatenOver(reis.id)}"/>
-                            </h:column>
+                            <!--<h:column>-->
+                                <!--<f:facet name="header">Vertrek Tijd</f:facet>-->
+                                <!--<h:outputText value="#{reis.vertrekTijd}">-->
+                                    <!--<f:convertDateTime pattern="dd-MM-yyyy HH:MM" />-->
+                                <!--</h:outputText>-->
+                            <!--</h:column>-->
 
-                            <h:column>
-                                <f:facet name="header">prijs/persoon</f:facet>
-                                <h:outputText value="#{reis.prijsPerPersoon}" />
-                            </h:column>
+                            <!--<h:column>-->
+                                <!--<f:facet name="header">Aankomst Locatie</f:facet>-->
+                                <!--<h:outputText value="#{reis.aankomstLocatie.naam}" />-->
+                            <!--</h:column>-->
 
-                            <h:column>
-                                <f:facet name="header">transportmiddel</f:facet>
-                                <h:outputText value="#{reis.transportmiddel}" />
-                            </h:column>
+                            <!--<h:column>-->
+                                <!--<f:facet name="header">Aankomst Tijd</f:facet>-->
+                                <!--<h:outputText value="#{reis.aankomstTijd}">-->
+                                    <!--<f:convertDateTime pattern="dd-MM-yyyy HH:MM" />-->
+                                <!--</h:outputText>-->
+                            <!--</h:column>-->
 
-                            <h:column rendered="#{GebruikerController.getAangemeld()}">
-                                <h:commandButton class="btn btn-primary" action="#{BookingController.navigateToBooken(reis.id)}" value="boeken"/>
-                            </h:column>
-                        </h:dataTable>
-                    </div>
-                </h:form>
+                            <!--<h:column name="Plaatsen">-->
+                                <!--<f:facet name="header">Plaatsen/al geboekt</f:facet>-->
+                                <!--<h:outputText value="#{reis.plaatsen} / "  />-->
+                                <!--<h:outputText value="#{BookingController.aantalPlaatenOver(reis.id)}"/>-->
+                            <!--</h:column>-->
+
+                            <!--<h:column>-->
+                                <!--<f:facet name="header">prijs/persoon</f:facet>-->
+                                <!--<h:outputText value="#{reis.prijsPerPersoon}" />-->
+                            <!--</h:column>-->
+
+                            <!--<h:column>-->
+                                <!--<f:facet name="header">transportmiddel</f:facet>-->
+                                <!--<h:outputText value="#{reis.transportmiddel}" />-->
+                            <!--</h:column>-->
+
+                            <!--<h:column rendered="#{GebruikerController.getAangemeld()}">-->
+                                <!--<h:commandButton class="btn btn-primary" action="#{BookingController.navigateToBooken(reis.id)}" value="boeken"/>-->
+                            <!--</h:column>-->
+                        <!--</h:dataTable>-->
+                    <!--</div>-->
+                <!--</h:form>-->
             </div>
         </ui:define>
-    </ui:composition>
 </ui:composition>
 </h:body>
 </html>

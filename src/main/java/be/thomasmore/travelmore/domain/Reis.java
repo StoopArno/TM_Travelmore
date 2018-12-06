@@ -99,6 +99,9 @@ public class Reis {
     @Column(name = "plaatsen")
     private int plaatsen;
 
+    @Column(name = "foto")
+    private String foto;
+
     public String toString(){
         return id + " - " + vertrekLocatie + " --> " + aankomstLocatie;
     }
@@ -166,4 +169,8 @@ public class Reis {
     public void setPlaatsen(int plaatsen) {
         this.plaatsen = plaatsen;
     }
+
+    public String getFoto() { return foto; }
+
+    public void setFoto(String foto) { this.foto = foto; }
 }
