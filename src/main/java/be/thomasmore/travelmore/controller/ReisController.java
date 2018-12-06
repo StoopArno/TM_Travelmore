@@ -70,7 +70,6 @@ public class ReisController {
 
 
 
-
         if (geselecteerdeFilter == null || geselecteerdeFilter.equals("0") || filterTekst == null  || filterTekst.equals("")){
             return getReizen();
         }else if(this.geselecteerdeFilter.equals("1")){
