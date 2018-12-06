@@ -64,9 +64,58 @@
                 </form>
             </section>
 
-            <section class="nieuws">
+            <section class="grijs">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-title">
+                        Enkele sugesties
+                    </h2>
+                    <br/>
+                </div>
+                <div class="row">
+                    <ui:repeat value="#{ReisController.randomReizen}" var="reis">
+                        <div class="col-xl-4 col-lg-6 col-md-6 mb-4">
+                            <div class="card h-100">
+                                <a href="#" class="card-img-top" style="background-image: url(#{reis.foto})"/>
+                                <div class="card-body">
+                                    <h3 class="card-title row">
+                                        <a class="col reistitle" href="#">#{reis.aankomstLocatie.naam}</a>
+                                        <ui:fragment rendered="#{reis.transportmiddel == 'bus'}">
+                                            <span class="col-auto reistitle"><i class="fas fa-bus fa-lg fa-fw"></i></span>
+                                        </ui:fragment>
+                                        <ui:fragment rendered="#{reis.transportmiddel == 'vliegtuig'}">
+                                            <span class="col-auto reistitle"><i class="fas fa-plane fa-lg fa-fw"></i></span>
+                                        </ui:fragment>
+                                    </h3>
+                                    <h5 class="prijstitle"><i class="fas fa-euro-sign fa-fw"></i>#{reis.prijsPerPersoon}</h5>
+                                    <p class="card-text"><i class="far fa-calendar-alt fa-fw"></i> #{reis.vertrekTijd} - #{reis.aankomstTijd}</p>
+                                    <p class="card-text"><i class="fas fa-plane-departure fa-fw"></i> #{reis.vertrekLocatie.stad} (#{reis.vertrekLocatie.code}) - #{reis.vertrekLocatie.land}</p>
+                                    <p class="card-text"><i class="fas fa-plane-arrival fa-fw"></i> #{reis.aankomstLocatie.stad} (#{reis.aankomstLocatie.code}) - #{reis.aankomstLocatie.land}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row">
+                                        <span class="col">#{reis.plaatsen} plaatsen over</span>
+                                        <h:form styleClass="col-auto text-right">
+                                            <h:commandButton class="btn bestelbtn" action="#{GebruikerController.login()}" value="Nu boeken" rendered="#{GebruikerController.getAangemeld() == false}"/>
+                                            <h:commandButton class="btn bestelbtn" action="#{BookingController.navigateToBooken(reis.id)}" value="Nu boeken" rendered="#{GebruikerController.getAangemeld() == true}"/>
+                                        </h:form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ui:repeat>
+                </div>
+            </div>
+            </section>
+
+            <section class="wit">
                 <div class="container">
-                    <h2 class="text-center">Nieuws</h2>
+                    <div class="text-center">
+                        <h2 class="section-title">
+                            Nieuws
+                        </h2>
+                        <br/>
+                    </div>
 
                     <div class="card-deck">
                         <div class="card">
