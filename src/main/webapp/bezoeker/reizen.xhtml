@@ -23,15 +23,15 @@
                         <div class="col-lg-3">
                             <!-- todo filters hier -->
                             <div class="card fixed-top sticky-top">
-                                <div class="card-header">
-                                    <h5 class="mb-0">Zoeken</h5>
-                                </div>
-                                <div class="card-body">
-                                    <h:form class="form-inline my-2 my-lg-0">
-                                        <input class="form-control mr-sm-2" type="search" placeholder="Zoeken" aria-label="Zoeken"/>
-                                        <button class="btn btn-default zoek-btn" type="submit">Zoeken</button>
-                                    </h:form>
-                                </div>
+                                <!--<div class="card-header">-->
+                                    <!--<h5 class="mb-0">Zoeken</h5>-->
+                                <!--</div>-->
+                                <!--<div class="card-body">-->
+                                    <!--<h:form class="form-inline my-2 my-lg-0">-->
+                                        <!--<input class="form-control mr-sm-2" type="search" placeholder="Zoeken" aria-label="Zoeken"/>-->
+                                        <!--<button class="btn btn-default zoek-btn" type="submit">Zoeken</button>-->
+                                    <!--</h:form>-->
+                                <!--</div>-->
 
                                     <div class="card-header" >
                                         <h5 class="mb-0">Filteren</h5>
@@ -69,10 +69,10 @@
                                 <ui:repeat value="#{ReisController.filterToepassen}" var="reis">
                                     <div class="col-xl-4 col-lg-6 col-md-6 mb-4">
                                         <div class="card h-100">
-                                            <a href="#" class="card-img-top" style="background-image: url(#{reis.foto})"/>
+                                            <div class="card-img-top card-img-top-reizen" style="background-image: url(#{reis.foto})"/>
                                             <div class="card-body">
                                                 <h3 class="card-title row">
-                                                    <a class="col reistitle" href="#">#{reis.aankomstLocatie.naam}</a>
+                                                    <span class="col reistitle">#{reis.aankomstLocatie.naam}</span>
                                                     <ui:fragment rendered="#{reis.transportmiddel == 'bus'}">
                                                         <span class="col-auto reistitle"><i class="fas fa-bus fa-lg fa-fw"></i></span>
                                                     </ui:fragment>
@@ -87,7 +87,7 @@
                                             </div>
                                             <div class="card-footer">
                                                 <div class="row">
-                                                    <span class="col">#{reis.plaatsen} plaatsen over</span>
+                                                    <span class="col">#{reis.plaatsen - BookingController.aantalPlaatsenOver(reis.id)} plaatsen</span>
                                                     <h:form styleClass="col-auto text-right">
                                                         <h:outputLink class="btn bestelbtn" value="/travelmore/bezoeker/login.xhtml" rendered="#{GebruikerController.getAangemeld() == false}">Nu boeken</h:outputLink>
                                                         <h:commandButton class="btn bestelbtn" action="#{BookingController.navigateToBooken(reis.id)}" value="Nu boeken" rendered="#{GebruikerController.getAangemeld() == true}"/>

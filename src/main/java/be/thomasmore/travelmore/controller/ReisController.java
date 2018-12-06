@@ -71,13 +71,9 @@ public class ReisController {
     }
 
     public  List<Reis> getRandomReizen(){
-        Random rand = new Random();
         List<Reis> reizen =  getReizen();
-        List<Reis> randomReizen = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            int randomIndex = rand.nextInt(reizen.size());
-            randomReizen.add(reizen.get(randomIndex));
-        }
+        Collections.shuffle(reizen);
+        List<Reis> randomReizen = reizen.subList(0, 3);
         return randomReizen;
     }
 
