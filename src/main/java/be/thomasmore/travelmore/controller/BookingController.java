@@ -35,7 +35,7 @@ public class BookingController {
         return this.bookingService.findBookingById(geselecteerdeBooking.getId());
     }
 
-    public  int aantalPlaatenOver(int id) { return  this.bookingService.aantalPlaatsenOver(id);}
+    public  int aantalPlaatsenOver(int id) { return  this.bookingService.aantalPlaatsenOver(id);}
 
     public List<Booking> getReizenByUserId(int gebruikersID){
         List<Booking> test =  this.bookingService.findAllBookingsByUserId(gebruikersID);
