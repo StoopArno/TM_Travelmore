@@ -76,10 +76,10 @@
                     <ui:repeat value="#{ReisController.randomReizen}" var="reis">
                         <div class="col-xl-4 col-lg-6 col-md-6 mb-4">
                             <div class="card h-100">
-                                <a href="#" class="card-img-top" style="background-image: url(#{reis.foto})"/>
+                                <div class="card-img-top card-img-top-reizen" style="background-image: url(#{reis.foto})"/>
                                 <div class="card-body">
                                     <h3 class="card-title row">
-                                        <a class="col reistitle" href="#">#{reis.aankomstLocatie.naam}</a>
+                                        <span class="col reistitle">#{reis.aankomstLocatie.naam}</span>
                                         <ui:fragment rendered="#{reis.transportmiddel == 'bus'}">
                                             <span class="col-auto reistitle"><i class="fas fa-bus fa-lg fa-fw"></i></span>
                                         </ui:fragment>
