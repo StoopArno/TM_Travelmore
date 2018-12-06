@@ -47,10 +47,12 @@ public class BookingController {
         return test;
     }
     public String reserveerBooking(int gerbuikerId){
+        Gebruiker gebruiker = gebruikerController.getGebruikerByID(gerbuikerId);
         nieuweBooking.setBetaald(false);
         nieuweBooking.setGebruiker(gebruikerController.getGebruikerByID(gerbuikerId));
         nieuweBooking.setReis(geslecteerdeReis);
         bookingService.insert(nieuweBooking);
+        sendMail(gebruiker);
         nieuweBooking = new Booking();
         return "/gebruiker/boekingen";
     }
@@ -69,24 +71,19 @@ public class BookingController {
         nieuweBooking.setPrijsPPTeBetalen(geslecteerdeReis.getPrijsPerPersoon());
         return "/gebruiker/overzichtBoeking";
     }
-    public String betaalBooking(int gerbuikerId){
-        Gebruiker gebruiker = gebruikerController.getGebruikerByID(gerbuikerId);
-        nieuweBooking.setBetaald(true);
-        nieuweBooking.setGebruiker(gebruiker);
-        nieuweBooking.setReis(geslecteerdeReis);
-        bookingService.insert(nieuweBooking);
+    public void sendMail(Gebruiker gebruiker){
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 
         String msg =
                 "Beste " + gebruiker.getNaam() +
-                ", <br/>bedankt voor je boeking bij TravelMore! <br/><br/>Hier is je boeking:" +
-                " <br/><strong>Reis: </strong>" +
-                nieuweBooking.getReis().getVertrekLocatie().getLand() +",  "+nieuweBooking.getReis().getVertrekLocatie().getStad()+" "+nieuweBooking.getReis().getVertrekLocatie().getNaam()+
-                " -> " +
-                nieuweBooking.getReis().getAankomstLocatie().getLand() + ",  "+nieuweBooking.getReis().getAankomstLocatie().getStad()+ " "+nieuweBooking.getReis().getAankomstLocatie().getNaam()+
-                "<br/><strong>Datum: </strong>" + df.format(nieuweBooking.getReis().getAankomstTijd()) + " - " +df.format(nieuweBooking.getReis().getAankomstTijd()) +
-                "<br/><strong>Aantal personen: </strong>" + nieuweBooking.getAantalPersonen() + "<br/>" +
-                "<br/><strong>Prijs: </strong>" + nieuweBooking.getAantalPersonen() +" X "+ nieuweBooking.getPrijsPPTeBetalen() +" = " +nieuweBooking.getAantalPersonen() *nieuweBooking.getPrijsPPTeBetalen()   + "<br/>"
+                        ", <br/>bedankt voor je boeking bij TravelMore! <br/><br/>Hier is je boeking:" +
+                        " <br/><strong>Reis: </strong>" +
+                        nieuweBooking.getReis().getVertrekLocatie().getLand() +",  "+nieuweBooking.getReis().getVertrekLocatie().getStad()+" "+nieuweBooking.getReis().getVertrekLocatie().getNaam()+
+                        " -> " +
+                        nieuweBooking.getReis().getAankomstLocatie().getLand() + ",  "+nieuweBooking.getReis().getAankomstLocatie().getStad()+ " "+nieuweBooking.getReis().getAankomstLocatie().getNaam()+
+                        "<br/><strong>Datum: </strong>" + df.format(nieuweBooking.getReis().getAankomstTijd()) + " - " +df.format(nieuweBooking.getReis().getAankomstTijd()) +
+                        "<br/><strong>Aantal personen: </strong>" + nieuweBooking.getAantalPersonen() + "<br/>" +
+                        "<br/><strong>Prijs: </strong>" + nieuweBooking.getAantalPersonen() +" X "+ nieuweBooking.getPrijsPPTeBetalen() +" = " +nieuweBooking.getAantalPersonen() *nieuweBooking.getPrijsPPTeBetalen()   + "<br/>"
                 ;
 
         try {
@@ -94,6 +91,14 @@ public class BookingController {
         }
         catch(MessagingException ex) {
         }
+    }
+    public String betaalBooking(int gerbuikerId){
+        Gebruiker gebruiker = gebruikerController.getGebruikerByID(gerbuikerId);
+        nieuweBooking.setBetaald(true);
+        nieuweBooking.setGebruiker(gebruiker);
+        nieuweBooking.setReis(geslecteerdeReis);
+        bookingService.insert(nieuweBooking);
+        sendMail(gebruiker);
         nieuweBooking = new Booking();
         return "/gebruiker/boekingen";
     }
