@@ -43,6 +43,27 @@
                                 </div>
                                 <div class="card-body">
                                     Filter opties hier
+
+                                     <h:form>
+                                        <h:selectOneMenu value="#{ReisController.geselecteerdeFilter}">
+                                            <!--<f:selectItem itemLabel="vertrek locatie" itemValue="#{ReisController.getReizenFilterByVertrekLocatie(filtertekst.text)}"/>
+                                            <f:selectItem itemLabel="aankomst locatie" itemValue="#{ReisController.getReizenFilterByAankomstLocatie(filtertekst.text)}"/>
+
+                                            <f:selectItem itemLabel="transport" itemValue="#{ReisController.getReizenFilterByTransportmiddel(filtertekst.text)}"/>
+                                            -->
+                                            <f:selectItem itemLabel="Niets geselecteerd" itemValue="0"/>
+                                            <f:selectItem itemLabel="vertrek locatie" itemValue="1"/>
+                                            <f:selectItem itemLabel="aankomst locatie" itemValue="2"/>
+                                            <f:selectItem itemLabel="transport" itemValue="3"/>
+                                            <f:selectItem itemLabel="Aantal plaatsen" itemValue="4"/>
+                                            <f:selectItem itemLabel="Budget" itemValue="5"/>
+                                        </h:selectOneMenu>
+
+                                        <h:inputText value="#{ReisController.filterTekst}" id="filtertext"></h:inputText>
+
+
+                                        <h:commandButton class="btn btn-primary"  action="#{ReisController.submitFilter}" value="filter"/>
+                                     </h:form>
                                 </div>
                             </div>
                             <!--<h1 class="my-4">Onze reizen</h1>-->
@@ -67,7 +88,7 @@
 
                         <div class="col-lg-9">
                             <div class="row">
-                                <ui:repeat value="#{ReisController.reizen}" var="reis">
+                                <ui:repeat value="#{ReisController.filterToepassen}" var="reis">
                                     <div class="col-xl-4 col-lg-6 col-md-6 mb-4">
                                         <div class="card h-100">
                                             <a href="#" class="card-img-top" style="background-image: url(#{reis.foto})"/>
@@ -132,10 +153,11 @@
                                 <!--</h:outputText>-->
                             <!--</h:column>-->
 
+
                             <!--<h:column name="Plaatsen">-->
                                 <!--<f:facet name="header">Plaatsen/al geboekt</f:facet>-->
                                 <!--<h:outputText value="#{reis.plaatsen} / "  />-->
-                                <!--<h:outputText value="#{BookingController.aantalPlaatenOver(reis.id)}"/>-->
+
                             <!--</h:column>-->
 
                             <!--<h:column>-->

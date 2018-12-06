@@ -22,12 +22,83 @@ public class ReisController {
 
     private Reis geselecteerdeReis = new Reis();
     private int geselecteerdeId;
+    public String geselecteerdeFilter;
+    public String filterTekst;
 
     @Inject
     private ReisService reisService;
     @Inject
     private LocatieService locatieService;
 
+    public static boolean isNumeric(String str)
+    {
+        try{
+            double d = Double.parseDouble(str);
+        }
+        catch (NumberFormatException nfe)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    public  List<Reis> getFilterToepassen(){
+
+
+
+
+        boolean test;
+
+
+        // hier in deze if zit de fout !!!
+      /*  if (filterTekst != null  ){
+            if(isNumeric(filterTekst))
+            {
+
+            }
+        }*/
+
+
+
+
+        if (geselecteerdeFilter == null || geselecteerdeFilter.equals("0") || filterTekst == null  || filterTekst.equals("")){
+            return getReizen();
+        }else if(this.geselecteerdeFilter.equals("1")){
+            return getReizenFilterByVertrekLocatie(filterTekst);
+        }else if(this.geselecteerdeFilter.equals("2")){
+            return getReizenFilterByAankomstLocatie(filterTekst);
+        }else if(this.geselecteerdeFilter.equals("3")){
+            return getReizenFilterByTransportmiddel(filterTekst);
+        }else if(this.geselecteerdeFilter.equals("4") && isNumeric(filterTekst)){
+            return getReizenFilterByAantalPlaatsen(filterTekst);
+        }else if(this.geselecteerdeFilter.equals("5") && isNumeric(filterTekst)){
+            return getReizenFilterByPrijsPerPersoon(filterTekst);
+        }else {
+           return getReizen();
+        }
+
+    }
+
+    public void submitFilter(){
+        getFilterToepassen();
+    }
+
+
+    public String getFilterTekst() {
+        return filterTekst;
+    }
+
+    public void setFilterTekst(String filterTekst) {
+        this.filterTekst = filterTekst;
+    }
+
+    public String getGeselecteerdeFilter() {
+        return geselecteerdeFilter;
+    }
+
+    public void setGeselecteerdeFilter(String geselecteerdeFilter) {
+        this.geselecteerdeFilter = geselecteerdeFilter;
+    }
 
     public  List<Reis> getReizen() {return this.reisService.findAllReis();}
 
@@ -42,6 +113,10 @@ public class ReisController {
     public  List<Reis> getReizenFilterByTransportmiddel(String value) {return this.reisService.filterReisTransportmiddel(value);}
 
     public  List<Reis> getReizenFilterByVertrekTijd(String value) {return this.reisService.filterReisVertrekTijd(value);}
+
+    public  List<Reis> getReizenFilterByAankomstTijd(String value) {return this.reisService.filterReisAankomstTijd(value);}
+
+
 
     public void updateReis(int reisId, int vertrekLocatieId, int aankomstLocatieId, double prijsPerPersoon, String transportmiddel, int plaatsen, String foto){
         Reis reis = (reisId == 0) ? new Reis() : reisService.findReisById(reisId);
