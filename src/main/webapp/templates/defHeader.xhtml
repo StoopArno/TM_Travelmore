@@ -65,6 +65,7 @@
                                 </a>
                                 <div class="dropdown-menu test" aria-labelledby="navbarDropdownMenuLink">
                                     <h:form>
+                                        <h:outputLink value="/travelmore/admin/boekingen.xhtml" styleClass="dropdown-item"  rendered="#{GebruikerController.aangemeldeGebruiker.soortGebruiker.getId()==2}">Admin Dashboard</h:outputLink>
                                         <h:commandLink value="Uitloggen" class="dropdown-item" action="#{GebruikerController.logout}" />
                                     </h:form>
                                 </div>

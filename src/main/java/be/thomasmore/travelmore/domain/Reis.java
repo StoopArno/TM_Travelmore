@@ -106,7 +106,7 @@ public class Reis {
     private String foto;
 
     public String toString(){
-        return id + " - " + vertrekLocatie + " --> " + aankomstLocatie;
+        return vertrekLocatie + " --> " + aankomstLocatie;
     }
 
     public int getId() {
