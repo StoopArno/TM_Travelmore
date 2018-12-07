@@ -18,8 +18,15 @@
         <ui:define name="content">
             <h:form>
                 <div class="container">
-                    <div class="col">
+                    <div class="col mt-3 admintitle">
                         <h1>Locaties beheren</h1>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-12 text-right">
+                            <h:commandButton action="#{LocatieController.newLocatie()}" value="Maak nieuwe locatie aan" styleClass="btn btn-primary">
+                                <f:ajax event="action" render="@all" onevent="showLocatieModal"/>
+                            </h:commandButton>
+                        </div>
                     </div>
 
                     <div class="modal fade" id="locatieModal" tabindex="-1" role="dialog" aria-labelledby="locatieModallabel" aria-hidden="true">
@@ -150,13 +157,6 @@
                                 </div>
                             </div>
                         </ui:repeat>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 text-right">
-                            <h:commandButton action="#{LocatieController.newLocatie()}" value="Maak nieuwe locatie aan" styleClass="btn btn-primary">
-                                <f:ajax event="action" render="@all" onevent="showLocatieModal"/>
-                            </h:commandButton>
-                        </div>
                     </div>
                 </div>
             </h:form>

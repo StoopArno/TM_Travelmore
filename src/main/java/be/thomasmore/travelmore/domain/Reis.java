@@ -18,7 +18,7 @@ import java.util.GregorianCalendar;
         {
                 @NamedQuery(
                         name = Reis.FIND_ALL,
-                        query = "SELECT l FROM Reis l"
+                        query = "SELECT l FROM Reis l order by vertrekdatum"
                 ),
                 @NamedQuery(
                         name = Reis.FIND_ALLVERTREKLOCATIEIDS,

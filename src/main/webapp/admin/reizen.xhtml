@@ -20,10 +20,17 @@
 
 
                 <div class="container">
-                    <div class="col">
+                    <div class="col  mt-3 admintitle">
                         <h1>Reizen beheren</h1>
                     </div>
 
+                    <div class="row">
+                        <div class="col-12 text-right mb-3">
+                            <h:commandButton action="#{ReisController.newReis()}" value="Maak nieuwe reis aan" styleClass="btn btn-primary">
+                                <f:ajax event="action" render="@all" onevent="showReisModal"/>
+                            </h:commandButton>
+                        </div>
+                    </div>
                     <div class="modal fade" id="reisModal" tabindex="-1" role="dialog" aria-labelledby="reisModallabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
@@ -113,7 +120,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="updateFoto" class="col-sm-3 col-form-label">Foto</label>
+                                        <label for="updateFoto" class="col-sm-3 col-form-label">Foto url</label>
                                         <div class="col-sm-9">
                                             <h:inputText value="#{ReisController.geselecteerdeReis.foto}" binding="#{foto}" styleClass="form-control" id="updateFoto" />
                                         </div>
@@ -256,13 +263,6 @@
 
 
                         </h:form>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 text-right">
-                            <h:commandButton action="#{ReisController.newReis()}" value="Maak nieuwe reis aan" styleClass="btn btn-primary">
-                                <f:ajax event="action" render="@all" onevent="showReisModal"/>
-                            </h:commandButton>
-                        </div>
                     </div>
                 </div>
             </h:form>

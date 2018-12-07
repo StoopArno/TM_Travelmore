@@ -47,7 +47,7 @@ public class Locatie {
 
 
     public String toString(){
-        return land + " | " + stad + " | " + code;
+        return land + " | " + stad + " | " + code + " | " + naam;
     }
 
     //getters en setters

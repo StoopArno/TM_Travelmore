@@ -22,7 +22,9 @@ public class ReisController {
     private int geselecteerdeId;
     public String geselecteerdeFilter;
     public String filterTekst;
-    public  String vertrekTijdZoek;
+    public String vertrekTijdZoek;
+    public List<Reis> sugestieList = new ArrayList<>();
+    public int sugestieRequests = 0;
 
     public String getAankomstTijdZoek() {
         return aankomstTijdZoek;
@@ -71,18 +73,23 @@ public class ReisController {
     }
 
     public  List<Reis> getRandomReizen(){
-        List<Reis> reizen =  getReizen();
-        Collections.shuffle(reizen);
-        List<Reis> randomReizen = reizen.subList(0, 3);
-        return randomReizen;
+        if (sugestieList.isEmpty() || sugestieRequests == 5){
+            List<Reis> reizen =  getReizen();
+            if (!reizen.isEmpty()){
+                Collections.shuffle(reizen);
+                sugestieList = reizen.subList(0, 3);
+                sugestieRequests = 0;
+                return sugestieList;
+            } else{
+                return sugestieList;
+            }
+        } else {
+            sugestieRequests ++;
+            return sugestieList;
+        }
     }
 
-
     public  List<Reis> getFilterToepassen(){
-
-
-
-
         if (geselecteerdeFilter == null || geselecteerdeFilter.equals("0") || filterTekst == null  || filterTekst.equals("")){
             return getReizen();
         }else if(this.geselecteerdeFilter.equals("1")){
